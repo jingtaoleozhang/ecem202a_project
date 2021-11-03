@@ -2,6 +2,8 @@
 
 Provide a brief overview of the project objhectives, approach, and results.
 
+The goal of this project is to evaluate the effectiveness of using a networked tensor processing unit to improve the effectiveness of
+
 # Team
 
 * Jingtao Leo Zhang
