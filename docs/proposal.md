@@ -18,13 +18,15 @@ https://www.sciencedirect.com/science/article/pii/S0020025519306486#sec0003
 Edge inference is not a novel concept, however the setups used in most of the related papers involve GPU equipped PCs as edge servers and smartphones as devices. These devices are much more powerful than the arduino and coral dev board. Additionally, these are tested using nerual networks for image recognition.
 https://ieeexplore.ieee.org/document/8763885
 
+With multiple devices exist the possiblity for distributing computation. Vertically distributed inference has been an area of research and is applicable to this project.
+https://dl.acm.org/doi/10.1145/3469029, section 2.4
 
 
 ## 3. Novelty & Rationale
 
 What is new in your approach and why do you think it will be successful?
 
-Embedded devices like the Arduino Nano 33 BLE Sense are resource limited and cannot run large DNN models. Using the cloud to host a model is quite common, however this incurs additional latency. Using a low(er) cost neural network accelerator on the edge is also common but current approaches use powerful GPU equipped PCs along with smartphones as the end device. My approach is to evaluate the effectiveness using microcontroller class end devices with a Tensor Processing Unit device as the edge server. I believe this can be successful because the overall concept is fairly proven, however my approach takes component cost almost to the minimum.
+Embedded devices like the Arduino Nano 33 BLE Sense are resource limited and cannot run large DNN models. Using the cloud to host a model is quite common, however this incurs additional latency. Using a low(er) cost neural network accelerator on the edge is also common but current approaches use powerful GPU equipped PCs along with smartphones as the end device. My approach is to evaluate the effectiveness using microcontroller class end devices with a Tensor Processing Unit device as the edge server. I believe this can be successful because the overall concept is fairly proven, however this project takes component cost as low as reasonable.
 
 ## 4. Potential Impact
 
@@ -35,19 +37,33 @@ If this project is successful and gets reasonable accuracy and latency, then it 
 ## 5. Challenges
 
 What are the challenges and risks?
-The communication between device and server will be through bluetooth which is not known for its bandwidth.
+
+The communication between device and server will be through bluetooth which is not known for its bandwidth, techniques such as compressive sampling can come into play here. There also exists the possibility of distributing the workload between device and server, the partioning can make it so the intermediate results that are sent to the edge server smaller than the raw data.
 
 ## 6. Requirements for Success
 
 What skills and resources are necessary to perform the project?
 
+This project will require the ability to train machine learning models, a large one that will run on the edge server and a small one that will run on the device. These models will be premade resources and not developed as part of the project. The required hardware are the Arduino and Coral boards.
+
 ## 7. Metrics of Success
 
 What are metrics by which you would check for success?
 
+There will be three kinds of setups. One where only the device is used, one where the device is used only for sensing and data preprocessing and the edge server is used for inference, and (depending on time) one where the inference is split between the device and server. The metrics used will be energy, latency, and accuracy for each of the three setups.
+
 ## 8. Execution Plan
 
 Describe the key tasks in executing your project, and in case of team project describe how will you partition the tasks.
+
+The key tasks are:
+<ol>
+  <li>Get Arduino and Coral board running and learn how to program them (hello world).</li>
+  <li>Find models for human activity recognition that use IMU and/or sound data.</li>
+  <li>Run the models on the appropriate platform.</li>
+  <li>Evaluate the performance metrics.</li>
+</ol>
+
 
 ## 9. Related Work
 
