@@ -67,28 +67,42 @@ The key tasks are:
 
 *List the key papers that you have identified relating to your project idea, and describe how they related to your project. Provide references (with full citation in the References section below).*
 
-"TinyML-Enabled Frugal Smart Objects: Challenges and Opportunities" covers running ML models on microcontrollers.
+"TinyML-Enabled Frugal Smart Objects: Challenges and Opportunities"[1] covers running ML models on microcontrollers.
 
-"Emotion recognition using secure edge and cloud computing" and "Deep Learning With Edge Computing: A Review" cover use edge clouds to run inference.
+"Emotion recognition using secure edge and cloud computing"[2] and "Deep Learning With Edge Computing: A Review"[3] cover use edge clouds to run inference.
 
-"Machine Learning at the Network Edge: A Survey" covers many topics about edge computing, in particular vertically distributed inference.
+"Machine Learning at the Network Edge: A Survey"[4] covers many topics about edge computing, in particular vertically distributed inference.
 
 ### 9.b. Datasets
 
 *List datasets that you have identified and plan to use. Provide references (with full citation in the References section below).*
+The Dataset that will be used is the Smartphone-Based Recognition of Human Activities and Postural Transitions Data Set [8].
 
 ### 9.c. Software
 
 *List softwate that you have identified and plan to use. Provide references (with full citation in the References section below).*
+A deep CNN that will run on the Coral Dev Board is DeepConvLSTM [5] and the implementation is courtesy of Takumi Watanabe [6]
+
+Simpler, tradidional ML approaches that will run on the Arduino will come from "Evaluate Machine Learning Algorithms for Human Activity Recognition" [7].
+
+TensorFlow, TensorFlow Lite, and Keras are frameworks used to implement the machine learning models.
 
 ## 10. References
 
 *List references corresponding to citations in your text above. For papers please include full citation and URL. For datasets and software include name and URL.*
 
-R. Sanchez-Iborra and A. F. Skarmeta, "TinyML-Enabled Frugal Smart Objects: Challenges and Opportunities," in IEEE Circuits and Systems Magazine, vol. 20, no. 3, pp. 4-18, thirdquarter 2020, doi: 10.1109/MCAS.2020.3005467. https://ieeexplore.ieee.org/document/9166461
+[1]: R. Sanchez-Iborra and A. F. Skarmeta, "TinyML-Enabled Frugal Smart Objects: Challenges and Opportunities," in IEEE Circuits and Systems Magazine, vol. 20, no. 3, pp. 4-18, thirdquarter 2020, doi: 10.1109/MCAS.2020.3005467. https://ieeexplore.ieee.org/document/9166461
 
-M. Shamim Hossain, Ghulam Muhammad, Emotion recognition using secure edge and cloud computing, Information Sciences, Volume 504, 2019, Pages 589-601, ISSN 0020-0255, https://doi.org/10.1016/j.ins.2019.07.040.
+[2]:  M. Shamim Hossain, Ghulam Muhammad, Emotion recognition using secure edge and cloud computing, Information Sciences, Volume 504, 2019, Pages 589-601, ISSN 0020-0255, https://doi.org/10.1016/j.ins.2019.07.040.
 
-J. Chen and X. Ran, "Deep Learning With Edge Computing: A Review," in Proceedings of the IEEE, vol. 107, no. 8, pp. 1655-1674, Aug. 2019, doi: 10.1109/JPROC.2019.2921977. https://ieeexplore.ieee.org/document/8763885
+[3]: J. Chen and X. Ran, "Deep Learning With Edge Computing: A Review," in Proceedings of the IEEE, vol. 107, no. 8, pp. 1655-1674, Aug. 2019, doi: 10.1109/JPROC.2019.2921977. https://ieeexplore.ieee.org/document/8763885
 
-M. G. Sarwar Murshed, Christopher Murphy, Daqing Hou, Nazar Khan, Ganesh Ananthanarayanan, and Faraz Hussain. 2021. Machine Learning at the Network Edge: A Survey. ACM Comput. Surv. 54, 8, Article 170 (November 2022), 37 pages. DOI:https://doi.org/10.1145/3469029
+[4]: M. G. Sarwar Murshed, Christopher Murphy, Daqing Hou, Nazar Khan, Ganesh Ananthanarayanan, and Faraz Hussain. 2021. Machine Learning at the Network Edge: A Survey. ACM Comput. Surv. 54, 8, Article 170 (November 2022), 37 pages. DOI:https://doi.org/10.1145/3469029
+
+[5]: Ordóñez, F.J.; Roggen, D. Deep Convolutional and LSTM Recurrent Neural Networks for Multimodal Wearable Activity Recognition. Sensors 2016, 16, 115. https://doi.org/10.3390/s16010115
+
+[6]: Watanabe, Takumi, Deep Learning for Human Activity Recognition, (2020), GitHub repository, https://github.com/takumiw/Deep-Learning-for-Human-Activity-Recognition
+
+[7]: Brownlee, Jason, Evaluate Machine Learning Algorithms for Human Activity Recognition, (2020), Webpage, https://machinelearningmastery.com/evaluate-machine-learning-algorithms-for-human-activity-recognition/
+
+[8]: Smartphone-Based Recognition of Human Activities and Postural Transitions Data Set. 2015. Available online: http://archive.ics.uci.edu/ml/datasets/Smartphone-Based+Recognition+of+Human+Activities+and+Postural+Transitions
