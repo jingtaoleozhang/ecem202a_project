@@ -60,23 +60,23 @@ The key tasks are:
 ### 9.a. Papers
 *List the key papers that you have identified relating to your project idea, and describe how they related to your project. Provide references (with full citation in the References section below).*
 
-"TinyML-Enabled Frugal Smart Objects: Challenges and Opportunities" [1][1] covers running ML models on microcontrollers.
+"TinyML-Enabled Frugal Smart Objects: Challenges and Opportunities" [1] covers running ML models on microcontrollers.
 
-"Emotion recognition using secure edge and cloud computing" [2][2] and "Deep Learning With Edge Computing: A Review" [3][3] cover use edge clouds to run inference.
+"Emotion recognition using secure edge and cloud computing" [2] and "Deep Learning With Edge Computing: A Review" [3] cover use edge clouds to run inference.
 
-"Machine Learning at the Network Edge: A Survey" [4][4] covers many topics about edge computing, in particular vertically distributed inference.
+"Machine Learning at the Network Edge: A Survey" [4] covers many topics about edge computing, in particular vertically distributed inference.
 
 
 ### 9.b. Datasets
 *List datasets that you have identified and plan to use. Provide references (with full citation in the References section below).*
-The Dataset that will be used is the Smartphone-Based Recognition of Human Activities and Postural Transitions Data Set [8][8].
+The Dataset that will be used is the Smartphone-Based Recognition of Human Activities and Postural Transitions Data Set [8].
 
 
 ### 9.c. Software
 *List softwate that you have identified and plan to use. Provide references (with full citation in the References section below).*
-A deep CNN that will run on the Coral Dev Board is DeepConvLSTM [5][5] and the implementation is courtesy of Takumi Watanabe [6][6]
+A deep CNN that will run on the Coral Dev Board is DeepConvLSTM [5] and the implementation is courtesy of Takumi Watanabe [6]
 
-Simpler, tradidional ML approaches that will run on the Arduino will come from "Evaluate Machine Learning Algorithms for Human Activity Recognition" [7][7].
+Simpler, tradidional ML approaches that will run on the Arduino will come from "Evaluate Machine Learning Algorithms for Human Activity Recognition" [7].
 
 TensorFlow, TensorFlow Lite, and Keras are frameworks used to implement the machine learning models.
 
