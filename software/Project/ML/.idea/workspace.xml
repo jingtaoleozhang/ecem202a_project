@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ChangeListManager">
+    <list default="true" id="74e1d3e3-6e2c-4f75-99c1-d8d20cc4b921" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/Deep-Learning-for-Human-Activity-Recognition/models/deep_conv_lstm.py" beforeDir="false" afterPath="$PROJECT_DIR$/Deep-Learning-for-Human-Activity-Recognition/models/deep_conv_lstm.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Deep-Learning-for-Human-Activity-Recognition/run_cnn.py" beforeDir="false" afterPath="$PROJECT_DIR$/Deep-Learning-for-Human-Activity-Recognition/run_cnn.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Deep-Learning-for-Human-Activity-Recognition/run_deep_conv_lstm.py" beforeDir="false" afterPath="$PROJECT_DIR$/Deep-Learning-for-Human-Activity-Recognition/run_deep_conv_lstm.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Deep-Learning-for-Human-Activity-Recognition/run_generate_features.py" beforeDir="false" afterPath="$PROJECT_DIR$/Deep-Learning-for-Human-Activity-Recognition/run_generate_features.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Deep-Learning-for-Human-Activity-Recognition/src/data_prep/load.py" beforeDir="false" afterPath="$PROJECT_DIR$/Deep-Learning-for-Human-Activity-Recognition/src/data_prep/load.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/dlstm/Dockerfile" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/dlstm/Dockerfile_gpu" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/dlstm/Makefile" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/dlstm/docker-compose.yml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/dlstm/poetry.lock" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/dlstm/run_cnn.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/dlstm/run_deep_conv_lstm.py" beforeDir="false" afterPath="$PROJECT_DIR$/dlstm/run_deep_conv_lstm.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/dlstm/run_generate_features.py" beforeDir="false" afterPath="$PROJECT_DIR$/dlstm/run_generate_features.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/dlstm/run_lgbm.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/dlstm/run_mlp.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/dlstm/run_sdae.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/dlstm/src/data_prep/load.py" beforeDir="false" afterPath="$PROJECT_DIR$/dlstm/src/data_prep/load.py" afterDir="false" />
+    </list>
+    <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/Deep-Learning-for-Human-Activity-Recognition" />
+  </component>
+  <component name="ProjectId" id="21kx8GvnzvHqLeEsF6meJr1mrnK" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
+  <component name="PropertiesComponent">
+    <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/Deep-Learning-for-Human-Activity-Recognition" />
+    <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
+    <property name="nodejs_npm_path_reset_for_default_project" value="true" />
+  </component>
+  <component name="RunDashboard">
+    <option name="ruleStates">
+      <list>
+        <RuleState>
+          <option name="name" value="ConfigurationTypeDashboardGroupingRule" />
+        </RuleState>
+        <RuleState>
+          <option name="name" value="StatusDashboardGroupingRule" />
+        </RuleState>
+      </list>
+    </option>
+  </component>
+  <component name="SvnConfiguration">
+    <configuration />
+  </component>
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="74e1d3e3-6e2c-4f75-99c1-d8d20cc4b921" name="Default Changelist" comment="" />
+      <created>1638498725026</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1638498725026</updated>
+      <workItem from="1638498728388" duration="39000" />
+    </task>
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="1" />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
+  </component>
+</project>

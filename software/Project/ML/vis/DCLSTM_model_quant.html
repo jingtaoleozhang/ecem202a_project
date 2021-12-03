@@ -1,0 +1,2936 @@
+
+<html>
+<head>
+<style>
+body {font-family: sans-serif; background-color: #fa0;}
+table {background-color: #eca;}
+th {background-color: black; color: white;}
+h1 {
+  background-color: ffaa00;
+  padding:5px;
+  color: black;
+}
+svg {
+  margin: 10px;
+  border: 2px;
+  border-style: solid;
+  border-color: black;
+  background: white;
+}
+div {
+  border-radius: 5px;
+  background-color: #fec;
+  padding:5px;
+  margin:5px;
+}
+.tooltip {color: blue;}
+.tooltip .tooltipcontent  {
+    visibility: hidden;
+    color: black;
+    background-color: yellow;
+    padding: 5px;
+    border-radius: 4px;
+    position: absolute;
+    z-index: 1;
+}
+.tooltip:hover .tooltipcontent {
+    visibility: visible;
+}
+.edges line {
+  stroke: #333;
+}
+text {
+  font-weight: bold;
+}
+.nodes text {
+  color: black;
+  pointer-events: none;
+  font-family: sans-serif;
+  font-size: 11px;
+}
+</style>
+<script src="https://d3js.org/d3.v4.min.js"></script>
+</head>
+<body>
+<h1>TensorFlow Lite Model</h2><table>
+<tr><th>filename</th><td>.\DCLSTM_model_quant.tflite</td></tr>
+<tr><th>version</th><td>3</td></tr>
+<tr><th>description</th><td>[77, 76, 73, 82, 32, 67, 111, 110, 118, 101, 114, 116, 101, 100, 46]</td></tr>
+</table>
+<div class='subgraph'><h2>Subgraph 0</h2>
+<h3>Inputs/Outputs</h3>
+<table><tr>
+<tr>
+<th>inputs</th><th>outputs</th></tr>
+<tr>
+<td><span class='tooltip'><span class='tooltipcontent'>0 conv2d_input FLOAT32 [1, 128, 6, 1]None<br></span>[0]</span></td>
+<td><span class='tooltip'><span class='tooltipcontent'>57 Identity FLOAT32 [1, 6][-1, 6]<br></span>[57]</span></td>
+</tr>
+</table>
+<h3>Tensors</h3>
+<table><tr>
+<tr>
+<th>index</th><th>name</th><th>type</th><th>shape</th><th>shape_signature</th><th>buffer</th><th>quantization</th></tr>
+<tr>
+<td>0</td><td>conv2d_input</td>
+<td>FLOAT32</td>
+<td>[1, 128, 6, 1]</td>
+<td>None</td>
+<td>1</td>
+<td>{'details': None, 'details_type': 0, 'max': None, 'min': None, 'quantized_dimension': 0, 'scale': None, 'zero_point': None}</td>
+</tr>
+<tr>
+<td>1</td><td>transpose;StatefulPartitionedCall/sequential/lstm/PartitionedCall/transpose</td>
+<td>INT32</td>
+<td>[3]</td>
+<td>None</td>
+<td>2</td>
+<td>{'details': None, 'details_type': 0, 'max': None, 'min': None, 'quantized_dimension': 0, 'scale': None, 'zero_point': None}</td>
+</tr>
+<tr>
+<td>2</td><td>sequential/conv2d_3/BiasAdd;StatefulPartitionedCall/sequential/conv2d_3/BiasAdd;sequential/conv2d/Conv2D;StatefulPartitionedCall/sequential/conv2d/Conv2D;sequential/conv2d_3/Conv2D;StatefulPartitionedCall/sequential/conv2d_3/Conv2D;unknown_6</td>
+<td>FLOAT32</td>
+<td>[64]</td>
+<td>None</td>
+<td>3</td>
+<td>{'details': None, 'details_type': 0, 'max': None, 'min': None, 'quantized_dimension': 0, 'scale': None, 'zero_point': None}</td>
+</tr>
+<tr>
+<td>3</td><td>sequential/conv2d_2/BiasAdd;StatefulPartitionedCall/sequential/conv2d_2/BiasAdd;sequential/conv2d/Conv2D;StatefulPartitionedCall/sequential/conv2d/Conv2D;sequential/conv2d_2/Conv2D;StatefulPartitionedCall/sequential/conv2d_2/Conv2D;unknown_4</td>
+<td>FLOAT32</td>
+<td>[64]</td>
+<td>None</td>
+<td>4</td>
+<td>{'details': None, 'details_type': 0, 'max': None, 'min': None, 'quantized_dimension': 0, 'scale': None, 'zero_point': None}</td>
+</tr>
+<tr>
+<td>4</td><td>sequential/conv2d_1/BiasAdd;StatefulPartitionedCall/sequential/conv2d_1/BiasAdd;sequential/conv2d/Conv2D;StatefulPartitionedCall/sequential/conv2d/Conv2D;sequential/conv2d_1/Conv2D;StatefulPartitionedCall/sequential/conv2d_1/Conv2D;unknown_2</td>
+<td>FLOAT32</td>
+<td>[64]</td>
+<td>None</td>
+<td>5</td>
+<td>{'details': None, 'details_type': 0, 'max': None, 'min': None, 'quantized_dimension': 0, 'scale': None, 'zero_point': None}</td>
+</tr>
+<tr>
+<td>5</td><td>sequential/conv2d/BiasAdd;StatefulPartitionedCall/sequential/conv2d/BiasAdd;sequential/conv2d/Conv2D;StatefulPartitionedCall/sequential/conv2d/Conv2D;unknown_0</td>
+<td>FLOAT32</td>
+<td>[64]</td>
+<td>None</td>
+<td>6</td>
+<td>{'details': None, 'details_type': 0, 'max': None, 'min': None, 'quantized_dimension': 0, 'scale': None, 'zero_point': None}</td>
+</tr>
+<tr>
+<td>6</td><td>strided_slice_2;StatefulPartitionedCall/sequential/lstm_1/PartitionedCall/strided_slice_2</td>
+<td>INT32</td>
+<td>[3]</td>
+<td>None</td>
+<td>7</td>
+<td>{'details': None, 'details_type': 0, 'max': None, 'min': None, 'quantized_dimension': 0, 'scale': None, 'zero_point': None}</td>
+</tr>
+<tr>
+<td>7</td><td>strided_slice_2;StatefulPartitionedCall/sequential/lstm_1/PartitionedCall/strided_slice_21</td>
+<td>INT32</td>
+<td>[3]</td>
+<td>None</td>
+<td>8</td>
+<td>{'details': None, 'details_type': 0, 'max': None, 'min': None, 'quantized_dimension': 0, 'scale': None, 'zero_point': None}</td>
+</tr>
+<tr>
+<td>8</td><td>strided_slice_2;StatefulPartitionedCall/sequential/lstm_1/PartitionedCall/strided_slice_22</td>
+<td>INT32</td>
+<td>[3]</td>
+<td>None</td>
+<td>9</td>
+<td>{'details': None, 'details_type': 0, 'max': None, 'min': None, 'quantized_dimension': 0, 'scale': None, 'zero_point': None}</td>
+</tr>
+<tr>
+<td>9</td><td>sequential/conv2d_3/Conv2D;StatefulPartitionedCall/sequential/conv2d_3/Conv2D</td>
+<td>INT8</td>
+<td>[64, 5, 1, 64]</td>
+<td>None</td>
+<td>10</td>
+<td>{'details': None, 'details_type': 0, 'max': [0.2631528973579407, 0.12643302977085114, 0.13639616966247559, 0.10958097875118256, 0.3085553050041199, 0.20715774595737457, 0.09906858205795288, 0.1280057728290558, 0.22411362826824188, 0.1696416586637497, 0.13026054203510284, 0.12186471372842789, 0.09686613827943802, 0.13694176077842712, 0.15330933034420013, 0.14387306571006775, 0.18423736095428467, 0.1520661562681198, 0.0975830927491188, 0.0991620123386383, 0.14663471281528473, 0.16079401969909668, 0.101320281624794, 0.4907172620296478, 0.1730005294084549, 0.09982544183731079, 0.0916006863117218, 0.1964540034532547, 0.13878867030143738, 0.1519930213689804, 0.19286657869815826, 0.2884059250354767, 0.1687859147787094, 0.09136484563350677, 0.15419124066829681, 0.16085344552993774, 0.12201350182294846, 0.09594894200563431, 0.11977781355381012, 0.17613492906093597, 0.22400416433811188, 0.14478282630443573, 0.14377355575561523, 0.1918124556541443, 0.1181870549917221, 0.21123000979423523, 0.1311747133731842, 0.10211613774299622, 0.14355584979057312, 0.10121749341487885, 0.14534172415733337, 0.15105316042900085, 0.16757428646087646, 0.12810207903385162, 0.18569274246692657, 0.11322460323572159, 0.13279315829277039, 0.16210401058197021, 0.1949218362569809, 0.14573271572589874, 0.10301937907934189, 0.1265038549900055, 0.12349629402160645, 0.18387530744075775], 'min': [-0.15567299723625183, -0.15718290209770203, -0.15358325839042664, -0.13594871759414673, -0.21797487139701843, -0.27259257435798645, -0.11560674011707306, -0.1554637849330902, -0.1775953322649002, -0.2500697672367096, -0.17369896173477173, -0.1462113857269287, -0.11457464843988419, -0.157949298620224, -0.16533072292804718, -0.18562592566013336, -0.11366242915391922, -0.13392551243305206, -0.117833212018013, -0.11635623872280121, -0.20497511327266693, -0.1549590528011322, -0.12615849077701569, -0.4672413766384125, -0.20319731533527374, -0.12699489295482635, -0.11454540491104126, -0.20866625010967255, -0.12588147819042206, -0.26937058568000793, -0.15759284794330597, -0.249613419175148, -0.2166271209716797, -0.11706246435642242, -0.19072675704956055, -0.14689482748508453, -0.11392975598573685, -0.11866476386785507, -0.1371171921491623, -0.1500108242034912, -0.27759885787963867, -0.13643477857112885, -0.18163204193115234, -0.18054614961147308, -0.12120376527309418, -0.24236856400966644, -0.13234999775886536, -0.20361249148845673, -0.12913523614406586, -0.16204093396663666, -0.14152662456035614, -0.16546939313411713, -0.1768312007188797, -0.20637255907058716, -0.16992923617362976, -0.15597744286060333, -0.15679772198200226, -0.1745125949382782, -0.12072670459747314, -0.21518941223621368, -0.12182255834341049, -0.1867654025554657, -0.14483840763568878, -0.1472383737564087], 'quantized_dimension': 0, 'scale': [0.002072070026770234, 0.0012376606464385986, 0.0012093170080333948, 0.0010704624000936747, 0.002429569372907281, 0.0021463981829583645, 0.000910289294552058, 0.00122412433847785, 0.0017646742053329945, 0.001969053177163005, 0.0013677083188667893, 0.0011512706987559795, 0.0009021625737659633, 0.0012436952674761415, 0.001301816664636135, 0.0014616214903071523, 0.0014506878796964884, 0.0011973712826147676, 0.0009278205689042807, 0.0009161908528767526, 0.0016139772487804294, 0.0012660946231335402, 0.0009933739202097058, 0.0038639153353869915, 0.0015999788884073496, 0.0009999597677960992, 0.0009019323042593896, 0.00164304138161242, 0.0010928241536021233, 0.002121028257533908, 0.0015186344971880317, 0.002270912751555443, 0.001705725328065455, 0.0009217516635544598, 0.0015017854748293757, 0.0012665626127272844, 0.0009607362444512546, 0.0009343682322651148, 0.001079662935808301, 0.0013868892565369606, 0.0021858178079128265, 0.0011400223011150956, 0.0014301735209301114, 0.0015103343175724149, 0.0009543603518977761, 0.0019084138330072165, 0.0010421259794384241, 0.0016032479470595717, 0.0011303609935566783, 0.0012759128585457802, 0.0011444230331107974, 0.0013029086403548717, 0.0013923716032877564, 0.0016249808249995112, 0.0014621475711464882, 0.0012281688395887613, 0.0012346276780590415, 0.0013741148868575692, 0.0015348176239058375, 0.0016944048693403602, 0.0009592327405698597, 0.001470593735575676, 0.001140459906309843, 0.0014478371012955904], 'zero_point': [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]}</td>
+</tr>
+<tr>
+<td>10</td><td>sequential/conv2d_2/Conv2D;StatefulPartitionedCall/sequential/conv2d_2/Conv2D</td>
+<td>INT8</td>
+<td>[64, 5, 1, 64]</td>
+<td>None</td>
+<td>11</td>
+<td>{'details': None, 'details_type': 0, 'max': [0.3839828073978424, 0.29188230633735657, 0.11104079335927963, 0.16213750839233398, 0.1365707367658615, 0.167634978890419, 0.26861584186553955, 0.17253267765045166, 0.11119700223207474, 0.19283810257911682, 0.08909798413515091, 0.10687600821256638, 0.09597302973270416, 0.1452564001083374, 0.1865169256925583, 0.09555426985025406, 0.08433838188648224, 0.2976641058921814, 0.17463207244873047, 0.09681752324104309, 0.08908039331436157, 0.1684810370206833, 0.09353523701429367, 0.08978854864835739, 0.1853378862142563, 0.13366274535655975, 0.09099122136831284, 0.12694382667541504, 0.10910814255475998, 0.14225082099437714, 0.16388389468193054, 0.32494157552719116, 0.26184430718421936, 0.2338574379682541, 0.09021500498056412, 0.18451792001724243, 0.12400173395872116, 0.09241816401481628, 0.13399745523929596, 0.13630591332912445, 0.08977118134498596, 0.09420954436063766, 0.13522836565971375, 0.16046033799648285, 0.21887195110321045, 0.0966143012046814, 0.13877418637275696, 0.12769892811775208, 0.15906089544296265, 0.2254394143819809, 0.2036953717470169, 0.1589227020740509, 0.14991793036460876, 0.16554978489875793, 0.10136540979146957, 0.20388996601104736, 0.1780964434146881, 0.16996105015277863, 0.2361406534910202, 0.20857733488082886, 0.1421183943748474, 0.1878194957971573, 0.17295613884925842, 0.1449514627456665], 'min': [-0.24070408940315247, -0.202918142080307, -0.1758432388305664, -0.11008390784263611, -0.1978466659784317, -0.21454834938049316, -0.18031013011932373, -0.202482208609581, -0.17958256602287292, -0.15773066878318787, -0.10539711266756058, -0.14697416126728058, -0.11084074527025223, -0.16279806196689606, -0.19164834916591644, -0.11729277670383453, -0.12650246918201447, -0.14573819935321808, -0.18222157657146454, -0.10441023111343384, -0.10687306523323059, -0.263811320066452, -0.10769349336624146, -0.10825508087873459, -0.12337266653776169, -0.16898652911186218, -0.15721341967582703, -0.12879596650600433, -0.10698309540748596, -0.12801003456115723, -0.2364145964384079, -0.2840113639831543, -0.11733376979827881, -0.1877308189868927, -0.1069602221250534, -0.12042921036481857, -0.13820622861385345, -0.13232508301734924, -0.27045679092407227, -0.2551132142543793, -0.12211887538433075, -0.09944786876440048, -0.19072780013084412, -0.17695333063602448, -0.17079010605812073, -0.11400850117206573, -0.20855914056301117, -0.15146851539611816, -0.13477984070777893, -0.2088591307401657, -0.18124523758888245, -0.14638762176036835, -0.2752241790294647, -0.15892110764980316, -0.10326375812292099, -0.2731449604034424, -0.19209422171115875, -0.1198178380727768, -0.24711646139621735, -0.18008968234062195, -0.132370263338089, -0.18578657507896423, -0.179229736328125, -0.23351086676120758], 'quantized_dimension': 0, 'scale': [0.0030234865844249725, 0.0022982859518378973, 0.0013845923822373152, 0.0012766732834279537, 0.0015578477177768946, 0.0016893571009859443, 0.002115085255354643, 0.0015943481121212244, 0.0014140359126031399, 0.001518410281278193, 0.0008298985194414854, 0.0011572769144549966, 0.0008727617678232491, 0.0012818744871765375, 0.001509042107500136, 0.0009235651814378798, 0.0009960824390873313, 0.0023438117932528257, 0.0014348155818879604, 0.0008221277967095375, 0.0008415202028118074, 0.002077254466712475, 0.0008479802636429667, 0.000852402183227241, 0.00145935348700732, 0.0013306025648489594, 0.0012379009276628494, 0.0010141414823010564, 0.0008591192308813334, 0.0011200852459296584, 0.0018615322187542915, 0.002558595035225153, 0.002061766106635332, 0.0018413971411064267, 0.0008422064711339772, 0.0014528969768434763, 0.0010882379719987512, 0.0010419298196211457, 0.002129581058397889, 0.00200876547023654, 0.0009615659364499152, 0.0007830540998838842, 0.0015017937403172255, 0.0013933333102613688, 0.0017234011320397258, 0.0008977047400549054, 0.001642197952605784, 0.0011926654260605574, 0.0012524479534476995, 0.0017751135164871812, 0.0016039005713537335, 0.0012513598194345832, 0.002167119411751628, 0.0013035415904596448, 0.0008131004287861288, 0.0021507476922124624, 0.0015125529607757926, 0.00133827596437186, 0.0019457988673821092, 0.001642341259866953, 0.0011190425138920546, 0.0014788936823606491, 0.001411257777363062, 0.0018386682495474815], 'zero_point': [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]}</td>
+</tr>
+<tr>
+<td>11</td><td>sequential/conv2d_1/Conv2D;StatefulPartitionedCall/sequential/conv2d_1/Conv2D</td>
+<td>INT8</td>
+<td>[64, 5, 1, 64]</td>
+<td>None</td>
+<td>12</td>
+<td>{'details': None, 'details_type': 0, 'max': [0.18934990465641022, 0.13500428199768066, 0.17169299721717834, 0.17475789785385132, 0.1457512378692627, 0.12693393230438232, 0.15781182050704956, 0.16919374465942383, 0.1189047321677208, 0.17028382420539856, 0.1348152607679367, 0.11709406226873398, 0.12353453785181046, 0.14276400208473206, 0.14868924021720886, 0.14899899065494537, 0.14702923595905304, 0.15219567716121674, 0.1462685465812683, 0.1612800657749176, 0.17254473268985748, 0.17980451881885529, 0.1637745499610901, 0.14999714493751526, 0.2614796757698059, 0.1325068324804306, 0.18036194145679474, 0.13521097600460052, 0.2240515500307083, 0.2030031681060791, 0.13266171514987946, 0.14050185680389404, 0.15995323657989502, 0.15924648940563202, 0.14932623505592346, 0.14669771492481232, 0.17432871460914612, 0.13951614499092102, 0.16729630529880524, 0.09497451037168503, 0.1550951600074768, 0.14794611930847168, 0.15695077180862427, 0.1337810456752777, 0.15966777503490448, 0.12879817187786102, 0.15289871394634247, 0.17014458775520325, 0.1895325779914856, 0.1326463371515274, 0.16886022686958313, 0.15626774728298187, 0.19726943969726562, 0.23168478906154633, 0.19602538645267487, 0.14980973303318024, 0.15591993927955627, 0.14430363476276398, 0.14806795120239258, 0.08982362598180771, 0.1785181760787964, 0.1750119924545288, 0.15066736936569214, 0.23245024681091309], 'min': [-0.19128961861133575, -0.19121357798576355, -0.1565338522195816, -0.20487314462661743, -0.1314745843410492, -0.1288040280342102, -0.2332579642534256, -0.15371392667293549, -0.12811081111431122, -0.2596844434738159, -0.2413332611322403, -0.1144491583108902, -0.12665961682796478, -0.1412617266178131, -0.1157941147685051, -0.18207192420959473, -0.1771763265132904, -0.2688829004764557, -0.1398971527814865, -0.23347881436347961, -0.24467840790748596, -0.1586690992116928, -0.153030127286911, -0.14066638052463531, -0.20865404605865479, -0.19237755239009857, -0.15205273032188416, -0.25013014674186707, -0.20488174259662628, -0.30370140075683594, -0.1693076193332672, -0.2297711819410324, -0.11874504387378693, -0.19079571962356567, -0.19950421154499054, -0.15887081623077393, -0.1781415343284607, -0.1520760953426361, -0.19183467328548431, -0.09609265625476837, -0.17697536945343018, -0.2779223322868347, -0.2401725947856903, -0.11362288892269135, -0.14214923977851868, -0.12267080694437027, -0.18313734233379364, -0.19177773594856262, -0.19073358178138733, -0.12401242554187775, -0.12277159839868546, -0.22844696044921875, -0.19398020207881927, -0.31514742970466614, -0.20114938914775848, -0.17224997282028198, -0.1284155547618866, -0.1244121715426445, -0.11586043983697891, -0.10380429029464722, -0.20131275057792664, -0.23127074539661407, -0.19183588027954102, -0.17033861577510834], 'quantized_dimension': 0, 'scale': [0.001506217522546649, 0.0015056186821311712, 0.0013519133208319545, 0.001613174332305789, 0.0011476475046947598, 0.001014204928651452, 0.00183667684905231, 0.0013322342419996858, 0.0010087465634569526, 0.0020447594579309225, 0.0019002618500962853, 0.0009220005013048649, 0.0009973198175430298, 0.0011241260217502713, 0.0011707814410328865, 0.0014336372260004282, 0.0013950892025604844, 0.0021171881817281246, 0.0011517208768054843, 0.0018384158611297607, 0.0019266016315668821, 0.0014157836558297276, 0.001289563369937241, 0.0011810798896476626, 0.0020588950719684362, 0.0015147838275879622, 0.0014201727462932467, 0.001969528617337346, 0.0017641853773966432, 0.0023913495242595673, 0.0013331308728083968, 0.001809221925213933, 0.001259474316611886, 0.0015023285523056984, 0.0015708992723375559, 0.0012509513180702925, 0.001402689260430634, 0.0011974495137110353, 0.0015105092898011208, 0.0007566350977867842, 0.0013935068855062127, 0.0021883647423237562, 0.0018911227816715837, 0.0010533940512686968, 0.0012572265695780516, 0.0010141588281840086, 0.0014420263469219208, 0.0015100608579814434, 0.0015018392587080598, 0.0010444592917338014, 0.001329608028754592, 0.00179879495408386, 0.0015533026307821274, 0.0024814759381115437, 0.0015838535036891699, 0.0013562990352511406, 0.0012277161004021764, 0.001136249047704041, 0.001165889436379075, 0.0008173566311597824, 0.0015851397765800357, 0.0018210294656455517, 0.0015105187194421887, 0.0018303168471902609], 'zero_point': [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]}</td>
+</tr>
+<tr>
+<td>12</td><td>sequential/conv2d/Conv2D;StatefulPartitionedCall/sequential/conv2d/Conv2D</td>
+<td>FLOAT32</td>
+<td>[64, 5, 1, 1]</td>
+<td>None</td>
+<td>13</td>
+<td>{'details': None, 'details_type': 0, 'max': None, 'min': None, 'quantized_dimension': 0, 'scale': None, 'zero_point': None}</td>
+</tr>
+<tr>
+<td>13</td><td>TensorArrayV2_1;StatefulPartitionedCall/sequential/lstm/PartitionedCall/TensorArrayV2_1</td>
+<td>FLOAT32</td>
+<td>[112, 1, 128]</td>
+<td>None</td>
+<td>14</td>
+<td>{'details': None, 'details_type': 0, 'max': None, 'min': None, 'quantized_dimension': 0, 'scale': None, 'zero_point': None}</td>
+</tr>
+<tr>
+<td>14</td><td>sequential/lstm/zeros;StatefulPartitionedCall/sequential/lstm/zeros</td>
+<td>FLOAT32</td>
+<td>[1, 128]</td>
+<td>None</td>
+<td>15</td>
+<td>{'details': None, 'details_type': 0, 'max': None, 'min': None, 'quantized_dimension': 0, 'scale': None, 'zero_point': None}</td>
+</tr>
+<tr>
+<td>15</td><td>strided_slice;StatefulPartitionedCall/sequential/lstm/PartitionedCall/strided_slice</td>
+<td>INT32</td>
+<td>None</td>
+<td>None</td>
+<td>16</td>
+<td>{'details': None, 'details_type': 0, 'max': None, 'min': None, 'quantized_dimension': 0, 'scale': None, 'zero_point': None}</td>
+</tr>
+<tr>
+<td>16</td><td>strided_slice/stack;StatefulPartitionedCall/sequential/lstm/PartitionedCall/strided_slice/stack</td>
+<td>INT32</td>
+<td>[1]</td>
+<td>None</td>
+<td>17</td>
+<td>{'details': None, 'details_type': 0, 'max': None, 'min': None, 'quantized_dimension': 0, 'scale': None, 'zero_point': None}</td>
+</tr>
+<tr>
+<td>17</td><td>strided_slice/stack_1;StatefulPartitionedCall/sequential/lstm/PartitionedCall/strided_slice/stack_1</td>
+<td>INT32</td>
+<td>[1]</td>
+<td>None</td>
+<td>18</td>
+<td>{'details': None, 'details_type': 0, 'max': None, 'min': None, 'quantized_dimension': 0, 'scale': None, 'zero_point': None}</td>
+</tr>
+<tr>
+<td>18</td><td>transpose/perm;StatefulPartitionedCall/sequential/lstm/PartitionedCall/transpose/perm</td>
+<td>INT32</td>
+<td>[3]</td>
+<td>None</td>
+<td>19</td>
+<td>{'details': None, 'details_type': 0, 'max': None, 'min': None, 'quantized_dimension': 0, 'scale': None, 'zero_point': None}</td>
+</tr>
+<tr>
+<td>19</td><td>sequential/lstm/zeros/packed/1;StatefulPartitionedCall/sequential/lstm/zeros/packed/1</td>
+<td>INT32</td>
+<td>None</td>
+<td>None</td>
+<td>20</td>
+<td>{'details': None, 'details_type': 0, 'max': None, 'min': None, 'quantized_dimension': 0, 'scale': None, 'zero_point': None}</td>
+</tr>
+<tr>
+<td>20</td><td>unknown_12</td>
+<td>FLOAT32</td>
+<td>[512]</td>
+<td>None</td>
+<td>21</td>
+<td>{'details': None, 'details_type': 0, 'max': None, 'min': None, 'quantized_dimension': 0, 'scale': None, 'zero_point': None}</td>
+</tr>
+<tr>
+<td>21</td><td>unknown_14</td>
+<td>FLOAT32</td>
+<td>[6]</td>
+<td>None</td>
+<td>22</td>
+<td>{'details': None, 'details_type': 0, 'max': None, 'min': None, 'quantized_dimension': 0, 'scale': None, 'zero_point': None}</td>
+</tr>
+<tr>
+<td>22</td><td>unknown_9</td>
+<td>FLOAT32</td>
+<td>[512]</td>
+<td>None</td>
+<td>23</td>
+<td>{'details': None, 'details_type': 0, 'max': None, 'min': None, 'quantized_dimension': 0, 'scale': None, 'zero_point': None}</td>
+</tr>
+<tr>
+<td>23</td><td>sequential/dense/MatMul;StatefulPartitionedCall/sequential/dense/MatMul</td>
+<td>FLOAT32</td>
+<td>[6, 128]</td>
+<td>None</td>
+<td>24</td>
+<td>{'details': None, 'details_type': 0, 'max': None, 'min': None, 'quantized_dimension': 0, 'scale': None, 'zero_point': None}</td>
+</tr>
+<tr>
+<td>24</td><td>TensorArrayV2_1;StatefulPartitionedCall/sequential/lstm/PartitionedCall/TensorArrayV2_11</td>
+<td>INT32</td>
+<td>[2]</td>
+<td>None</td>
+<td>25</td>
+<td>{'details': None, 'details_type': 0, 'max': None, 'min': None, 'quantized_dimension': 0, 'scale': None, 'zero_point': None}</td>
+</tr>
+<tr>
+<td>25</td><td>TensorArrayV2_1;StatefulPartitionedCall/sequential/lstm/PartitionedCall/TensorArrayV2_12</td>
+<td>INT32</td>
+<td>None</td>
+<td>None</td>
+<td>26</td>
+<td>{'details': None, 'details_type': 0, 'max': None, 'min': None, 'quantized_dimension': 0, 'scale': None, 'zero_point': None}</td>
+</tr>
+<tr>
+<td>26</td><td>TensorArrayV2_1;StatefulPartitionedCall/sequential/lstm/PartitionedCall/TensorArrayV2_13</td>
+<td>FLOAT32</td>
+<td>None</td>
+<td>None</td>
+<td>27</td>
+<td>{'details': None, 'details_type': 0, 'max': None, 'min': None, 'quantized_dimension': 0, 'scale': None, 'zero_point': None}</td>
+</tr>
+<tr>
+<td>27</td><td>sequential/activation/Relu;StatefulPartitionedCall/sequential/activation/Relu;sequential/conv2d/BiasAdd;StatefulPartitionedCall/sequential/conv2d/BiasAdd;sequential/conv2d/Conv2D;StatefulPartitionedCall/sequential/conv2d/Conv2D;unknown_0</td>
+<td>FLOAT32</td>
+<td>[1, 124, 6, 64]</td>
+<td>None</td>
+<td>28</td>
+<td>{'details': None, 'details_type': 0, 'max': None, 'min': None, 'quantized_dimension': 0, 'scale': None, 'zero_point': None}</td>
+</tr>
+<tr>
+<td>28</td><td>sequential/activation_1/Relu;StatefulPartitionedCall/sequential/activation_1/Relu;sequential/conv2d_1/BiasAdd;StatefulPartitionedCall/sequential/conv2d_1/BiasAdd;sequential/conv2d/Conv2D;StatefulPartitionedCall/sequential/conv2d/Conv2D;sequential/conv2d_1/Conv2D;StatefulPartitionedCall/sequential/conv2d_1/Conv2D;unknown_2</td>
+<td>FLOAT32</td>
+<td>[1, 120, 6, 64]</td>
+<td>None</td>
+<td>29</td>
+<td>{'details': None, 'details_type': 0, 'max': None, 'min': None, 'quantized_dimension': 0, 'scale': None, 'zero_point': None}</td>
+</tr>
+<tr>
+<td>29</td><td>sequential/activation_2/Relu;StatefulPartitionedCall/sequential/activation_2/Relu;sequential/conv2d_2/BiasAdd;StatefulPartitionedCall/sequential/conv2d_2/BiasAdd;sequential/conv2d/Conv2D;StatefulPartitionedCall/sequential/conv2d/Conv2D;sequential/conv2d_2/Conv2D;StatefulPartitionedCall/sequential/conv2d_2/Conv2D;unknown_4</td>
+<td>FLOAT32</td>
+<td>[1, 116, 6, 64]</td>
+<td>None</td>
+<td>30</td>
+<td>{'details': None, 'details_type': 0, 'max': None, 'min': None, 'quantized_dimension': 0, 'scale': None, 'zero_point': None}</td>
+</tr>
+<tr>
+<td>30</td><td>sequential/activation_3/Relu;StatefulPartitionedCall/sequential/activation_3/Relu;sequential/conv2d_3/BiasAdd;StatefulPartitionedCall/sequential/conv2d_3/BiasAdd;sequential/conv2d/Conv2D;StatefulPartitionedCall/sequential/conv2d/Conv2D;sequential/conv2d_3/Conv2D;StatefulPartitionedCall/sequential/conv2d_3/Conv2D;unknown_6</td>
+<td>FLOAT32</td>
+<td>[1, 112, 6, 64]</td>
+<td>None</td>
+<td>31</td>
+<td>{'details': None, 'details_type': 0, 'max': None, 'min': None, 'quantized_dimension': 0, 'scale': None, 'zero_point': None}</td>
+</tr>
+<tr>
+<td>31</td><td>transpose;StatefulPartitionedCall/sequential/lstm/PartitionedCall/transpose1</td>
+<td>FLOAT32</td>
+<td>[112, 1, 384]</td>
+<td>None</td>
+<td>32</td>
+<td>{'details': None, 'details_type': 0, 'max': None, 'min': None, 'quantized_dimension': 0, 'scale': None, 'zero_point': None}</td>
+</tr>
+<tr>
+<td>32</td><td>while;StatefulPartitionedCall/sequential/lstm/PartitionedCall/while</td>
+<td>INT32</td>
+<td>None</td>
+<td>None</td>
+<td>33</td>
+<td>{'details': None, 'details_type': 0, 'max': None, 'min': None, 'quantized_dimension': 0, 'scale': None, 'zero_point': None}</td>
+</tr>
+<tr>
+<td>33</td><td>while;StatefulPartitionedCall/sequential/lstm/PartitionedCall/while1</td>
+<td>INT32</td>
+<td>None</td>
+<td>None</td>
+<td>34</td>
+<td>{'details': None, 'details_type': 0, 'max': None, 'min': None, 'quantized_dimension': 0, 'scale': None, 'zero_point': None}</td>
+</tr>
+<tr>
+<td>34</td><td>while;StatefulPartitionedCall/sequential/lstm/PartitionedCall/while2</td>
+<td>FLOAT32</td>
+<td>[1, 1, 128]</td>
+<td>[-1, -1, 128]</td>
+<td>35</td>
+<td>{'details': None, 'details_type': 0, 'max': None, 'min': None, 'quantized_dimension': 0, 'scale': None, 'zero_point': None}</td>
+</tr>
+<tr>
+<td>35</td><td>while;StatefulPartitionedCall/sequential/lstm/PartitionedCall/while3</td>
+<td>FLOAT32</td>
+<td>[1, 128]</td>
+<td>[-1, 128]</td>
+<td>36</td>
+<td>{'details': None, 'details_type': 0, 'max': None, 'min': None, 'quantized_dimension': 0, 'scale': None, 'zero_point': None}</td>
+</tr>
+<tr>
+<td>36</td><td>while;StatefulPartitionedCall/sequential/lstm/PartitionedCall/while4</td>
+<td>FLOAT32</td>
+<td>[1, 128]</td>
+<td>[-1, 128]</td>
+<td>37</td>
+<td>{'details': None, 'details_type': 0, 'max': None, 'min': None, 'quantized_dimension': 0, 'scale': None, 'zero_point': None}</td>
+</tr>
+<tr>
+<td>37</td><td>while;StatefulPartitionedCall/sequential/lstm/PartitionedCall/while5</td>
+<td>FLOAT32</td>
+<td>[112, 1, 384]</td>
+<td>None</td>
+<td>38</td>
+<td>{'details': None, 'details_type': 0, 'max': None, 'min': None, 'quantized_dimension': 0, 'scale': None, 'zero_point': None}</td>
+</tr>
+<tr>
+<td>38</td><td>transpose_1;StatefulPartitionedCall/sequential/lstm/PartitionedCall/transpose_1</td>
+<td>FLOAT32</td>
+<td>[1, 1, 128]</td>
+<td>[-1, -1, 128]</td>
+<td>39</td>
+<td>{'details': None, 'details_type': 0, 'max': None, 'min': None, 'quantized_dimension': 0, 'scale': None, 'zero_point': None}</td>
+</tr>
+<tr>
+<td>39</td><td>Shape;StatefulPartitionedCall/sequential/lstm_1/PartitionedCall/Shape</td>
+<td>INT32</td>
+<td>[3]</td>
+<td>None</td>
+<td>40</td>
+<td>{'details': None, 'details_type': 0, 'max': None, 'min': None, 'quantized_dimension': 0, 'scale': None, 'zero_point': None}</td>
+</tr>
+<tr>
+<td>40</td><td>strided_slice;StatefulPartitionedCall/sequential/lstm_1/PartitionedCall/strided_slice</td>
+<td>INT32</td>
+<td>None</td>
+<td>None</td>
+<td>41</td>
+<td>{'details': None, 'details_type': 0, 'max': None, 'min': None, 'quantized_dimension': 0, 'scale': None, 'zero_point': None}</td>
+</tr>
+<tr>
+<td>41</td><td>TensorArrayV2_1;StatefulPartitionedCall/sequential/lstm_1/PartitionedCall/TensorArrayV2_1</td>
+<td>INT32</td>
+<td>[1]</td>
+<td>None</td>
+<td>42</td>
+<td>{'details': None, 'details_type': 0, 'max': None, 'min': None, 'quantized_dimension': 0, 'scale': None, 'zero_point': None}</td>
+</tr>
+<tr>
+<td>42</td><td>TensorArrayV2_1;StatefulPartitionedCall/sequential/lstm_1/PartitionedCall/TensorArrayV2_11</td>
+<td>INT32</td>
+<td>[3]</td>
+<td>None</td>
+<td>43</td>
+<td>{'details': None, 'details_type': 0, 'max': None, 'min': None, 'quantized_dimension': 0, 'scale': None, 'zero_point': None}</td>
+</tr>
+<tr>
+<td>43</td><td>TensorArrayV2_1;StatefulPartitionedCall/sequential/lstm_1/PartitionedCall/TensorArrayV2_12</td>
+<td>FLOAT32</td>
+<td>[1, 1, 128]</td>
+<td>[-1, -1, 128]</td>
+<td>44</td>
+<td>{'details': None, 'details_type': 0, 'max': None, 'min': None, 'quantized_dimension': 0, 'scale': None, 'zero_point': None}</td>
+</tr>
+<tr>
+<td>44</td><td>sequential/lstm_1/Shape;StatefulPartitionedCall/sequential/lstm_1/Shape</td>
+<td>INT32</td>
+<td>[3]</td>
+<td>None</td>
+<td>45</td>
+<td>{'details': None, 'details_type': 0, 'max': None, 'min': None, 'quantized_dimension': 0, 'scale': None, 'zero_point': None}</td>
+</tr>
+<tr>
+<td>45</td><td>sequential/lstm_1/strided_slice;StatefulPartitionedCall/sequential/lstm_1/strided_slice</td>
+<td>INT32</td>
+<td>None</td>
+<td>None</td>
+<td>46</td>
+<td>{'details': None, 'details_type': 0, 'max': None, 'min': None, 'quantized_dimension': 0, 'scale': None, 'zero_point': None}</td>
+</tr>
+<tr>
+<td>46</td><td>sequential/lstm_1/zeros/packed;StatefulPartitionedCall/sequential/lstm_1/zeros/packed</td>
+<td>INT32</td>
+<td>[2]</td>
+<td>None</td>
+<td>47</td>
+<td>{'details': None, 'details_type': 0, 'max': None, 'min': None, 'quantized_dimension': 0, 'scale': None, 'zero_point': None}</td>
+</tr>
+<tr>
+<td>47</td><td>sequential/lstm_1/zeros;StatefulPartitionedCall/sequential/lstm_1/zeros</td>
+<td>FLOAT32</td>
+<td>[1, 128]</td>
+<td>[-1, 128]</td>
+<td>48</td>
+<td>{'details': None, 'details_type': 0, 'max': None, 'min': None, 'quantized_dimension': 0, 'scale': None, 'zero_point': None}</td>
+</tr>
+<tr>
+<td>48</td><td>while;StatefulPartitionedCall/sequential/lstm_1/PartitionedCall/while</td>
+<td>INT32</td>
+<td>None</td>
+<td>None</td>
+<td>49</td>
+<td>{'details': None, 'details_type': 0, 'max': None, 'min': None, 'quantized_dimension': 0, 'scale': None, 'zero_point': None}</td>
+</tr>
+<tr>
+<td>49</td><td>while;StatefulPartitionedCall/sequential/lstm_1/PartitionedCall/while1</td>
+<td>INT32</td>
+<td>None</td>
+<td>None</td>
+<td>50</td>
+<td>{'details': None, 'details_type': 0, 'max': None, 'min': None, 'quantized_dimension': 0, 'scale': None, 'zero_point': None}</td>
+</tr>
+<tr>
+<td>50</td><td>while;StatefulPartitionedCall/sequential/lstm_1/PartitionedCall/while2</td>
+<td>FLOAT32</td>
+<td>[1, 1, 128]</td>
+<td>[-1, -1, 128]</td>
+<td>51</td>
+<td>{'details': None, 'details_type': 0, 'max': None, 'min': None, 'quantized_dimension': 0, 'scale': None, 'zero_point': None}</td>
+</tr>
+<tr>
+<td>51</td><td>while;StatefulPartitionedCall/sequential/lstm_1/PartitionedCall/while3</td>
+<td>FLOAT32</td>
+<td>[1, 128]</td>
+<td>[-1, 128]</td>
+<td>52</td>
+<td>{'details': None, 'details_type': 0, 'max': None, 'min': None, 'quantized_dimension': 0, 'scale': None, 'zero_point': None}</td>
+</tr>
+<tr>
+<td>52</td><td>while;StatefulPartitionedCall/sequential/lstm_1/PartitionedCall/while4</td>
+<td>FLOAT32</td>
+<td>[1, 128]</td>
+<td>[-1, 128]</td>
+<td>53</td>
+<td>{'details': None, 'details_type': 0, 'max': None, 'min': None, 'quantized_dimension': 0, 'scale': None, 'zero_point': None}</td>
+</tr>
+<tr>
+<td>53</td><td>while;StatefulPartitionedCall/sequential/lstm_1/PartitionedCall/while5</td>
+<td>INT32</td>
+<td>None</td>
+<td>None</td>
+<td>54</td>
+<td>{'details': None, 'details_type': 0, 'max': None, 'min': None, 'quantized_dimension': 0, 'scale': None, 'zero_point': None}</td>
+</tr>
+<tr>
+<td>54</td><td>while;StatefulPartitionedCall/sequential/lstm_1/PartitionedCall/while6</td>
+<td>FLOAT32</td>
+<td>[1, 1, 128]</td>
+<td>[-1, -1, 128]</td>
+<td>55</td>
+<td>{'details': None, 'details_type': 0, 'max': None, 'min': None, 'quantized_dimension': 0, 'scale': None, 'zero_point': None}</td>
+</tr>
+<tr>
+<td>55</td><td>strided_slice_2;StatefulPartitionedCall/sequential/lstm_1/PartitionedCall/strided_slice_23</td>
+<td>FLOAT32</td>
+<td>[1, 128]</td>
+<td>[-1, 128]</td>
+<td>56</td>
+<td>{'details': None, 'details_type': 0, 'max': None, 'min': None, 'quantized_dimension': 0, 'scale': None, 'zero_point': None}</td>
+</tr>
+<tr>
+<td>56</td><td>sequential/dense/MatMul;StatefulPartitionedCall/sequential/dense/MatMul;sequential/dense/BiasAdd;StatefulPartitionedCall/sequential/dense/BiasAdd</td>
+<td>FLOAT32</td>
+<td>[1, 6]</td>
+<td>[-1, 6]</td>
+<td>57</td>
+<td>{'details': None, 'details_type': 0, 'max': None, 'min': None, 'quantized_dimension': 0, 'scale': None, 'zero_point': None}</td>
+</tr>
+<tr>
+<td>57</td><td>Identity</td>
+<td>FLOAT32</td>
+<td>[1, 6]</td>
+<td>[-1, 6]</td>
+<td>58</td>
+<td>{'details': None, 'details_type': 0, 'max': None, 'min': None, 'quantized_dimension': 0, 'scale': None, 'zero_point': None}</td>
+</tr>
+</table>
+<h3>Ops</h3>
+<table><tr>
+<tr>
+<th>index</th><th>inputs</th><th>outputs</th><th>builtin_options</th><th>opcode_index</th></tr>
+<tr>
+<td>0</td><td><span class='tooltip'><span class='tooltipcontent'>0 conv2d_input FLOAT32 [1, 128, 6, 1]None<br>12 sequential/conv2d/Conv2D;StatefulPartitionedCall/sequential/conv2d/Conv2D FLOAT32 [64, 5, 1, 1]None<br>5 sequential/conv2d/BiasAdd;StatefulPartitionedCall/sequential/conv2d/BiasAdd;sequential/conv2d/Conv2D;StatefulPartitionedCall/sequential/conv2d/Conv2D;unknown_0 FLOAT32 [64]None<br></span>[0, 12, 5]</span></td>
+<td><span class='tooltip'><span class='tooltipcontent'>27 sequential/activation/Relu;StatefulPartitionedCall/sequential/activation/Relu;sequential/conv2d/BiasAdd;StatefulPartitionedCall/sequential/conv2d/BiasAdd;sequential/conv2d/Conv2D;StatefulPartitionedCall/sequential/conv2d/Conv2D;unknown_0 FLOAT32 [1, 124, 6, 64]None<br></span>[27]</span></td>
+<td>{'dilation_h_factor': 1, 'dilation_w_factor': 1, 'fused_activation_function': 1, 'padding': 1, 'stride_h': 1, 'stride_w': 1}</td>
+<td>CONV_2D (0)</td>
+</tr>
+<tr>
+<td>1</td><td><span class='tooltip'><span class='tooltipcontent'>27 sequential/activation/Relu;StatefulPartitionedCall/sequential/activation/Relu;sequential/conv2d/BiasAdd;StatefulPartitionedCall/sequential/conv2d/BiasAdd;sequential/conv2d/Conv2D;StatefulPartitionedCall/sequential/conv2d/Conv2D;unknown_0 FLOAT32 [1, 124, 6, 64]None<br>11 sequential/conv2d_1/Conv2D;StatefulPartitionedCall/sequential/conv2d_1/Conv2D INT8 [64, 5, 1, 64]None<br>4 sequential/conv2d_1/BiasAdd;StatefulPartitionedCall/sequential/conv2d_1/BiasAdd;sequential/conv2d/Conv2D;StatefulPartitionedCall/sequential/conv2d/Conv2D;sequential/conv2d_1/Conv2D;StatefulPartitionedCall/sequential/conv2d_1/Conv2D;unknown_2 FLOAT32 [64]None<br></span>[27, 11, 4]</span></td>
+<td><span class='tooltip'><span class='tooltipcontent'>28 sequential/activation_1/Relu;StatefulPartitionedCall/sequential/activation_1/Relu;sequential/conv2d_1/BiasAdd;StatefulPartitionedCall/sequential/conv2d_1/BiasAdd;sequential/conv2d/Conv2D;StatefulPartitionedCall/sequential/conv2d/Conv2D;sequential/conv2d_1/Conv2D;StatefulPartitionedCall/sequential/conv2d_1/Conv2D;unknown_2 FLOAT32 [1, 120, 6, 64]None<br></span>[28]</span></td>
+<td>{'dilation_h_factor': 1, 'dilation_w_factor': 1, 'fused_activation_function': 1, 'padding': 1, 'stride_h': 1, 'stride_w': 1}</td>
+<td>CONV_2D (0)</td>
+</tr>
+<tr>
+<td>2</td><td><span class='tooltip'><span class='tooltipcontent'>28 sequential/activation_1/Relu;StatefulPartitionedCall/sequential/activation_1/Relu;sequential/conv2d_1/BiasAdd;StatefulPartitionedCall/sequential/conv2d_1/BiasAdd;sequential/conv2d/Conv2D;StatefulPartitionedCall/sequential/conv2d/Conv2D;sequential/conv2d_1/Conv2D;StatefulPartitionedCall/sequential/conv2d_1/Conv2D;unknown_2 FLOAT32 [1, 120, 6, 64]None<br>10 sequential/conv2d_2/Conv2D;StatefulPartitionedCall/sequential/conv2d_2/Conv2D INT8 [64, 5, 1, 64]None<br>3 sequential/conv2d_2/BiasAdd;StatefulPartitionedCall/sequential/conv2d_2/BiasAdd;sequential/conv2d/Conv2D;StatefulPartitionedCall/sequential/conv2d/Conv2D;sequential/conv2d_2/Conv2D;StatefulPartitionedCall/sequential/conv2d_2/Conv2D;unknown_4 FLOAT32 [64]None<br></span>[28, 10, 3]</span></td>
+<td><span class='tooltip'><span class='tooltipcontent'>29 sequential/activation_2/Relu;StatefulPartitionedCall/sequential/activation_2/Relu;sequential/conv2d_2/BiasAdd;StatefulPartitionedCall/sequential/conv2d_2/BiasAdd;sequential/conv2d/Conv2D;StatefulPartitionedCall/sequential/conv2d/Conv2D;sequential/conv2d_2/Conv2D;StatefulPartitionedCall/sequential/conv2d_2/Conv2D;unknown_4 FLOAT32 [1, 116, 6, 64]None<br></span>[29]</span></td>
+<td>{'dilation_h_factor': 1, 'dilation_w_factor': 1, 'fused_activation_function': 1, 'padding': 1, 'stride_h': 1, 'stride_w': 1}</td>
+<td>CONV_2D (0)</td>
+</tr>
+<tr>
+<td>3</td><td><span class='tooltip'><span class='tooltipcontent'>29 sequential/activation_2/Relu;StatefulPartitionedCall/sequential/activation_2/Relu;sequential/conv2d_2/BiasAdd;StatefulPartitionedCall/sequential/conv2d_2/BiasAdd;sequential/conv2d/Conv2D;StatefulPartitionedCall/sequential/conv2d/Conv2D;sequential/conv2d_2/Conv2D;StatefulPartitionedCall/sequential/conv2d_2/Conv2D;unknown_4 FLOAT32 [1, 116, 6, 64]None<br>9 sequential/conv2d_3/Conv2D;StatefulPartitionedCall/sequential/conv2d_3/Conv2D INT8 [64, 5, 1, 64]None<br>2 sequential/conv2d_3/BiasAdd;StatefulPartitionedCall/sequential/conv2d_3/BiasAdd;sequential/conv2d/Conv2D;StatefulPartitionedCall/sequential/conv2d/Conv2D;sequential/conv2d_3/Conv2D;StatefulPartitionedCall/sequential/conv2d_3/Conv2D;unknown_6 FLOAT32 [64]None<br></span>[29, 9, 2]</span></td>
+<td><span class='tooltip'><span class='tooltipcontent'>30 sequential/activation_3/Relu;StatefulPartitionedCall/sequential/activation_3/Relu;sequential/conv2d_3/BiasAdd;StatefulPartitionedCall/sequential/conv2d_3/BiasAdd;sequential/conv2d/Conv2D;StatefulPartitionedCall/sequential/conv2d/Conv2D;sequential/conv2d_3/Conv2D;StatefulPartitionedCall/sequential/conv2d_3/Conv2D;unknown_6 FLOAT32 [1, 112, 6, 64]None<br></span>[30]</span></td>
+<td>{'dilation_h_factor': 1, 'dilation_w_factor': 1, 'fused_activation_function': 1, 'padding': 1, 'stride_h': 1, 'stride_w': 1}</td>
+<td>CONV_2D (0)</td>
+</tr>
+<tr>
+<td>4</td><td><span class='tooltip'><span class='tooltipcontent'>30 sequential/activation_3/Relu;StatefulPartitionedCall/sequential/activation_3/Relu;sequential/conv2d_3/BiasAdd;StatefulPartitionedCall/sequential/conv2d_3/BiasAdd;sequential/conv2d/Conv2D;StatefulPartitionedCall/sequential/conv2d/Conv2D;sequential/conv2d_3/Conv2D;StatefulPartitionedCall/sequential/conv2d_3/Conv2D;unknown_6 FLOAT32 [1, 112, 6, 64]None<br>1 transpose;StatefulPartitionedCall/sequential/lstm/PartitionedCall/transpose INT32 [3]None<br></span>[30, 1]</span></td>
+<td><span class='tooltip'><span class='tooltipcontent'>31 transpose;StatefulPartitionedCall/sequential/lstm/PartitionedCall/transpose1 FLOAT32 [112, 1, 384]None<br></span>[31]</span></td>
+<td>None</td>
+<td>RESHAPE (1)</td>
+</tr>
+<tr>
+<td>5</td><td><span class='tooltip'><span class='tooltipcontent'>25 TensorArrayV2_1;StatefulPartitionedCall/sequential/lstm/PartitionedCall/TensorArrayV2_12 INT32 NoneNone<br>25 TensorArrayV2_1;StatefulPartitionedCall/sequential/lstm/PartitionedCall/TensorArrayV2_12 INT32 NoneNone<br>13 TensorArrayV2_1;StatefulPartitionedCall/sequential/lstm/PartitionedCall/TensorArrayV2_1 FLOAT32 [112, 1, 128]None<br>14 sequential/lstm/zeros;StatefulPartitionedCall/sequential/lstm/zeros FLOAT32 [1, 128]None<br>14 sequential/lstm/zeros;StatefulPartitionedCall/sequential/lstm/zeros FLOAT32 [1, 128]None<br>31 transpose;StatefulPartitionedCall/sequential/lstm/PartitionedCall/transpose1 FLOAT32 [112, 1, 384]None<br></span>[25, 25, 13, 14, 14, 31]</span></td>
+<td><span class='tooltip'><span class='tooltipcontent'>32 while;StatefulPartitionedCall/sequential/lstm/PartitionedCall/while INT32 NoneNone<br>33 while;StatefulPartitionedCall/sequential/lstm/PartitionedCall/while1 INT32 NoneNone<br>34 while;StatefulPartitionedCall/sequential/lstm/PartitionedCall/while2 FLOAT32 [1, 1, 128][-1, -1, 128]<br>35 while;StatefulPartitionedCall/sequential/lstm/PartitionedCall/while3 FLOAT32 [1, 128][-1, 128]<br>36 while;StatefulPartitionedCall/sequential/lstm/PartitionedCall/while4 FLOAT32 [1, 128][-1, 128]<br>37 while;StatefulPartitionedCall/sequential/lstm/PartitionedCall/while5 FLOAT32 [112, 1, 384]None<br></span>[32, 33, 34, 35, 36, 37]</span></td>
+<td>{'body_subgraph_index': 2, 'cond_subgraph_index': 1}</td>
+<td>WHILE (2)</td>
+</tr>
+<tr>
+<td>6</td><td><span class='tooltip'><span class='tooltipcontent'>34 while;StatefulPartitionedCall/sequential/lstm/PartitionedCall/while2 FLOAT32 [1, 1, 128][-1, -1, 128]<br>18 transpose/perm;StatefulPartitionedCall/sequential/lstm/PartitionedCall/transpose/perm INT32 [3]None<br></span>[34, 18]</span></td>
+<td><span class='tooltip'><span class='tooltipcontent'>38 transpose_1;StatefulPartitionedCall/sequential/lstm/PartitionedCall/transpose_1 FLOAT32 [1, 1, 128][-1, -1, 128]<br></span>[38]</span></td>
+<td>None</td>
+<td>TRANSPOSE (3)</td>
+</tr>
+<tr>
+<td>7</td><td><span class='tooltip'><span class='tooltipcontent'>34 while;StatefulPartitionedCall/sequential/lstm/PartitionedCall/while2 FLOAT32 [1, 1, 128][-1, -1, 128]<br></span>[34]</span></td>
+<td><span class='tooltip'><span class='tooltipcontent'>39 Shape;StatefulPartitionedCall/sequential/lstm_1/PartitionedCall/Shape INT32 [3]None<br></span>[39]</span></td>
+<td>{'out_type': 2}</td>
+<td>SHAPE (4)</td>
+</tr>
+<tr>
+<td>8</td><td><span class='tooltip'><span class='tooltipcontent'>39 Shape;StatefulPartitionedCall/sequential/lstm_1/PartitionedCall/Shape INT32 [3]None<br>16 strided_slice/stack;StatefulPartitionedCall/sequential/lstm/PartitionedCall/strided_slice/stack INT32 [1]None<br>17 strided_slice/stack_1;StatefulPartitionedCall/sequential/lstm/PartitionedCall/strided_slice/stack_1 INT32 [1]None<br>17 strided_slice/stack_1;StatefulPartitionedCall/sequential/lstm/PartitionedCall/strided_slice/stack_1 INT32 [1]None<br></span>[39, 16, 17, 17]</span></td>
+<td><span class='tooltip'><span class='tooltipcontent'>40 strided_slice;StatefulPartitionedCall/sequential/lstm_1/PartitionedCall/strided_slice INT32 NoneNone<br></span>[40]</span></td>
+<td>{'begin_mask': 0, 'ellipsis_mask': 0, 'end_mask': 0, 'new_axis_mask': 0, 'shrink_axis_mask': 1}</td>
+<td>STRIDED_SLICE (5)</td>
+</tr>
+<tr>
+<td>9</td><td><span class='tooltip'><span class='tooltipcontent'>40 strided_slice;StatefulPartitionedCall/sequential/lstm_1/PartitionedCall/strided_slice INT32 NoneNone<br>17 strided_slice/stack_1;StatefulPartitionedCall/sequential/lstm/PartitionedCall/strided_slice/stack_1 INT32 [1]None<br></span>[40, 17]</span></td>
+<td><span class='tooltip'><span class='tooltipcontent'>41 TensorArrayV2_1;StatefulPartitionedCall/sequential/lstm_1/PartitionedCall/TensorArrayV2_1 INT32 [1]None<br></span>[41]</span></td>
+<td>None</td>
+<td>RESHAPE (1)</td>
+</tr>
+<tr>
+<td>10</td><td><span class='tooltip'><span class='tooltipcontent'>41 TensorArrayV2_1;StatefulPartitionedCall/sequential/lstm_1/PartitionedCall/TensorArrayV2_1 INT32 [1]None<br>24 TensorArrayV2_1;StatefulPartitionedCall/sequential/lstm/PartitionedCall/TensorArrayV2_11 INT32 [2]None<br></span>[41, 24]</span></td>
+<td><span class='tooltip'><span class='tooltipcontent'>42 TensorArrayV2_1;StatefulPartitionedCall/sequential/lstm_1/PartitionedCall/TensorArrayV2_11 INT32 [3]None<br></span>[42]</span></td>
+<td>{'axis': 0, 'fused_activation_function': 0}</td>
+<td>CONCATENATION (6)</td>
+</tr>
+<tr>
+<td>11</td><td><span class='tooltip'><span class='tooltipcontent'>42 TensorArrayV2_1;StatefulPartitionedCall/sequential/lstm_1/PartitionedCall/TensorArrayV2_11 INT32 [3]None<br>26 TensorArrayV2_1;StatefulPartitionedCall/sequential/lstm/PartitionedCall/TensorArrayV2_13 FLOAT32 NoneNone<br></span>[42, 26]</span></td>
+<td><span class='tooltip'><span class='tooltipcontent'>43 TensorArrayV2_1;StatefulPartitionedCall/sequential/lstm_1/PartitionedCall/TensorArrayV2_12 FLOAT32 [1, 1, 128][-1, -1, 128]<br></span>[43]</span></td>
+<td>None</td>
+<td>FILL (7)</td>
+</tr>
+<tr>
+<td>12</td><td><span class='tooltip'><span class='tooltipcontent'>38 transpose_1;StatefulPartitionedCall/sequential/lstm/PartitionedCall/transpose_1 FLOAT32 [1, 1, 128][-1, -1, 128]<br></span>[38]</span></td>
+<td><span class='tooltip'><span class='tooltipcontent'>44 sequential/lstm_1/Shape;StatefulPartitionedCall/sequential/lstm_1/Shape INT32 [3]None<br></span>[44]</span></td>
+<td>{'out_type': 2}</td>
+<td>SHAPE (4)</td>
+</tr>
+<tr>
+<td>13</td><td><span class='tooltip'><span class='tooltipcontent'>44 sequential/lstm_1/Shape;StatefulPartitionedCall/sequential/lstm_1/Shape INT32 [3]None<br>16 strided_slice/stack;StatefulPartitionedCall/sequential/lstm/PartitionedCall/strided_slice/stack INT32 [1]None<br>17 strided_slice/stack_1;StatefulPartitionedCall/sequential/lstm/PartitionedCall/strided_slice/stack_1 INT32 [1]None<br>17 strided_slice/stack_1;StatefulPartitionedCall/sequential/lstm/PartitionedCall/strided_slice/stack_1 INT32 [1]None<br></span>[44, 16, 17, 17]</span></td>
+<td><span class='tooltip'><span class='tooltipcontent'>45 sequential/lstm_1/strided_slice;StatefulPartitionedCall/sequential/lstm_1/strided_slice INT32 NoneNone<br></span>[45]</span></td>
+<td>{'begin_mask': 0, 'ellipsis_mask': 0, 'end_mask': 0, 'new_axis_mask': 0, 'shrink_axis_mask': 1}</td>
+<td>STRIDED_SLICE (5)</td>
+</tr>
+<tr>
+<td>14</td><td><span class='tooltip'><span class='tooltipcontent'>45 sequential/lstm_1/strided_slice;StatefulPartitionedCall/sequential/lstm_1/strided_slice INT32 NoneNone<br>19 sequential/lstm/zeros/packed/1;StatefulPartitionedCall/sequential/lstm/zeros/packed/1 INT32 NoneNone<br></span>[45, 19]</span></td>
+<td><span class='tooltip'><span class='tooltipcontent'>46 sequential/lstm_1/zeros/packed;StatefulPartitionedCall/sequential/lstm_1/zeros/packed INT32 [2]None<br></span>[46]</span></td>
+<td>{'axis': 0, 'values_count': 2}</td>
+<td>PACK (8)</td>
+</tr>
+<tr>
+<td>15</td><td><span class='tooltip'><span class='tooltipcontent'>46 sequential/lstm_1/zeros/packed;StatefulPartitionedCall/sequential/lstm_1/zeros/packed INT32 [2]None<br>26 TensorArrayV2_1;StatefulPartitionedCall/sequential/lstm/PartitionedCall/TensorArrayV2_13 FLOAT32 NoneNone<br></span>[46, 26]</span></td>
+<td><span class='tooltip'><span class='tooltipcontent'>47 sequential/lstm_1/zeros;StatefulPartitionedCall/sequential/lstm_1/zeros FLOAT32 [1, 128][-1, 128]<br></span>[47]</span></td>
+<td>None</td>
+<td>FILL (7)</td>
+</tr>
+<tr>
+<td>16</td><td><span class='tooltip'><span class='tooltipcontent'>25 TensorArrayV2_1;StatefulPartitionedCall/sequential/lstm/PartitionedCall/TensorArrayV2_12 INT32 NoneNone<br>25 TensorArrayV2_1;StatefulPartitionedCall/sequential/lstm/PartitionedCall/TensorArrayV2_12 INT32 NoneNone<br>43 TensorArrayV2_1;StatefulPartitionedCall/sequential/lstm_1/PartitionedCall/TensorArrayV2_12 FLOAT32 [1, 1, 128][-1, -1, 128]<br>47 sequential/lstm_1/zeros;StatefulPartitionedCall/sequential/lstm_1/zeros FLOAT32 [1, 128][-1, 128]<br>47 sequential/lstm_1/zeros;StatefulPartitionedCall/sequential/lstm_1/zeros FLOAT32 [1, 128][-1, 128]<br>40 strided_slice;StatefulPartitionedCall/sequential/lstm_1/PartitionedCall/strided_slice INT32 NoneNone<br>34 while;StatefulPartitionedCall/sequential/lstm/PartitionedCall/while2 FLOAT32 [1, 1, 128][-1, -1, 128]<br></span>[25, 25, 43, 47, 47, 40, 34]</span></td>
+<td><span class='tooltip'><span class='tooltipcontent'>48 while;StatefulPartitionedCall/sequential/lstm_1/PartitionedCall/while INT32 NoneNone<br>49 while;StatefulPartitionedCall/sequential/lstm_1/PartitionedCall/while1 INT32 NoneNone<br>50 while;StatefulPartitionedCall/sequential/lstm_1/PartitionedCall/while2 FLOAT32 [1, 1, 128][-1, -1, 128]<br>51 while;StatefulPartitionedCall/sequential/lstm_1/PartitionedCall/while3 FLOAT32 [1, 128][-1, 128]<br>52 while;StatefulPartitionedCall/sequential/lstm_1/PartitionedCall/while4 FLOAT32 [1, 128][-1, 128]<br>53 while;StatefulPartitionedCall/sequential/lstm_1/PartitionedCall/while5 INT32 NoneNone<br>54 while;StatefulPartitionedCall/sequential/lstm_1/PartitionedCall/while6 FLOAT32 [1, 1, 128][-1, -1, 128]<br></span>[48, 49, 50, 51, 52, 53, 54]</span></td>
+<td>{'body_subgraph_index': 4, 'cond_subgraph_index': 3}</td>
+<td>WHILE (2)</td>
+</tr>
+<tr>
+<td>17</td><td><span class='tooltip'><span class='tooltipcontent'>50 while;StatefulPartitionedCall/sequential/lstm_1/PartitionedCall/while2 FLOAT32 [1, 1, 128][-1, -1, 128]<br>6 strided_slice_2;StatefulPartitionedCall/sequential/lstm_1/PartitionedCall/strided_slice_2 INT32 [3]None<br>7 strided_slice_2;StatefulPartitionedCall/sequential/lstm_1/PartitionedCall/strided_slice_21 INT32 [3]None<br>8 strided_slice_2;StatefulPartitionedCall/sequential/lstm_1/PartitionedCall/strided_slice_22 INT32 [3]None<br></span>[50, 6, 7, 8]</span></td>
+<td><span class='tooltip'><span class='tooltipcontent'>55 strided_slice_2;StatefulPartitionedCall/sequential/lstm_1/PartitionedCall/strided_slice_23 FLOAT32 [1, 128][-1, 128]<br></span>[55]</span></td>
+<td>{'begin_mask': 6, 'ellipsis_mask': 0, 'end_mask': 6, 'new_axis_mask': 0, 'shrink_axis_mask': 1}</td>
+<td>STRIDED_SLICE (5)</td>
+</tr>
+<tr>
+<td>18</td><td><span class='tooltip'><span class='tooltipcontent'>55 strided_slice_2;StatefulPartitionedCall/sequential/lstm_1/PartitionedCall/strided_slice_23 FLOAT32 [1, 128][-1, 128]<br>23 sequential/dense/MatMul;StatefulPartitionedCall/sequential/dense/MatMul FLOAT32 [6, 128]None<br>21 unknown_14 FLOAT32 [6]None<br></span>[55, 23, 21]</span></td>
+<td><span class='tooltip'><span class='tooltipcontent'>56 sequential/dense/MatMul;StatefulPartitionedCall/sequential/dense/MatMul;sequential/dense/BiasAdd;StatefulPartitionedCall/sequential/dense/BiasAdd FLOAT32 [1, 6][-1, 6]<br></span>[56]</span></td>
+<td>{'asymmetric_quantize_inputs': False, 'fused_activation_function': 0, 'keep_num_dims': False, 'weights_format': 0}</td>
+<td>FULLY_CONNECTED (9)</td>
+</tr>
+<tr>
+<td>19</td><td><span class='tooltip'><span class='tooltipcontent'>56 sequential/dense/MatMul;StatefulPartitionedCall/sequential/dense/MatMul;sequential/dense/BiasAdd;StatefulPartitionedCall/sequential/dense/BiasAdd FLOAT32 [1, 6][-1, 6]<br></span>[56]</span></td>
+<td><span class='tooltip'><span class='tooltipcontent'>57 Identity FLOAT32 [1, 6][-1, 6]<br></span>[57]</span></td>
+<td>{'beta': 1.0}</td>
+<td>SOFTMAX (10)</td>
+</tr>
+</table>
+<svg id='subgraph0' width='1600' height='900'></svg>
+
+  <script>
+    function buildGraph() {
+      // Build graph data
+      var graph = {"nodes": [{"id": "o0", "name": "CONV_2D (0)", "group": 2, "x": 200, "y": 200}, {"id": "o1", "name": "CONV_2D (0)", "group": 2, "x": 200, "y": 400}, {"id": "o2", "name": "CONV_2D (0)", "group": 2, "x": 200, "y": 600}, {"id": "o3", "name": "CONV_2D (0)", "group": 2, "x": 200, "y": 800}, {"id": "o4", "name": "RESHAPE (1)", "group": 2, "x": 200, "y": 1000}, {"id": "o5", "name": "WHILE (2)", "group": 2, "x": 200, "y": 1200}, {"id": "o6", "name": "TRANSPOSE (3)", "group": 2, "x": 200, "y": 1400}, {"id": "o7", "name": "SHAPE (4)", "group": 2, "x": 200, "y": 1600}, {"id": "o8", "name": "STRIDED_SLICE (5)", "group": 2, "x": 200, "y": 1800}, {"id": "o9", "name": "RESHAPE (1)", "group": 2, "x": 200, "y": 2000}, {"id": "o10", "name": "CONCATENATION (6)", "group": 2, "x": 200, "y": 2200}, {"id": "o11", "name": "FILL (7)", "group": 2, "x": 200, "y": 2400}, {"id": "o12", "name": "SHAPE (4)", "group": 2, "x": 200, "y": 2600}, {"id": "o13", "name": "STRIDED_SLICE (5)", "group": 2, "x": 200, "y": 2800}, {"id": "o14", "name": "PACK (8)", "group": 2, "x": 200, "y": 3000}, {"id": "o15", "name": "FILL (7)", "group": 2, "x": 200, "y": 3200}, {"id": "o16", "name": "WHILE (2)", "group": 2, "x": 200, "y": 3400}, {"id": "o17", "name": "STRIDED_SLICE (5)", "group": 2, "x": 200, "y": 3600}, {"id": "o18", "name": "FULLY_CONNECTED (9)", "group": 2, "x": 200, "y": 3800}, {"id": "o19", "name": "SOFTMAX (10)", "group": 2, "x": 200, "y": 4000}, {"id": "t0", "name": "[] (0)", "group": 1, "x": 170, "y": 100.0}, {"id": "t1", "name": "[] (1)", "group": 1, "x": 340, "y": 900.0}, {"id": "t2", "name": "[] (2)", "group": 1, "x": 510, "y": 700.0}, {"id": "t3", "name": "[] (3)", "group": 1, "x": 510, "y": 500.0}, {"id": "t4", "name": "[] (4)", "group": 1, "x": 510, "y": 300.0}, {"id": "t5", "name": "[] (5)", "group": 1, "x": 510, "y": 100.0}, {"id": "t6", "name": "[] (6)", "group": 1, "x": 340, "y": 3500.0}, {"id": "t7", "name": "[] (7)", "group": 1, "x": 510, "y": 3500.0}, {"id": "t8", "name": "[] (8)", "group": 1, "x": 680, "y": 3500.0}, {"id": "t9", "name": "[] (9)", "group": 1, "x": 340, "y": 700.0}, {"id": "t10", "name": "[] (10)", "group": 1, "x": 340, "y": 500.0}, {"id": "t11", "name": "[] (11)", "group": 1, "x": 340, "y": 300.0}, {"id": "t12", "name": "[] (12)", "group": 1, "x": 340, "y": 100.0}, {"id": "t13", "name": "[] (13)", "group": 1, "x": 510, "y": 1100.0}, {"id": "t14", "name": "[] (14)", "group": 1, "x": 680, "y": 1100.0}, {"id": "t15", "name": "[] (15)", "group": 1, "x": 0, "y": 0}, {"id": "t16", "name": "[] (16)", "group": 1, "x": 340, "y": 1700.0}, {"id": "t17", "name": "[] (17)", "group": 1, "x": 510, "y": 1700.0}, {"id": "t18", "name": "[] (18)", "group": 1, "x": 340, "y": 1300.0}, {"id": "t19", "name": "[] (19)", "group": 1, "x": 340, "y": 2900.0}, {"id": "t20", "name": "[] (20)", "group": 1, "x": 0, "y": 0}, {"id": "t21", "name": "[] (21)", "group": 1, "x": 510, "y": 3700.0}, {"id": "t22", "name": "[] (22)", "group": 1, "x": 0, "y": 0}, {"id": "t23", "name": "[] (23)", "group": 1, "x": 340, "y": 3700.0}, {"id": "t24", "name": "[] (24)", "group": 1, "x": 340, "y": 2100.0}, {"id": "t25", "name": "[] (25)", "group": 1, "x": 170, "y": 1100.0}, {"id": "t26", "name": "[] (26)", "group": 1, "x": 340, "y": 2300.0}, {"id": "t27", "name": "[] (27)", "group": 1, "x": 170, "y": 300.0}, {"id": "t28", "name": "[] (28)", "group": 1, "x": 170, "y": 500.0}, {"id": "t29", "name": "[] (29)", "group": 1, "x": 170, "y": 700.0}, {"id": "t30", "name": "[] (30)", "group": 1, "x": 170, "y": 900.0}, {"id": "t31", "name": "[] (31)", "group": 1, "x": 1020, "y": 1100.0}, {"id": "t32", "name": "[] (32)", "group": 1, "x": 170, "y": 1300.0}, {"id": "t33", "name": "[] (33)", "group": 1, "x": 340, "y": 1300.0}, {"id": "t34", "name": "[] (34)", "group": 1, "x": 170, "y": 1300.0}, {"id": "t35", "name": "[] (35)", "group": 1, "x": 680, "y": 1300.0}, {"id": "t36", "name": "[] (36)", "group": 1, "x": 850, "y": 1300.0}, {"id": "t37", "name": "[] (37)", "group": 1, "x": 1020, "y": 1300.0}, {"id": "t38", "name": "[] (38)", "group": 1, "x": 170, "y": 2500.0}, {"id": "t39", "name": "[] (39)", "group": 1, "x": 170, "y": 1700.0}, {"id": "t40", "name": "[] (40)", "group": 1, "x": 170, "y": 1900.0}, {"id": "t41", "name": "[] (41)", "group": 1, "x": 170, "y": 2100.0}, {"id": "t42", "name": "[] (42)", "group": 1, "x": 170, "y": 2300.0}, {"id": "t43", "name": "[] (43)", "group": 1, "x": 510, "y": 3300.0}, {"id": "t44", "name": "[] (44)", "group": 1, "x": 170, "y": 2700.0}, {"id": "t45", "name": "[] (45)", "group": 1, "x": 170, "y": 2900.0}, {"id": "t46", "name": "[] (46)", "group": 1, "x": 170, "y": 3100.0}, {"id": "t47", "name": "[] (47)", "group": 1, "x": 680, "y": 3300.0}, {"id": "t48", "name": "[] (48)", "group": 1, "x": 170, "y": 3500.0}, {"id": "t49", "name": "[] (49)", "group": 1, "x": 340, "y": 3500.0}, {"id": "t50", "name": "[] (50)", "group": 1, "x": 170, "y": 3500.0}, {"id": "t51", "name": "[] (51)", "group": 1, "x": 680, "y": 3500.0}, {"id": "t52", "name": "[] (52)", "group": 1, "x": 850, "y": 3500.0}, {"id": "t53", "name": "[] (53)", "group": 1, "x": 1020, "y": 3500.0}, {"id": "t54", "name": "[] (54)", "group": 1, "x": 1190, "y": 3500.0}, {"id": "t55", "name": "[] (55)", "group": 1, "x": 170, "y": 3700.0}, {"id": "t56", "name": "[] (56)", "group": 1, "x": 170, "y": 3900.0}, {"id": "t57", "name": "[] (57)", "group": 1, "x": 170, "y": 4100.0}], "edges": [{"source": "t0", "target": "o0"}, {"source": "t12", "target": "o0"}, {"source": "t5", "target": "o0"}, {"target": "t27", "source": "o0"}, {"source": "t27", "target": "o1"}, {"source": "t11", "target": "o1"}, {"source": "t4", "target": "o1"}, {"target": "t28", "source": "o1"}, {"source": "t28", "target": "o2"}, {"source": "t10", "target": "o2"}, {"source": "t3", "target": "o2"}, {"target": "t29", "source": "o2"}, {"source": "t29", "target": "o3"}, {"source": "t9", "target": "o3"}, {"source": "t2", "target": "o3"}, {"target": "t30", "source": "o3"}, {"source": "t30", "target": "o4"}, {"source": "t1", "target": "o4"}, {"target": "t31", "source": "o4"}, {"source": "t25", "target": "o5"}, {"source": "t25", "target": "o5"}, {"source": "t13", "target": "o5"}, {"source": "t14", "target": "o5"}, {"source": "t14", "target": "o5"}, {"source": "t31", "target": "o5"}, {"target": "t32", "source": "o5"}, {"target": "t33", "source": "o5"}, {"target": "t34", "source": "o5"}, {"target": "t35", "source": "o5"}, {"target": "t36", "source": "o5"}, {"target": "t37", "source": "o5"}, {"source": "t34", "target": "o6"}, {"source": "t18", "target": "o6"}, {"target": "t38", "source": "o6"}, {"source": "t34", "target": "o7"}, {"target": "t39", "source": "o7"}, {"source": "t39", "target": "o8"}, {"source": "t16", "target": "o8"}, {"source": "t17", "target": "o8"}, {"source": "t17", "target": "o8"}, {"target": "t40", "source": "o8"}, {"source": "t40", "target": "o9"}, {"source": "t17", "target": "o9"}, {"target": "t41", "source": "o9"}, {"source": "t41", "target": "o10"}, {"source": "t24", "target": "o10"}, {"target": "t42", "source": "o10"}, {"source": "t42", "target": "o11"}, {"source": "t26", "target": "o11"}, {"target": "t43", "source": "o11"}, {"source": "t38", "target": "o12"}, {"target": "t44", "source": "o12"}, {"source": "t44", "target": "o13"}, {"source": "t16", "target": "o13"}, {"source": "t17", "target": "o13"}, {"source": "t17", "target": "o13"}, {"target": "t45", "source": "o13"}, {"source": "t45", "target": "o14"}, {"source": "t19", "target": "o14"}, {"target": "t46", "source": "o14"}, {"source": "t46", "target": "o15"}, {"source": "t26", "target": "o15"}, {"target": "t47", "source": "o15"}, {"source": "t25", "target": "o16"}, {"source": "t25", "target": "o16"}, {"source": "t43", "target": "o16"}, {"source": "t47", "target": "o16"}, {"source": "t47", "target": "o16"}, {"source": "t40", "target": "o16"}, {"source": "t34", "target": "o16"}, {"target": "t48", "source": "o16"}, {"target": "t49", "source": "o16"}, {"target": "t50", "source": "o16"}, {"target": "t51", "source": "o16"}, {"target": "t52", "source": "o16"}, {"target": "t53", "source": "o16"}, {"target": "t54", "source": "o16"}, {"source": "t50", "target": "o17"}, {"source": "t6", "target": "o17"}, {"source": "t7", "target": "o17"}, {"source": "t8", "target": "o17"}, {"target": "t55", "source": "o17"}, {"source": "t55", "target": "o18"}, {"source": "t23", "target": "o18"}, {"source": "t21", "target": "o18"}, {"target": "t56", "source": "o18"}, {"source": "t56", "target": "o19"}, {"target": "t57", "source": "o19"}]};
+      var svg = d3.select("#subgraph0")
+      var width = svg.attr("width");
+      var height = svg.attr("height");
+      // Make the graph scrollable.
+      svg = svg.call(d3.zoom().on("zoom", function() {
+        svg.attr("transform", d3.event.transform);
+      })).append("g");
+      var color = d3.scaleOrdinal(d3.schemeDark2);
+      var simulation = d3.forceSimulation()
+          .force("link", d3.forceLink().id(function(d) {return d.id;}))
+          .force("charge", d3.forceManyBody())
+          .force("center", d3.forceCenter(0.5 * width, 0.5 * height));
+      var edge = svg.append("g").attr("class", "edges").selectAll("line")
+        .data(graph.edges).enter().append("path").attr("stroke","black").attr("fill","none")
+      // Make the node group
+      var node = svg.selectAll(".nodes")
+        .data(graph.nodes)
+        .enter().append("g")
+        .attr("x", function(d){return d.x})
+        .attr("y", function(d){return d.y})
+        .attr("transform", function(d) {
+          return "translate( " + d.x + ", " + d.y + ")"
+        })
+        .attr("class", "nodes")
+          .call(d3.drag()
+              .on("start", function(d) {
+                if(!d3.event.active) simulation.alphaTarget(1.0).restart();
+                d.fx = d.x;d.fy = d.y;
+              })
+              .on("drag", function(d) {
+                d.fx = d3.event.x; d.fy = d3.event.y;
+              })
+              .on("end", function(d) {
+                if (!d3.event.active) simulation.alphaTarget(0);
+                d.fx = d.fy = null;
+              }));
+      // Within the group, draw a box for the node position and text
+      // on the side.
+      var node_width = 150;
+      var node_height = 30;
+      node.append("rect")
+          .attr("r", "5px")
+          .attr("width", node_width)
+          .attr("height", node_height)
+          .attr("rx", function(d) { return d.group == 1 ? 1 : 10; })
+          .attr("stroke", "#000000")
+          .attr("fill", function(d) { return d.group == 1 ? "#dddddd" : "#000000"; })
+      node.append("text")
+          .text(function(d) { return d.name; })
+          .attr("x", 5)
+          .attr("y", 20)
+          .attr("fill", function(d) { return d.group == 1 ? "#000000" : "#eeeeee"; })
+      // Setup force parameters and update position callback
+      var node = svg.selectAll(".nodes")
+        .data(graph.nodes);
+      // Bind the links
+      var name_to_g = {}
+      node.each(function(data, index, nodes) {
+        console.log(data.id)
+        name_to_g[data.id] = this;
+      });
+      function proc(w, t) {
+        return parseInt(w.getAttribute(t));
+      }
+      edge.attr("d", function(d) {
+        function lerp(t, a, b) {
+          return (1.0-t) * a + t * b;
+        }
+        var x1 = proc(name_to_g[d.source],"x") + node_width /2;
+        var y1 = proc(name_to_g[d.source],"y") + node_height;
+        var x2 = proc(name_to_g[d.target],"x") + node_width /2;
+        var y2 = proc(name_to_g[d.target],"y");
+        var s = "M " + x1 + " " + y1
+            + " C " + x1 + " " + lerp(.5, y1, y2)
+            + " " + x2 + " " + lerp(.5, y1, y2)
+            + " " + x2  + " " + y2
+      return s;
+    });
+  }
+  buildGraph()
+</script>
+</div><div class='subgraph'><h2>Subgraph 1</h2>
+<h3>Inputs/Outputs</h3>
+<table><tr>
+<tr>
+<th>inputs</th><th>outputs</th></tr>
+<tr>
+<td><span class='tooltip'><span class='tooltipcontent'>0 arg0 INT32 NoneNone<br>1 arg1 INT32 NoneNone<br>2 arg2 FLOAT32 [1, 1, 128][-1, -1, 128]<br>3 arg3 FLOAT32 [1, 128][-1, 128]<br>4 arg4 FLOAT32 [1, 128][-1, 128]<br>5 arg5 FLOAT32 [112, 1, 384]None<br></span>[0, 1, 2, 3, 4, 5]</span></td>
+<td><span class='tooltip'><span class='tooltipcontent'>7 while/Less BOOL NoneNone<br></span>[7]</span></td>
+</tr>
+</table>
+<h3>Tensors</h3>
+<table><tr>
+<tr>
+<th>index</th><th>name</th><th>type</th><th>shape</th><th>shape_signature</th><th>buffer</th><th>quantization</th></tr>
+<tr>
+<td>0</td><td>arg0</td>
+<td>INT32</td>
+<td>None</td>
+<td>None</td>
+<td>59</td>
+<td>{'details': None, 'details_type': 0, 'max': None, 'min': None, 'quantized_dimension': 0, 'scale': None, 'zero_point': None}</td>
+</tr>
+<tr>
+<td>1</td><td>arg1</td>
+<td>INT32</td>
+<td>None</td>
+<td>None</td>
+<td>60</td>
+<td>{'details': None, 'details_type': 0, 'max': None, 'min': None, 'quantized_dimension': 0, 'scale': None, 'zero_point': None}</td>
+</tr>
+<tr>
+<td>2</td><td>arg2</td>
+<td>FLOAT32</td>
+<td>[1, 1, 128]</td>
+<td>[-1, -1, 128]</td>
+<td>61</td>
+<td>{'details': None, 'details_type': 0, 'max': None, 'min': None, 'quantized_dimension': 0, 'scale': None, 'zero_point': None}</td>
+</tr>
+<tr>
+<td>3</td><td>arg3</td>
+<td>FLOAT32</td>
+<td>[1, 128]</td>
+<td>[-1, 128]</td>
+<td>62</td>
+<td>{'details': None, 'details_type': 0, 'max': None, 'min': None, 'quantized_dimension': 0, 'scale': None, 'zero_point': None}</td>
+</tr>
+<tr>
+<td>4</td><td>arg4</td>
+<td>FLOAT32</td>
+<td>[1, 128]</td>
+<td>[-1, 128]</td>
+<td>63</td>
+<td>{'details': None, 'details_type': 0, 'max': None, 'min': None, 'quantized_dimension': 0, 'scale': None, 'zero_point': None}</td>
+</tr>
+<tr>
+<td>5</td><td>arg5</td>
+<td>FLOAT32</td>
+<td>[112, 1, 384]</td>
+<td>None</td>
+<td>64</td>
+<td>{'details': None, 'details_type': 0, 'max': None, 'min': None, 'quantized_dimension': 0, 'scale': None, 'zero_point': None}</td>
+</tr>
+<tr>
+<td>6</td><td>strided_slice;StatefulPartitionedCall/sequential/lstm/PartitionedCall/strided_slice1</td>
+<td>INT32</td>
+<td>None</td>
+<td>None</td>
+<td>65</td>
+<td>{'details': None, 'details_type': 0, 'max': None, 'min': None, 'quantized_dimension': 0, 'scale': None, 'zero_point': None}</td>
+</tr>
+<tr>
+<td>7</td><td>while/Less</td>
+<td>BOOL</td>
+<td>None</td>
+<td>None</td>
+<td>66</td>
+<td>{'details': None, 'details_type': 0, 'max': None, 'min': None, 'quantized_dimension': 0, 'scale': None, 'zero_point': None}</td>
+</tr>
+</table>
+<h3>Ops</h3>
+<table><tr>
+<tr>
+<th>index</th><th>inputs</th><th>outputs</th><th>builtin_options</th><th>opcode_index</th></tr>
+<tr>
+<td>0</td><td><span class='tooltip'><span class='tooltipcontent'>1 arg1 INT32 NoneNone<br>6 strided_slice;StatefulPartitionedCall/sequential/lstm/PartitionedCall/strided_slice1 INT32 NoneNone<br></span>[1, 6]</span></td>
+<td><span class='tooltip'><span class='tooltipcontent'>7 while/Less BOOL NoneNone<br></span>[7]</span></td>
+<td>None</td>
+<td>LESS (11)</td>
+</tr>
+</table>
+<svg id='subgraph1' width='1600' height='900'></svg>
+
+  <script>
+    function buildGraph() {
+      // Build graph data
+      var graph = {"nodes": [{"id": "o0", "name": "LESS (11)", "group": 2, "x": 200, "y": 200}, {"id": "t0", "name": "[] (0)", "group": 1, "x": 0, "y": 0}, {"id": "t1", "name": "[] (1)", "group": 1, "x": 170, "y": 100.0}, {"id": "t2", "name": "[] (2)", "group": 1, "x": 0, "y": 0}, {"id": "t3", "name": "[] (3)", "group": 1, "x": 0, "y": 0}, {"id": "t4", "name": "[] (4)", "group": 1, "x": 0, "y": 0}, {"id": "t5", "name": "[] (5)", "group": 1, "x": 0, "y": 0}, {"id": "t6", "name": "[] (6)", "group": 1, "x": 340, "y": 100.0}, {"id": "t7", "name": "[] (7)", "group": 1, "x": 170, "y": 300.0}], "edges": [{"source": "t1", "target": "o0"}, {"source": "t6", "target": "o0"}, {"target": "t7", "source": "o0"}]};
+      var svg = d3.select("#subgraph1")
+      var width = svg.attr("width");
+      var height = svg.attr("height");
+      // Make the graph scrollable.
+      svg = svg.call(d3.zoom().on("zoom", function() {
+        svg.attr("transform", d3.event.transform);
+      })).append("g");
+      var color = d3.scaleOrdinal(d3.schemeDark2);
+      var simulation = d3.forceSimulation()
+          .force("link", d3.forceLink().id(function(d) {return d.id;}))
+          .force("charge", d3.forceManyBody())
+          .force("center", d3.forceCenter(0.5 * width, 0.5 * height));
+      var edge = svg.append("g").attr("class", "edges").selectAll("line")
+        .data(graph.edges).enter().append("path").attr("stroke","black").attr("fill","none")
+      // Make the node group
+      var node = svg.selectAll(".nodes")
+        .data(graph.nodes)
+        .enter().append("g")
+        .attr("x", function(d){return d.x})
+        .attr("y", function(d){return d.y})
+        .attr("transform", function(d) {
+          return "translate( " + d.x + ", " + d.y + ")"
+        })
+        .attr("class", "nodes")
+          .call(d3.drag()
+              .on("start", function(d) {
+                if(!d3.event.active) simulation.alphaTarget(1.0).restart();
+                d.fx = d.x;d.fy = d.y;
+              })
+              .on("drag", function(d) {
+                d.fx = d3.event.x; d.fy = d3.event.y;
+              })
+              .on("end", function(d) {
+                if (!d3.event.active) simulation.alphaTarget(0);
+                d.fx = d.fy = null;
+              }));
+      // Within the group, draw a box for the node position and text
+      // on the side.
+      var node_width = 150;
+      var node_height = 30;
+      node.append("rect")
+          .attr("r", "5px")
+          .attr("width", node_width)
+          .attr("height", node_height)
+          .attr("rx", function(d) { return d.group == 1 ? 1 : 10; })
+          .attr("stroke", "#000000")
+          .attr("fill", function(d) { return d.group == 1 ? "#dddddd" : "#000000"; })
+      node.append("text")
+          .text(function(d) { return d.name; })
+          .attr("x", 5)
+          .attr("y", 20)
+          .attr("fill", function(d) { return d.group == 1 ? "#000000" : "#eeeeee"; })
+      // Setup force parameters and update position callback
+      var node = svg.selectAll(".nodes")
+        .data(graph.nodes);
+      // Bind the links
+      var name_to_g = {}
+      node.each(function(data, index, nodes) {
+        console.log(data.id)
+        name_to_g[data.id] = this;
+      });
+      function proc(w, t) {
+        return parseInt(w.getAttribute(t));
+      }
+      edge.attr("d", function(d) {
+        function lerp(t, a, b) {
+          return (1.0-t) * a + t * b;
+        }
+        var x1 = proc(name_to_g[d.source],"x") + node_width /2;
+        var y1 = proc(name_to_g[d.source],"y") + node_height;
+        var x2 = proc(name_to_g[d.target],"x") + node_width /2;
+        var y2 = proc(name_to_g[d.target],"y");
+        var s = "M " + x1 + " " + y1
+            + " C " + x1 + " " + lerp(.5, y1, y2)
+            + " " + x2 + " " + lerp(.5, y1, y2)
+            + " " + x2  + " " + y2
+      return s;
+    });
+  }
+  buildGraph()
+</script>
+</div><div class='subgraph'><h2>Subgraph 2</h2>
+<h3>Inputs/Outputs</h3>
+<table><tr>
+<tr>
+<th>inputs</th><th>outputs</th></tr>
+<tr>
+<td><span class='tooltip'><span class='tooltipcontent'>0 arg0 INT32 NoneNone<br>1 arg1 INT32 NoneNone<br>2 arg2 FLOAT32 [1, 1, 128][-1, -1, 128]<br>3 arg3 FLOAT32 [1, 128][-1, 128]<br>4 arg4 FLOAT32 [1, 128][-1, 128]<br>5 arg5 FLOAT32 [112, 1, 384]None<br></span>[0, 1, 2, 3, 4, 5]</span></td>
+<td><span class='tooltip'><span class='tooltipcontent'>43 while/add_3 INT32 NoneNone<br>16 while/add_2 INT32 NoneNone<br>42 while/TensorArrayV2Write/TensorListSetItem12 FLOAT32 [1, 1, 128][-1, -1, 128]<br>34 while/mul_2 FLOAT32 [1, 128][-1, 128]<br>32 while/add_1 FLOAT32 [1, 128][-1, 128]<br>5 arg5 FLOAT32 [112, 1, 384]None<br></span>[43, 16, 42, 34, 32, 5]</span></td>
+</tr>
+</table>
+<h3>Tensors</h3>
+<table><tr>
+<tr>
+<th>index</th><th>name</th><th>type</th><th>shape</th><th>shape_signature</th><th>buffer</th><th>quantization</th></tr>
+<tr>
+<td>0</td><td>arg0</td>
+<td>INT32</td>
+<td>None</td>
+<td>None</td>
+<td>67</td>
+<td>{'details': None, 'details_type': 0, 'max': None, 'min': None, 'quantized_dimension': 0, 'scale': None, 'zero_point': None}</td>
+</tr>
+<tr>
+<td>1</td><td>arg1</td>
+<td>INT32</td>
+<td>None</td>
+<td>None</td>
+<td>68</td>
+<td>{'details': None, 'details_type': 0, 'max': None, 'min': None, 'quantized_dimension': 0, 'scale': None, 'zero_point': None}</td>
+</tr>
+<tr>
+<td>2</td><td>arg2</td>
+<td>FLOAT32</td>
+<td>[1, 1, 128]</td>
+<td>[-1, -1, 128]</td>
+<td>69</td>
+<td>{'details': None, 'details_type': 0, 'max': None, 'min': None, 'quantized_dimension': 0, 'scale': None, 'zero_point': None}</td>
+</tr>
+<tr>
+<td>3</td><td>arg3</td>
+<td>FLOAT32</td>
+<td>[1, 128]</td>
+<td>[-1, 128]</td>
+<td>70</td>
+<td>{'details': None, 'details_type': 0, 'max': None, 'min': None, 'quantized_dimension': 0, 'scale': None, 'zero_point': None}</td>
+</tr>
+<tr>
+<td>4</td><td>arg4</td>
+<td>FLOAT32</td>
+<td>[1, 128]</td>
+<td>[-1, 128]</td>
+<td>71</td>
+<td>{'details': None, 'details_type': 0, 'max': None, 'min': None, 'quantized_dimension': 0, 'scale': None, 'zero_point': None}</td>
+</tr>
+<tr>
+<td>5</td><td>arg5</td>
+<td>FLOAT32</td>
+<td>[112, 1, 384]</td>
+<td>None</td>
+<td>72</td>
+<td>{'details': None, 'details_type': 0, 'max': None, 'min': None, 'quantized_dimension': 0, 'scale': None, 'zero_point': None}</td>
+</tr>
+<tr>
+<td>6</td><td>TensorArrayV2_1;StatefulPartitionedCall/sequential/lstm/PartitionedCall/TensorArrayV2_14</td>
+<td>INT32</td>
+<td>None</td>
+<td>None</td>
+<td>73</td>
+<td>{'details': None, 'details_type': 0, 'max': None, 'min': None, 'quantized_dimension': 0, 'scale': None, 'zero_point': None}</td>
+</tr>
+<tr>
+<td>7</td><td>strided_slice/stack_1;StatefulPartitionedCall/sequential/lstm/PartitionedCall/strided_slice/stack_11</td>
+<td>INT32</td>
+<td>[1]</td>
+<td>None</td>
+<td>74</td>
+<td>{'details': None, 'details_type': 0, 'max': None, 'min': None, 'quantized_dimension': 0, 'scale': None, 'zero_point': None}</td>
+</tr>
+<tr>
+<td>8</td><td>unknown_91</td>
+<td>FLOAT32</td>
+<td>[512]</td>
+<td>None</td>
+<td>75</td>
+<td>{'details': None, 'details_type': 0, 'max': None, 'min': None, 'quantized_dimension': 0, 'scale': None, 'zero_point': None}</td>
+</tr>
+<tr>
+<td>9</td><td>while/MatMul</td>
+<td>INT8</td>
+<td>[512, 384]</td>
+<td>None</td>
+<td>76</td>
+<td>{'details': None, 'details_type': 0, 'max': None, 'min': None, 'quantized_dimension': 0, 'scale': [0.008009975776076317], 'zero_point': [0]}</td>
+</tr>
+<tr>
+<td>10</td><td>while/MatMul_1</td>
+<td>INT8</td>
+<td>[512, 128]</td>
+<td>None</td>
+<td>77</td>
+<td>{'details': None, 'details_type': 0, 'max': None, 'min': None, 'quantized_dimension': 0, 'scale': [0.0030343865510076284], 'zero_point': [0]}</td>
+</tr>
+<tr>
+<td>11</td><td>while/TensorArrayV2Write/TensorListSetItem</td>
+<td>INT32</td>
+<td>[3]</td>
+<td>None</td>
+<td>78</td>
+<td>{'details': None, 'details_type': 0, 'max': None, 'min': None, 'quantized_dimension': 0, 'scale': None, 'zero_point': None}</td>
+</tr>
+<tr>
+<td>12</td><td>while/TensorArrayV2Write/TensorListSetItem1</td>
+<td>INT32</td>
+<td>[2]</td>
+<td>None</td>
+<td>79</td>
+<td>{'details': None, 'details_type': 0, 'max': None, 'min': None, 'quantized_dimension': 0, 'scale': None, 'zero_point': None}</td>
+</tr>
+<tr>
+<td>13</td><td>while/TensorArrayV2Write/TensorListSetItem2</td>
+<td>INT32</td>
+<td>[2]</td>
+<td>None</td>
+<td>80</td>
+<td>{'details': None, 'details_type': 0, 'max': None, 'min': None, 'quantized_dimension': 0, 'scale': None, 'zero_point': None}</td>
+</tr>
+<tr>
+<td>14</td><td>while/TensorArrayV2Write/TensorListSetItem3</td>
+<td>INT32</td>
+<td>[3]</td>
+<td>None</td>
+<td>81</td>
+<td>{'details': None, 'details_type': 0, 'max': None, 'min': None, 'quantized_dimension': 0, 'scale': None, 'zero_point': None}</td>
+</tr>
+<tr>
+<td>15</td><td>while/TensorArrayV2Write/TensorListSetItem4</td>
+<td>INT32</td>
+<td>None</td>
+<td>None</td>
+<td>82</td>
+<td>{'details': None, 'details_type': 0, 'max': None, 'min': None, 'quantized_dimension': 0, 'scale': None, 'zero_point': None}</td>
+</tr>
+<tr>
+<td>16</td><td>while/add_2</td>
+<td>INT32</td>
+<td>None</td>
+<td>None</td>
+<td>83</td>
+<td>{'details': None, 'details_type': 0, 'max': None, 'min': None, 'quantized_dimension': 0, 'scale': None, 'zero_point': None}</td>
+</tr>
+<tr>
+<td>17</td><td>while/MatMul_12</td>
+<td>FLOAT32</td>
+<td>[1, 512]</td>
+<td>[-1, 512]</td>
+<td>84</td>
+<td>{'details': None, 'details_type': 0, 'max': None, 'min': None, 'quantized_dimension': 0, 'scale': None, 'zero_point': None}</td>
+</tr>
+<tr>
+<td>18</td><td>while/TensorArrayV2Read/TensorListGetItem</td>
+<td>FLOAT32</td>
+<td>[1, 384]</td>
+<td>None</td>
+<td>85</td>
+<td>{'details': None, 'details_type': 0, 'max': None, 'min': None, 'quantized_dimension': 0, 'scale': None, 'zero_point': None}</td>
+</tr>
+<tr>
+<td>19</td><td>while/MatMul1</td>
+<td>FLOAT32</td>
+<td>[1, 512]</td>
+<td>None</td>
+<td>86</td>
+<td>{'details': None, 'details_type': 0, 'max': None, 'min': None, 'quantized_dimension': 0, 'scale': None, 'zero_point': None}</td>
+</tr>
+<tr>
+<td>20</td><td>while/add</td>
+<td>FLOAT32</td>
+<td>[1, 512]</td>
+<td>[-1, 512]</td>
+<td>87</td>
+<td>{'details': None, 'details_type': 0, 'max': None, 'min': None, 'quantized_dimension': 0, 'scale': None, 'zero_point': None}</td>
+</tr>
+<tr>
+<td>21</td><td>while/BiasAdd</td>
+<td>FLOAT32</td>
+<td>[1, 512]</td>
+<td>[-1, 512]</td>
+<td>88</td>
+<td>{'details': None, 'details_type': 0, 'max': None, 'min': None, 'quantized_dimension': 0, 'scale': None, 'zero_point': None}</td>
+</tr>
+<tr>
+<td>22</td><td>while/split</td>
+<td>FLOAT32</td>
+<td>[1, 128]</td>
+<td>[-1, 128]</td>
+<td>89</td>
+<td>{'details': None, 'details_type': 0, 'max': None, 'min': None, 'quantized_dimension': 0, 'scale': None, 'zero_point': None}</td>
+</tr>
+<tr>
+<td>23</td><td>while/split1</td>
+<td>FLOAT32</td>
+<td>[1, 128]</td>
+<td>[-1, 128]</td>
+<td>90</td>
+<td>{'details': None, 'details_type': 0, 'max': None, 'min': None, 'quantized_dimension': 0, 'scale': None, 'zero_point': None}</td>
+</tr>
+<tr>
+<td>24</td><td>while/split2</td>
+<td>FLOAT32</td>
+<td>[1, 128]</td>
+<td>[-1, 128]</td>
+<td>91</td>
+<td>{'details': None, 'details_type': 0, 'max': None, 'min': None, 'quantized_dimension': 0, 'scale': None, 'zero_point': None}</td>
+</tr>
+<tr>
+<td>25</td><td>while/split3</td>
+<td>FLOAT32</td>
+<td>[1, 128]</td>
+<td>[-1, 128]</td>
+<td>92</td>
+<td>{'details': None, 'details_type': 0, 'max': None, 'min': None, 'quantized_dimension': 0, 'scale': None, 'zero_point': None}</td>
+</tr>
+<tr>
+<td>26</td><td>while/Sigmoid</td>
+<td>FLOAT32</td>
+<td>[1, 128]</td>
+<td>[-1, 128]</td>
+<td>93</td>
+<td>{'details': None, 'details_type': 0, 'max': None, 'min': None, 'quantized_dimension': 0, 'scale': None, 'zero_point': None}</td>
+</tr>
+<tr>
+<td>27</td><td>while/Sigmoid_1</td>
+<td>FLOAT32</td>
+<td>[1, 128]</td>
+<td>[-1, 128]</td>
+<td>94</td>
+<td>{'details': None, 'details_type': 0, 'max': None, 'min': None, 'quantized_dimension': 0, 'scale': None, 'zero_point': None}</td>
+</tr>
+<tr>
+<td>28</td><td>while/mul</td>
+<td>FLOAT32</td>
+<td>[1, 128]</td>
+<td>[-1, 128]</td>
+<td>95</td>
+<td>{'details': None, 'details_type': 0, 'max': None, 'min': None, 'quantized_dimension': 0, 'scale': None, 'zero_point': None}</td>
+</tr>
+<tr>
+<td>29</td><td>while/Sigmoid_2</td>
+<td>FLOAT32</td>
+<td>[1, 128]</td>
+<td>[-1, 128]</td>
+<td>96</td>
+<td>{'details': None, 'details_type': 0, 'max': None, 'min': None, 'quantized_dimension': 0, 'scale': None, 'zero_point': None}</td>
+</tr>
+<tr>
+<td>30</td><td>while/Tanh</td>
+<td>FLOAT32</td>
+<td>[1, 128]</td>
+<td>[-1, 128]</td>
+<td>97</td>
+<td>{'details': None, 'details_type': 0, 'max': None, 'min': None, 'quantized_dimension': 0, 'scale': None, 'zero_point': None}</td>
+</tr>
+<tr>
+<td>31</td><td>while/mul_1</td>
+<td>FLOAT32</td>
+<td>[1, 128]</td>
+<td>[-1, 128]</td>
+<td>98</td>
+<td>{'details': None, 'details_type': 0, 'max': None, 'min': None, 'quantized_dimension': 0, 'scale': None, 'zero_point': None}</td>
+</tr>
+<tr>
+<td>32</td><td>while/add_1</td>
+<td>FLOAT32</td>
+<td>[1, 128]</td>
+<td>[-1, 128]</td>
+<td>99</td>
+<td>{'details': None, 'details_type': 0, 'max': None, 'min': None, 'quantized_dimension': 0, 'scale': None, 'zero_point': None}</td>
+</tr>
+<tr>
+<td>33</td><td>while/Tanh_1</td>
+<td>FLOAT32</td>
+<td>[1, 128]</td>
+<td>[-1, 128]</td>
+<td>100</td>
+<td>{'details': None, 'details_type': 0, 'max': None, 'min': None, 'quantized_dimension': 0, 'scale': None, 'zero_point': None}</td>
+</tr>
+<tr>
+<td>34</td><td>while/mul_2</td>
+<td>FLOAT32</td>
+<td>[1, 128]</td>
+<td>[-1, 128]</td>
+<td>101</td>
+<td>{'details': None, 'details_type': 0, 'max': None, 'min': None, 'quantized_dimension': 0, 'scale': None, 'zero_point': None}</td>
+</tr>
+<tr>
+<td>35</td><td>while/TensorArrayV2Write/TensorListSetItem5</td>
+<td>INT32</td>
+<td>[1]</td>
+<td>None</td>
+<td>102</td>
+<td>{'details': None, 'details_type': 0, 'max': None, 'min': None, 'quantized_dimension': 0, 'scale': None, 'zero_point': None}</td>
+</tr>
+<tr>
+<td>36</td><td>while/TensorArrayV2Write/TensorListSetItem6</td>
+<td>INT32</td>
+<td>[3]</td>
+<td>None</td>
+<td>103</td>
+<td>{'details': None, 'details_type': 0, 'max': None, 'min': None, 'quantized_dimension': 0, 'scale': None, 'zero_point': None}</td>
+</tr>
+<tr>
+<td>37</td><td>while/TensorArrayV2Write/TensorListSetItem7</td>
+<td>FLOAT32</td>
+<td>[1, 1, 1]</td>
+<td>[-1, -1, -1]</td>
+<td>104</td>
+<td>{'details': None, 'details_type': 0, 'max': None, 'min': None, 'quantized_dimension': 0, 'scale': None, 'zero_point': None}</td>
+</tr>
+<tr>
+<td>38</td><td>while/TensorArrayV2Write/TensorListSetItem8</td>
+<td>INT32</td>
+<td>[1]</td>
+<td>None</td>
+<td>105</td>
+<td>{'details': None, 'details_type': 0, 'max': None, 'min': None, 'quantized_dimension': 0, 'scale': None, 'zero_point': None}</td>
+</tr>
+<tr>
+<td>39</td><td>while/TensorArrayV2Write/TensorListSetItem9</td>
+<td>INT32</td>
+<td>[3]</td>
+<td>None</td>
+<td>106</td>
+<td>{'details': None, 'details_type': 0, 'max': None, 'min': None, 'quantized_dimension': 0, 'scale': None, 'zero_point': None}</td>
+</tr>
+<tr>
+<td>40</td><td>while/TensorArrayV2Write/TensorListSetItem10</td>
+<td>FLOAT32</td>
+<td>[1, 1, 1]</td>
+<td>[-1, -1, -1]</td>
+<td>107</td>
+<td>{'details': None, 'details_type': 0, 'max': None, 'min': None, 'quantized_dimension': 0, 'scale': None, 'zero_point': None}</td>
+</tr>
+<tr>
+<td>41</td><td>while/TensorArrayV2Write/TensorListSetItem11</td>
+<td>FLOAT32</td>
+<td>[1, 1, 128]</td>
+<td>[1, -1, 128]</td>
+<td>108</td>
+<td>{'details': None, 'details_type': 0, 'max': None, 'min': None, 'quantized_dimension': 0, 'scale': None, 'zero_point': None}</td>
+</tr>
+<tr>
+<td>42</td><td>while/TensorArrayV2Write/TensorListSetItem12</td>
+<td>FLOAT32</td>
+<td>[1, 1, 128]</td>
+<td>[-1, -1, 128]</td>
+<td>109</td>
+<td>{'details': None, 'details_type': 0, 'max': None, 'min': None, 'quantized_dimension': 0, 'scale': None, 'zero_point': None}</td>
+</tr>
+<tr>
+<td>43</td><td>while/add_3</td>
+<td>INT32</td>
+<td>None</td>
+<td>None</td>
+<td>110</td>
+<td>{'details': None, 'details_type': 0, 'max': None, 'min': None, 'quantized_dimension': 0, 'scale': None, 'zero_point': None}</td>
+</tr>
+</table>
+<h3>Ops</h3>
+<table><tr>
+<tr>
+<th>index</th><th>inputs</th><th>outputs</th><th>builtin_options</th><th>opcode_index</th></tr>
+<tr>
+<td>0</td><td><span class='tooltip'><span class='tooltipcontent'>1 arg1 INT32 NoneNone<br>15 while/TensorArrayV2Write/TensorListSetItem4 INT32 NoneNone<br></span>[1, 15]</span></td>
+<td><span class='tooltip'><span class='tooltipcontent'>16 while/add_2 INT32 NoneNone<br></span>[16]</span></td>
+<td>{'fused_activation_function': 0, 'pot_scale_int16': True}</td>
+<td>ADD (12)</td>
+</tr>
+<tr>
+<td>1</td><td><span class='tooltip'><span class='tooltipcontent'>3 arg3 FLOAT32 [1, 128][-1, 128]<br>10 while/MatMul_1 INT8 [512, 128]None<br>-1 while/add_3 INT32 NoneNone<br></span>[3, 10, -1]</span></td>
+<td><span class='tooltip'><span class='tooltipcontent'>17 while/MatMul_12 FLOAT32 [1, 512][-1, 512]<br></span>[17]</span></td>
+<td>{'asymmetric_quantize_inputs': True, 'fused_activation_function': 0, 'keep_num_dims': False, 'weights_format': 0}</td>
+<td>FULLY_CONNECTED (9)</td>
+</tr>
+<tr>
+<td>2</td><td><span class='tooltip'><span class='tooltipcontent'>5 arg5 FLOAT32 [112, 1, 384]None<br>1 arg1 INT32 NoneNone<br></span>[5, 1]</span></td>
+<td><span class='tooltip'><span class='tooltipcontent'>18 while/TensorArrayV2Read/TensorListGetItem FLOAT32 [1, 384]None<br></span>[18]</span></td>
+<td>{'axis': 0, 'batch_dims': 0}</td>
+<td>GATHER (13)</td>
+</tr>
+<tr>
+<td>3</td><td><span class='tooltip'><span class='tooltipcontent'>18 while/TensorArrayV2Read/TensorListGetItem FLOAT32 [1, 384]None<br>9 while/MatMul INT8 [512, 384]None<br>-1 while/add_3 INT32 NoneNone<br></span>[18, 9, -1]</span></td>
+<td><span class='tooltip'><span class='tooltipcontent'>19 while/MatMul1 FLOAT32 [1, 512]None<br></span>[19]</span></td>
+<td>{'asymmetric_quantize_inputs': True, 'fused_activation_function': 0, 'keep_num_dims': False, 'weights_format': 0}</td>
+<td>FULLY_CONNECTED (9)</td>
+</tr>
+<tr>
+<td>4</td><td><span class='tooltip'><span class='tooltipcontent'>19 while/MatMul1 FLOAT32 [1, 512]None<br>17 while/MatMul_12 FLOAT32 [1, 512][-1, 512]<br></span>[19, 17]</span></td>
+<td><span class='tooltip'><span class='tooltipcontent'>20 while/add FLOAT32 [1, 512][-1, 512]<br></span>[20]</span></td>
+<td>{'fused_activation_function': 0, 'pot_scale_int16': True}</td>
+<td>ADD (12)</td>
+</tr>
+<tr>
+<td>5</td><td><span class='tooltip'><span class='tooltipcontent'>20 while/add FLOAT32 [1, 512][-1, 512]<br>8 unknown_91 FLOAT32 [512]None<br></span>[20, 8]</span></td>
+<td><span class='tooltip'><span class='tooltipcontent'>21 while/BiasAdd FLOAT32 [1, 512][-1, 512]<br></span>[21]</span></td>
+<td>{'fused_activation_function': 0, 'pot_scale_int16': True}</td>
+<td>ADD (12)</td>
+</tr>
+<tr>
+<td>6</td><td><span class='tooltip'><span class='tooltipcontent'>15 while/TensorArrayV2Write/TensorListSetItem4 INT32 NoneNone<br>21 while/BiasAdd FLOAT32 [1, 512][-1, 512]<br></span>[15, 21]</span></td>
+<td><span class='tooltip'><span class='tooltipcontent'>22 while/split FLOAT32 [1, 128][-1, 128]<br>23 while/split1 FLOAT32 [1, 128][-1, 128]<br>24 while/split2 FLOAT32 [1, 128][-1, 128]<br>25 while/split3 FLOAT32 [1, 128][-1, 128]<br></span>[22, 23, 24, 25]</span></td>
+<td>{'num_splits': 4}</td>
+<td>SPLIT (14)</td>
+</tr>
+<tr>
+<td>7</td><td><span class='tooltip'><span class='tooltipcontent'>22 while/split FLOAT32 [1, 128][-1, 128]<br></span>[22]</span></td>
+<td><span class='tooltip'><span class='tooltipcontent'>26 while/Sigmoid FLOAT32 [1, 128][-1, 128]<br></span>[26]</span></td>
+<td>None</td>
+<td>LOGISTIC (15)</td>
+</tr>
+<tr>
+<td>8</td><td><span class='tooltip'><span class='tooltipcontent'>23 while/split1 FLOAT32 [1, 128][-1, 128]<br></span>[23]</span></td>
+<td><span class='tooltip'><span class='tooltipcontent'>27 while/Sigmoid_1 FLOAT32 [1, 128][-1, 128]<br></span>[27]</span></td>
+<td>None</td>
+<td>LOGISTIC (15)</td>
+</tr>
+<tr>
+<td>9</td><td><span class='tooltip'><span class='tooltipcontent'>27 while/Sigmoid_1 FLOAT32 [1, 128][-1, 128]<br>4 arg4 FLOAT32 [1, 128][-1, 128]<br></span>[27, 4]</span></td>
+<td><span class='tooltip'><span class='tooltipcontent'>28 while/mul FLOAT32 [1, 128][-1, 128]<br></span>[28]</span></td>
+<td>{'fused_activation_function': 0}</td>
+<td>MUL (16)</td>
+</tr>
+<tr>
+<td>10</td><td><span class='tooltip'><span class='tooltipcontent'>25 while/split3 FLOAT32 [1, 128][-1, 128]<br></span>[25]</span></td>
+<td><span class='tooltip'><span class='tooltipcontent'>29 while/Sigmoid_2 FLOAT32 [1, 128][-1, 128]<br></span>[29]</span></td>
+<td>None</td>
+<td>LOGISTIC (15)</td>
+</tr>
+<tr>
+<td>11</td><td><span class='tooltip'><span class='tooltipcontent'>24 while/split2 FLOAT32 [1, 128][-1, 128]<br></span>[24]</span></td>
+<td><span class='tooltip'><span class='tooltipcontent'>30 while/Tanh FLOAT32 [1, 128][-1, 128]<br></span>[30]</span></td>
+<td>None</td>
+<td>TANH (17)</td>
+</tr>
+<tr>
+<td>12</td><td><span class='tooltip'><span class='tooltipcontent'>26 while/Sigmoid FLOAT32 [1, 128][-1, 128]<br>30 while/Tanh FLOAT32 [1, 128][-1, 128]<br></span>[26, 30]</span></td>
+<td><span class='tooltip'><span class='tooltipcontent'>31 while/mul_1 FLOAT32 [1, 128][-1, 128]<br></span>[31]</span></td>
+<td>{'fused_activation_function': 0}</td>
+<td>MUL (16)</td>
+</tr>
+<tr>
+<td>13</td><td><span class='tooltip'><span class='tooltipcontent'>28 while/mul FLOAT32 [1, 128][-1, 128]<br>31 while/mul_1 FLOAT32 [1, 128][-1, 128]<br></span>[28, 31]</span></td>
+<td><span class='tooltip'><span class='tooltipcontent'>32 while/add_1 FLOAT32 [1, 128][-1, 128]<br></span>[32]</span></td>
+<td>{'fused_activation_function': 0, 'pot_scale_int16': True}</td>
+<td>ADD (12)</td>
+</tr>
+<tr>
+<td>14</td><td><span class='tooltip'><span class='tooltipcontent'>32 while/add_1 FLOAT32 [1, 128][-1, 128]<br></span>[32]</span></td>
+<td><span class='tooltip'><span class='tooltipcontent'>33 while/Tanh_1 FLOAT32 [1, 128][-1, 128]<br></span>[33]</span></td>
+<td>None</td>
+<td>TANH (17)</td>
+</tr>
+<tr>
+<td>15</td><td><span class='tooltip'><span class='tooltipcontent'>29 while/Sigmoid_2 FLOAT32 [1, 128][-1, 128]<br>33 while/Tanh_1 FLOAT32 [1, 128][-1, 128]<br></span>[29, 33]</span></td>
+<td><span class='tooltip'><span class='tooltipcontent'>34 while/mul_2 FLOAT32 [1, 128][-1, 128]<br></span>[34]</span></td>
+<td>{'fused_activation_function': 0}</td>
+<td>MUL (16)</td>
+</tr>
+<tr>
+<td>16</td><td><span class='tooltip'><span class='tooltipcontent'>1 arg1 INT32 NoneNone<br>7 strided_slice/stack_1;StatefulPartitionedCall/sequential/lstm/PartitionedCall/strided_slice/stack_11 INT32 [1]None<br></span>[1, 7]</span></td>
+<td><span class='tooltip'><span class='tooltipcontent'>35 while/TensorArrayV2Write/TensorListSetItem5 INT32 [1]None<br></span>[35]</span></td>
+<td>None</td>
+<td>RESHAPE (1)</td>
+</tr>
+<tr>
+<td>17</td><td><span class='tooltip'><span class='tooltipcontent'>35 while/TensorArrayV2Write/TensorListSetItem5 INT32 [1]None<br>13 while/TensorArrayV2Write/TensorListSetItem2 INT32 [2]None<br></span>[35, 13]</span></td>
+<td><span class='tooltip'><span class='tooltipcontent'>36 while/TensorArrayV2Write/TensorListSetItem6 INT32 [3]None<br></span>[36]</span></td>
+<td>{'axis': 0, 'fused_activation_function': 0}</td>
+<td>CONCATENATION (6)</td>
+</tr>
+<tr>
+<td>18</td><td><span class='tooltip'><span class='tooltipcontent'>2 arg2 FLOAT32 [1, 1, 128][-1, -1, 128]<br>14 while/TensorArrayV2Write/TensorListSetItem3 INT32 [3]None<br>36 while/TensorArrayV2Write/TensorListSetItem6 INT32 [3]None<br></span>[2, 14, 36]</span></td>
+<td><span class='tooltip'><span class='tooltipcontent'>37 while/TensorArrayV2Write/TensorListSetItem7 FLOAT32 [1, 1, 1][-1, -1, -1]<br></span>[37]</span></td>
+<td>None</td>
+<td>SLICE (18)</td>
+</tr>
+<tr>
+<td>19</td><td><span class='tooltip'><span class='tooltipcontent'>16 while/add_2 INT32 NoneNone<br>7 strided_slice/stack_1;StatefulPartitionedCall/sequential/lstm/PartitionedCall/strided_slice/stack_11 INT32 [1]None<br></span>[16, 7]</span></td>
+<td><span class='tooltip'><span class='tooltipcontent'>38 while/TensorArrayV2Write/TensorListSetItem8 INT32 [1]None<br></span>[38]</span></td>
+<td>None</td>
+<td>RESHAPE (1)</td>
+</tr>
+<tr>
+<td>20</td><td><span class='tooltip'><span class='tooltipcontent'>38 while/TensorArrayV2Write/TensorListSetItem8 INT32 [1]None<br>12 while/TensorArrayV2Write/TensorListSetItem1 INT32 [2]None<br></span>[38, 12]</span></td>
+<td><span class='tooltip'><span class='tooltipcontent'>39 while/TensorArrayV2Write/TensorListSetItem9 INT32 [3]None<br></span>[39]</span></td>
+<td>{'axis': 0, 'fused_activation_function': 0}</td>
+<td>CONCATENATION (6)</td>
+</tr>
+<tr>
+<td>21</td><td><span class='tooltip'><span class='tooltipcontent'>2 arg2 FLOAT32 [1, 1, 128][-1, -1, 128]<br>39 while/TensorArrayV2Write/TensorListSetItem9 INT32 [3]None<br>11 while/TensorArrayV2Write/TensorListSetItem INT32 [3]None<br></span>[2, 39, 11]</span></td>
+<td><span class='tooltip'><span class='tooltipcontent'>40 while/TensorArrayV2Write/TensorListSetItem10 FLOAT32 [1, 1, 1][-1, -1, -1]<br></span>[40]</span></td>
+<td>None</td>
+<td>SLICE (18)</td>
+</tr>
+<tr>
+<td>22</td><td><span class='tooltip'><span class='tooltipcontent'>34 while/mul_2 FLOAT32 [1, 128][-1, 128]<br>6 TensorArrayV2_1;StatefulPartitionedCall/sequential/lstm/PartitionedCall/TensorArrayV2_14 INT32 NoneNone<br></span>[34, 6]</span></td>
+<td><span class='tooltip'><span class='tooltipcontent'>41 while/TensorArrayV2Write/TensorListSetItem11 FLOAT32 [1, 1, 128][1, -1, 128]<br></span>[41]</span></td>
+<td>{}</td>
+<td>EXPAND_DIMS (19)</td>
+</tr>
+<tr>
+<td>23</td><td><span class='tooltip'><span class='tooltipcontent'>37 while/TensorArrayV2Write/TensorListSetItem7 FLOAT32 [1, 1, 1][-1, -1, -1]<br>41 while/TensorArrayV2Write/TensorListSetItem11 FLOAT32 [1, 1, 128][1, -1, 128]<br>40 while/TensorArrayV2Write/TensorListSetItem10 FLOAT32 [1, 1, 1][-1, -1, -1]<br></span>[37, 41, 40]</span></td>
+<td><span class='tooltip'><span class='tooltipcontent'>42 while/TensorArrayV2Write/TensorListSetItem12 FLOAT32 [1, 1, 128][-1, -1, 128]<br></span>[42]</span></td>
+<td>{'axis': 0, 'fused_activation_function': 0}</td>
+<td>CONCATENATION (6)</td>
+</tr>
+<tr>
+<td>24</td><td><span class='tooltip'><span class='tooltipcontent'>0 arg0 INT32 NoneNone<br>15 while/TensorArrayV2Write/TensorListSetItem4 INT32 NoneNone<br></span>[0, 15]</span></td>
+<td><span class='tooltip'><span class='tooltipcontent'>43 while/add_3 INT32 NoneNone<br></span>[43]</span></td>
+<td>{'fused_activation_function': 0, 'pot_scale_int16': True}</td>
+<td>ADD (12)</td>
+</tr>
+</table>
+<svg id='subgraph2' width='1600' height='900'></svg>
+
+  <script>
+    function buildGraph() {
+      // Build graph data
+      var graph = {"nodes": [{"id": "o0", "name": "ADD (12)", "group": 2, "x": 200, "y": 200}, {"id": "o1", "name": "FULLY_CONNECTED (9)", "group": 2, "x": 200, "y": 400}, {"id": "o2", "name": "GATHER (13)", "group": 2, "x": 200, "y": 600}, {"id": "o3", "name": "FULLY_CONNECTED (9)", "group": 2, "x": 200, "y": 800}, {"id": "o4", "name": "ADD (12)", "group": 2, "x": 200, "y": 1000}, {"id": "o5", "name": "ADD (12)", "group": 2, "x": 200, "y": 1200}, {"id": "o6", "name": "SPLIT (14)", "group": 2, "x": 200, "y": 1400}, {"id": "o7", "name": "LOGISTIC (15)", "group": 2, "x": 200, "y": 1600}, {"id": "o8", "name": "LOGISTIC (15)", "group": 2, "x": 200, "y": 1800}, {"id": "o9", "name": "MUL (16)", "group": 2, "x": 200, "y": 2000}, {"id": "o10", "name": "LOGISTIC (15)", "group": 2, "x": 200, "y": 2200}, {"id": "o11", "name": "TANH (17)", "group": 2, "x": 200, "y": 2400}, {"id": "o12", "name": "MUL (16)", "group": 2, "x": 200, "y": 2600}, {"id": "o13", "name": "ADD (12)", "group": 2, "x": 200, "y": 2800}, {"id": "o14", "name": "TANH (17)", "group": 2, "x": 200, "y": 3000}, {"id": "o15", "name": "MUL (16)", "group": 2, "x": 200, "y": 3200}, {"id": "o16", "name": "RESHAPE (1)", "group": 2, "x": 200, "y": 3400}, {"id": "o17", "name": "CONCATENATION (6)", "group": 2, "x": 200, "y": 3600}, {"id": "o18", "name": "SLICE (18)", "group": 2, "x": 200, "y": 3800}, {"id": "o19", "name": "RESHAPE (1)", "group": 2, "x": 200, "y": 4000}, {"id": "o20", "name": "CONCATENATION (6)", "group": 2, "x": 200, "y": 4200}, {"id": "o21", "name": "SLICE (18)", "group": 2, "x": 200, "y": 4400}, {"id": "o22", "name": "EXPAND_DIMS (19)", "group": 2, "x": 200, "y": 4600}, {"id": "o23", "name": "CONCATENATION (6)", "group": 2, "x": 200, "y": 4800}, {"id": "o24", "name": "ADD (12)", "group": 2, "x": 200, "y": 5000}, {"id": "t0", "name": "[] (0)", "group": 1, "x": 170, "y": 4900.0}, {"id": "t1", "name": "[] (1)", "group": 1, "x": 170, "y": 100.0}, {"id": "t2", "name": "[] (2)", "group": 1, "x": 170, "y": 3700.0}, {"id": "t3", "name": "[] (3)", "group": 1, "x": 170, "y": 300.0}, {"id": "t4", "name": "[] (4)", "group": 1, "x": 340, "y": 1900.0}, {"id": "t5", "name": "[] (5)", "group": 1, "x": 170, "y": 500.0}, {"id": "t6", "name": "[] (6)", "group": 1, "x": 340, "y": 4500.0}, {"id": "t7", "name": "[] (7)", "group": 1, "x": 340, "y": 3300.0}, {"id": "t8", "name": "[] (8)", "group": 1, "x": 340, "y": 1100.0}, {"id": "t9", "name": "[] (9)", "group": 1, "x": 340, "y": 700.0}, {"id": "t10", "name": "[] (10)", "group": 1, "x": 340, "y": 300.0}, {"id": "t11", "name": "[] (11)", "group": 1, "x": 510, "y": 4300.0}, {"id": "t12", "name": "[] (12)", "group": 1, "x": 340, "y": 4100.0}, {"id": "t13", "name": "[] (13)", "group": 1, "x": 340, "y": 3500.0}, {"id": "t14", "name": "[] (14)", "group": 1, "x": 340, "y": 3700.0}, {"id": "t15", "name": "[] (15)", "group": 1, "x": 340, "y": 100.0}, {"id": "t16", "name": "[] (16)", "group": 1, "x": 170, "y": 3900.0}, {"id": "t17", "name": "[] (17)", "group": 1, "x": 340, "y": 900.0}, {"id": "t18", "name": "[] (18)", "group": 1, "x": 170, "y": 700.0}, {"id": "t19", "name": "[] (19)", "group": 1, "x": 170, "y": 900.0}, {"id": "t20", "name": "[] (20)", "group": 1, "x": 170, "y": 1100.0}, {"id": "t21", "name": "[] (21)", "group": 1, "x": 340, "y": 1300.0}, {"id": "t22", "name": "[] (22)", "group": 1, "x": 170, "y": 1500.0}, {"id": "t23", "name": "[] (23)", "group": 1, "x": 170, "y": 1700.0}, {"id": "t24", "name": "[] (24)", "group": 1, "x": 170, "y": 2300.0}, {"id": "t25", "name": "[] (25)", "group": 1, "x": 170, "y": 2100.0}, {"id": "t26", "name": "[] (26)", "group": 1, "x": 170, "y": 2500.0}, {"id": "t27", "name": "[] (27)", "group": 1, "x": 170, "y": 1900.0}, {"id": "t28", "name": "[] (28)", "group": 1, "x": 170, "y": 2700.0}, {"id": "t29", "name": "[] (29)", "group": 1, "x": 170, "y": 3100.0}, {"id": "t30", "name": "[] (30)", "group": 1, "x": 340, "y": 2500.0}, {"id": "t31", "name": "[] (31)", "group": 1, "x": 340, "y": 2700.0}, {"id": "t32", "name": "[] (32)", "group": 1, "x": 170, "y": 2900.0}, {"id": "t33", "name": "[] (33)", "group": 1, "x": 340, "y": 3100.0}, {"id": "t34", "name": "[] (34)", "group": 1, "x": 170, "y": 4500.0}, {"id": "t35", "name": "[] (35)", "group": 1, "x": 170, "y": 3500.0}, {"id": "t36", "name": "[] (36)", "group": 1, "x": 510, "y": 3700.0}, {"id": "t37", "name": "[] (37)", "group": 1, "x": 170, "y": 4700.0}, {"id": "t38", "name": "[] (38)", "group": 1, "x": 170, "y": 4100.0}, {"id": "t39", "name": "[] (39)", "group": 1, "x": 340, "y": 4300.0}, {"id": "t40", "name": "[] (40)", "group": 1, "x": 510, "y": 4700.0}, {"id": "t41", "name": "[] (41)", "group": 1, "x": 340, "y": 4700.0}, {"id": "t42", "name": "[] (42)", "group": 1, "x": 170, "y": 4900.0}, {"id": "t43", "name": "[] (43)", "group": 1, "x": 170, "y": 5100.0}], "edges": [{"source": "t1", "target": "o0"}, {"source": "t15", "target": "o0"}, {"target": "t16", "source": "o0"}, {"source": "t3", "target": "o1"}, {"source": "t10", "target": "o1"}, {"source": "t-1", "target": "o1"}, {"target": "t17", "source": "o1"}, {"source": "t5", "target": "o2"}, {"source": "t1", "target": "o2"}, {"target": "t18", "source": "o2"}, {"source": "t18", "target": "o3"}, {"source": "t9", "target": "o3"}, {"source": "t-1", "target": "o3"}, {"target": "t19", "source": "o3"}, {"source": "t19", "target": "o4"}, {"source": "t17", "target": "o4"}, {"target": "t20", "source": "o4"}, {"source": "t20", "target": "o5"}, {"source": "t8", "target": "o5"}, {"target": "t21", "source": "o5"}, {"source": "t15", "target": "o6"}, {"source": "t21", "target": "o6"}, {"target": "t22", "source": "o6"}, {"target": "t23", "source": "o6"}, {"target": "t24", "source": "o6"}, {"target": "t25", "source": "o6"}, {"source": "t22", "target": "o7"}, {"target": "t26", "source": "o7"}, {"source": "t23", "target": "o8"}, {"target": "t27", "source": "o8"}, {"source": "t27", "target": "o9"}, {"source": "t4", "target": "o9"}, {"target": "t28", "source": "o9"}, {"source": "t25", "target": "o10"}, {"target": "t29", "source": "o10"}, {"source": "t24", "target": "o11"}, {"target": "t30", "source": "o11"}, {"source": "t26", "target": "o12"}, {"source": "t30", "target": "o12"}, {"target": "t31", "source": "o12"}, {"source": "t28", "target": "o13"}, {"source": "t31", "target": "o13"}, {"target": "t32", "source": "o13"}, {"source": "t32", "target": "o14"}, {"target": "t33", "source": "o14"}, {"source": "t29", "target": "o15"}, {"source": "t33", "target": "o15"}, {"target": "t34", "source": "o15"}, {"source": "t1", "target": "o16"}, {"source": "t7", "target": "o16"}, {"target": "t35", "source": "o16"}, {"source": "t35", "target": "o17"}, {"source": "t13", "target": "o17"}, {"target": "t36", "source": "o17"}, {"source": "t2", "target": "o18"}, {"source": "t14", "target": "o18"}, {"source": "t36", "target": "o18"}, {"target": "t37", "source": "o18"}, {"source": "t16", "target": "o19"}, {"source": "t7", "target": "o19"}, {"target": "t38", "source": "o19"}, {"source": "t38", "target": "o20"}, {"source": "t12", "target": "o20"}, {"target": "t39", "source": "o20"}, {"source": "t2", "target": "o21"}, {"source": "t39", "target": "o21"}, {"source": "t11", "target": "o21"}, {"target": "t40", "source": "o21"}, {"source": "t34", "target": "o22"}, {"source": "t6", "target": "o22"}, {"target": "t41", "source": "o22"}, {"source": "t37", "target": "o23"}, {"source": "t41", "target": "o23"}, {"source": "t40", "target": "o23"}, {"target": "t42", "source": "o23"}, {"source": "t0", "target": "o24"}, {"source": "t15", "target": "o24"}, {"target": "t43", "source": "o24"}]};
+      var svg = d3.select("#subgraph2")
+      var width = svg.attr("width");
+      var height = svg.attr("height");
+      // Make the graph scrollable.
+      svg = svg.call(d3.zoom().on("zoom", function() {
+        svg.attr("transform", d3.event.transform);
+      })).append("g");
+      var color = d3.scaleOrdinal(d3.schemeDark2);
+      var simulation = d3.forceSimulation()
+          .force("link", d3.forceLink().id(function(d) {return d.id;}))
+          .force("charge", d3.forceManyBody())
+          .force("center", d3.forceCenter(0.5 * width, 0.5 * height));
+      var edge = svg.append("g").attr("class", "edges").selectAll("line")
+        .data(graph.edges).enter().append("path").attr("stroke","black").attr("fill","none")
+      // Make the node group
+      var node = svg.selectAll(".nodes")
+        .data(graph.nodes)
+        .enter().append("g")
+        .attr("x", function(d){return d.x})
+        .attr("y", function(d){return d.y})
+        .attr("transform", function(d) {
+          return "translate( " + d.x + ", " + d.y + ")"
+        })
+        .attr("class", "nodes")
+          .call(d3.drag()
+              .on("start", function(d) {
+                if(!d3.event.active) simulation.alphaTarget(1.0).restart();
+                d.fx = d.x;d.fy = d.y;
+              })
+              .on("drag", function(d) {
+                d.fx = d3.event.x; d.fy = d3.event.y;
+              })
+              .on("end", function(d) {
+                if (!d3.event.active) simulation.alphaTarget(0);
+                d.fx = d.fy = null;
+              }));
+      // Within the group, draw a box for the node position and text
+      // on the side.
+      var node_width = 150;
+      var node_height = 30;
+      node.append("rect")
+          .attr("r", "5px")
+          .attr("width", node_width)
+          .attr("height", node_height)
+          .attr("rx", function(d) { return d.group == 1 ? 1 : 10; })
+          .attr("stroke", "#000000")
+          .attr("fill", function(d) { return d.group == 1 ? "#dddddd" : "#000000"; })
+      node.append("text")
+          .text(function(d) { return d.name; })
+          .attr("x", 5)
+          .attr("y", 20)
+          .attr("fill", function(d) { return d.group == 1 ? "#000000" : "#eeeeee"; })
+      // Setup force parameters and update position callback
+      var node = svg.selectAll(".nodes")
+        .data(graph.nodes);
+      // Bind the links
+      var name_to_g = {}
+      node.each(function(data, index, nodes) {
+        console.log(data.id)
+        name_to_g[data.id] = this;
+      });
+      function proc(w, t) {
+        return parseInt(w.getAttribute(t));
+      }
+      edge.attr("d", function(d) {
+        function lerp(t, a, b) {
+          return (1.0-t) * a + t * b;
+        }
+        var x1 = proc(name_to_g[d.source],"x") + node_width /2;
+        var y1 = proc(name_to_g[d.source],"y") + node_height;
+        var x2 = proc(name_to_g[d.target],"x") + node_width /2;
+        var y2 = proc(name_to_g[d.target],"y");
+        var s = "M " + x1 + " " + y1
+            + " C " + x1 + " " + lerp(.5, y1, y2)
+            + " " + x2 + " " + lerp(.5, y1, y2)
+            + " " + x2  + " " + y2
+      return s;
+    });
+  }
+  buildGraph()
+</script>
+</div><div class='subgraph'><h2>Subgraph 3</h2>
+<h3>Inputs/Outputs</h3>
+<table><tr>
+<tr>
+<th>inputs</th><th>outputs</th></tr>
+<tr>
+<td><span class='tooltip'><span class='tooltipcontent'>0 arg0 INT32 NoneNone<br>1 arg1 INT32 NoneNone<br>2 arg2 FLOAT32 [1, 1, 128][-1, -1, 128]<br>3 arg3 FLOAT32 [1, 128][-1, 128]<br>4 arg4 FLOAT32 [1, 128][-1, 128]<br>5 arg5 INT32 NoneNone<br>6 arg6 FLOAT32 [1, 1, 128][-1, -1, 128]<br></span>[0, 1, 2, 3, 4, 5, 6]</span></td>
+<td><span class='tooltip'><span class='tooltipcontent'>7 while/Less1 BOOL NoneNone<br></span>[7]</span></td>
+</tr>
+</table>
+<h3>Tensors</h3>
+<table><tr>
+<tr>
+<th>index</th><th>name</th><th>type</th><th>shape</th><th>shape_signature</th><th>buffer</th><th>quantization</th></tr>
+<tr>
+<td>0</td><td>arg0</td>
+<td>INT32</td>
+<td>None</td>
+<td>None</td>
+<td>111</td>
+<td>{'details': None, 'details_type': 0, 'max': None, 'min': None, 'quantized_dimension': 0, 'scale': None, 'zero_point': None}</td>
+</tr>
+<tr>
+<td>1</td><td>arg1</td>
+<td>INT32</td>
+<td>None</td>
+<td>None</td>
+<td>112</td>
+<td>{'details': None, 'details_type': 0, 'max': None, 'min': None, 'quantized_dimension': 0, 'scale': None, 'zero_point': None}</td>
+</tr>
+<tr>
+<td>2</td><td>arg2</td>
+<td>FLOAT32</td>
+<td>[1, 1, 128]</td>
+<td>[-1, -1, 128]</td>
+<td>113</td>
+<td>{'details': None, 'details_type': 0, 'max': None, 'min': None, 'quantized_dimension': 0, 'scale': None, 'zero_point': None}</td>
+</tr>
+<tr>
+<td>3</td><td>arg3</td>
+<td>FLOAT32</td>
+<td>[1, 128]</td>
+<td>[-1, 128]</td>
+<td>114</td>
+<td>{'details': None, 'details_type': 0, 'max': None, 'min': None, 'quantized_dimension': 0, 'scale': None, 'zero_point': None}</td>
+</tr>
+<tr>
+<td>4</td><td>arg4</td>
+<td>FLOAT32</td>
+<td>[1, 128]</td>
+<td>[-1, 128]</td>
+<td>115</td>
+<td>{'details': None, 'details_type': 0, 'max': None, 'min': None, 'quantized_dimension': 0, 'scale': None, 'zero_point': None}</td>
+</tr>
+<tr>
+<td>5</td><td>arg5</td>
+<td>INT32</td>
+<td>None</td>
+<td>None</td>
+<td>116</td>
+<td>{'details': None, 'details_type': 0, 'max': None, 'min': None, 'quantized_dimension': 0, 'scale': None, 'zero_point': None}</td>
+</tr>
+<tr>
+<td>6</td><td>arg6</td>
+<td>FLOAT32</td>
+<td>[1, 1, 128]</td>
+<td>[-1, -1, 128]</td>
+<td>117</td>
+<td>{'details': None, 'details_type': 0, 'max': None, 'min': None, 'quantized_dimension': 0, 'scale': None, 'zero_point': None}</td>
+</tr>
+<tr>
+<td>7</td><td>while/Less1</td>
+<td>BOOL</td>
+<td>None</td>
+<td>None</td>
+<td>118</td>
+<td>{'details': None, 'details_type': 0, 'max': None, 'min': None, 'quantized_dimension': 0, 'scale': None, 'zero_point': None}</td>
+</tr>
+</table>
+<h3>Ops</h3>
+<table><tr>
+<tr>
+<th>index</th><th>inputs</th><th>outputs</th><th>builtin_options</th><th>opcode_index</th></tr>
+<tr>
+<td>0</td><td><span class='tooltip'><span class='tooltipcontent'>1 arg1 INT32 NoneNone<br>5 arg5 INT32 NoneNone<br></span>[1, 5]</span></td>
+<td><span class='tooltip'><span class='tooltipcontent'>7 while/Less1 BOOL NoneNone<br></span>[7]</span></td>
+<td>None</td>
+<td>LESS (11)</td>
+</tr>
+</table>
+<svg id='subgraph3' width='1600' height='900'></svg>
+
+  <script>
+    function buildGraph() {
+      // Build graph data
+      var graph = {"nodes": [{"id": "o0", "name": "LESS (11)", "group": 2, "x": 200, "y": 200}, {"id": "t0", "name": "[] (0)", "group": 1, "x": 0, "y": 0}, {"id": "t1", "name": "[] (1)", "group": 1, "x": 170, "y": 100.0}, {"id": "t2", "name": "[] (2)", "group": 1, "x": 0, "y": 0}, {"id": "t3", "name": "[] (3)", "group": 1, "x": 0, "y": 0}, {"id": "t4", "name": "[] (4)", "group": 1, "x": 0, "y": 0}, {"id": "t5", "name": "[] (5)", "group": 1, "x": 340, "y": 100.0}, {"id": "t6", "name": "[] (6)", "group": 1, "x": 0, "y": 0}, {"id": "t7", "name": "[] (7)", "group": 1, "x": 170, "y": 300.0}], "edges": [{"source": "t1", "target": "o0"}, {"source": "t5", "target": "o0"}, {"target": "t7", "source": "o0"}]};
+      var svg = d3.select("#subgraph3")
+      var width = svg.attr("width");
+      var height = svg.attr("height");
+      // Make the graph scrollable.
+      svg = svg.call(d3.zoom().on("zoom", function() {
+        svg.attr("transform", d3.event.transform);
+      })).append("g");
+      var color = d3.scaleOrdinal(d3.schemeDark2);
+      var simulation = d3.forceSimulation()
+          .force("link", d3.forceLink().id(function(d) {return d.id;}))
+          .force("charge", d3.forceManyBody())
+          .force("center", d3.forceCenter(0.5 * width, 0.5 * height));
+      var edge = svg.append("g").attr("class", "edges").selectAll("line")
+        .data(graph.edges).enter().append("path").attr("stroke","black").attr("fill","none")
+      // Make the node group
+      var node = svg.selectAll(".nodes")
+        .data(graph.nodes)
+        .enter().append("g")
+        .attr("x", function(d){return d.x})
+        .attr("y", function(d){return d.y})
+        .attr("transform", function(d) {
+          return "translate( " + d.x + ", " + d.y + ")"
+        })
+        .attr("class", "nodes")
+          .call(d3.drag()
+              .on("start", function(d) {
+                if(!d3.event.active) simulation.alphaTarget(1.0).restart();
+                d.fx = d.x;d.fy = d.y;
+              })
+              .on("drag", function(d) {
+                d.fx = d3.event.x; d.fy = d3.event.y;
+              })
+              .on("end", function(d) {
+                if (!d3.event.active) simulation.alphaTarget(0);
+                d.fx = d.fy = null;
+              }));
+      // Within the group, draw a box for the node position and text
+      // on the side.
+      var node_width = 150;
+      var node_height = 30;
+      node.append("rect")
+          .attr("r", "5px")
+          .attr("width", node_width)
+          .attr("height", node_height)
+          .attr("rx", function(d) { return d.group == 1 ? 1 : 10; })
+          .attr("stroke", "#000000")
+          .attr("fill", function(d) { return d.group == 1 ? "#dddddd" : "#000000"; })
+      node.append("text")
+          .text(function(d) { return d.name; })
+          .attr("x", 5)
+          .attr("y", 20)
+          .attr("fill", function(d) { return d.group == 1 ? "#000000" : "#eeeeee"; })
+      // Setup force parameters and update position callback
+      var node = svg.selectAll(".nodes")
+        .data(graph.nodes);
+      // Bind the links
+      var name_to_g = {}
+      node.each(function(data, index, nodes) {
+        console.log(data.id)
+        name_to_g[data.id] = this;
+      });
+      function proc(w, t) {
+        return parseInt(w.getAttribute(t));
+      }
+      edge.attr("d", function(d) {
+        function lerp(t, a, b) {
+          return (1.0-t) * a + t * b;
+        }
+        var x1 = proc(name_to_g[d.source],"x") + node_width /2;
+        var y1 = proc(name_to_g[d.source],"y") + node_height;
+        var x2 = proc(name_to_g[d.target],"x") + node_width /2;
+        var y2 = proc(name_to_g[d.target],"y");
+        var s = "M " + x1 + " " + y1
+            + " C " + x1 + " " + lerp(.5, y1, y2)
+            + " " + x2 + " " + lerp(.5, y1, y2)
+            + " " + x2  + " " + y2
+      return s;
+    });
+  }
+  buildGraph()
+</script>
+</div><div class='subgraph'><h2>Subgraph 4</h2>
+<h3>Inputs/Outputs</h3>
+<table><tr>
+<tr>
+<th>inputs</th><th>outputs</th></tr>
+<tr>
+<td><span class='tooltip'><span class='tooltipcontent'>0 arg0 INT32 NoneNone<br>1 arg1 INT32 NoneNone<br>2 arg2 FLOAT32 [1, 1, 128][-1, -1, 128]<br>3 arg3 FLOAT32 [1, 128][-1, 128]<br>4 arg4 FLOAT32 [1, 128][-1, 128]<br>5 arg5 INT32 NoneNone<br>6 arg6 FLOAT32 [1, 1, 128][-1, -1, 128]<br></span>[0, 1, 2, 3, 4, 5, 6]</span></td>
+<td><span class='tooltip'><span class='tooltipcontent'>44 while/add_31 INT32 NoneNone<br>17 while/add_21 INT32 NoneNone<br>43 while/TensorArrayV2Write/TensorListSetItem25 FLOAT32 [1, 1, 128][-1, -1, 128]<br>35 while/mul_21 FLOAT32 [1, 128][-1, 128]<br>33 while/add_11 FLOAT32 [1, 128][-1, 128]<br>5 arg5 INT32 NoneNone<br>6 arg6 FLOAT32 [1, 1, 128][-1, -1, 128]<br></span>[44, 17, 43, 35, 33, 5, 6]</span></td>
+</tr>
+</table>
+<h3>Tensors</h3>
+<table><tr>
+<tr>
+<th>index</th><th>name</th><th>type</th><th>shape</th><th>shape_signature</th><th>buffer</th><th>quantization</th></tr>
+<tr>
+<td>0</td><td>arg0</td>
+<td>INT32</td>
+<td>None</td>
+<td>None</td>
+<td>119</td>
+<td>{'details': None, 'details_type': 0, 'max': None, 'min': None, 'quantized_dimension': 0, 'scale': None, 'zero_point': None}</td>
+</tr>
+<tr>
+<td>1</td><td>arg1</td>
+<td>INT32</td>
+<td>None</td>
+<td>None</td>
+<td>120</td>
+<td>{'details': None, 'details_type': 0, 'max': None, 'min': None, 'quantized_dimension': 0, 'scale': None, 'zero_point': None}</td>
+</tr>
+<tr>
+<td>2</td><td>arg2</td>
+<td>FLOAT32</td>
+<td>[1, 1, 128]</td>
+<td>[-1, -1, 128]</td>
+<td>121</td>
+<td>{'details': None, 'details_type': 0, 'max': None, 'min': None, 'quantized_dimension': 0, 'scale': None, 'zero_point': None}</td>
+</tr>
+<tr>
+<td>3</td><td>arg3</td>
+<td>FLOAT32</td>
+<td>[1, 128]</td>
+<td>[-1, 128]</td>
+<td>122</td>
+<td>{'details': None, 'details_type': 0, 'max': None, 'min': None, 'quantized_dimension': 0, 'scale': None, 'zero_point': None}</td>
+</tr>
+<tr>
+<td>4</td><td>arg4</td>
+<td>FLOAT32</td>
+<td>[1, 128]</td>
+<td>[-1, 128]</td>
+<td>123</td>
+<td>{'details': None, 'details_type': 0, 'max': None, 'min': None, 'quantized_dimension': 0, 'scale': None, 'zero_point': None}</td>
+</tr>
+<tr>
+<td>5</td><td>arg5</td>
+<td>INT32</td>
+<td>None</td>
+<td>None</td>
+<td>124</td>
+<td>{'details': None, 'details_type': 0, 'max': None, 'min': None, 'quantized_dimension': 0, 'scale': None, 'zero_point': None}</td>
+</tr>
+<tr>
+<td>6</td><td>arg6</td>
+<td>FLOAT32</td>
+<td>[1, 1, 128]</td>
+<td>[-1, -1, 128]</td>
+<td>125</td>
+<td>{'details': None, 'details_type': 0, 'max': None, 'min': None, 'quantized_dimension': 0, 'scale': None, 'zero_point': None}</td>
+</tr>
+<tr>
+<td>7</td><td>TensorArrayV2_1;StatefulPartitionedCall/sequential/lstm/PartitionedCall/TensorArrayV2_15</td>
+<td>INT32</td>
+<td>None</td>
+<td>None</td>
+<td>126</td>
+<td>{'details': None, 'details_type': 0, 'max': None, 'min': None, 'quantized_dimension': 0, 'scale': None, 'zero_point': None}</td>
+</tr>
+<tr>
+<td>8</td><td>strided_slice/stack_1;StatefulPartitionedCall/sequential/lstm/PartitionedCall/strided_slice/stack_12</td>
+<td>INT32</td>
+<td>[1]</td>
+<td>None</td>
+<td>127</td>
+<td>{'details': None, 'details_type': 0, 'max': None, 'min': None, 'quantized_dimension': 0, 'scale': None, 'zero_point': None}</td>
+</tr>
+<tr>
+<td>9</td><td>unknown_121</td>
+<td>FLOAT32</td>
+<td>[512]</td>
+<td>None</td>
+<td>128</td>
+<td>{'details': None, 'details_type': 0, 'max': None, 'min': None, 'quantized_dimension': 0, 'scale': None, 'zero_point': None}</td>
+</tr>
+<tr>
+<td>10</td><td>while/MatMul2</td>
+<td>INT8</td>
+<td>[512, 128]</td>
+<td>None</td>
+<td>129</td>
+<td>{'details': None, 'details_type': 0, 'max': None, 'min': None, 'quantized_dimension': 0, 'scale': [0.0036215735599398613], 'zero_point': [0]}</td>
+</tr>
+<tr>
+<td>11</td><td>while/MatMul_13</td>
+<td>INT8</td>
+<td>[512, 128]</td>
+<td>None</td>
+<td>130</td>
+<td>{'details': None, 'details_type': 0, 'max': None, 'min': None, 'quantized_dimension': 0, 'scale': [0.002425955841317773], 'zero_point': [0]}</td>
+</tr>
+<tr>
+<td>12</td><td>while/TensorArrayV2Write/TensorListSetItem13</td>
+<td>INT32</td>
+<td>[3]</td>
+<td>None</td>
+<td>131</td>
+<td>{'details': None, 'details_type': 0, 'max': None, 'min': None, 'quantized_dimension': 0, 'scale': None, 'zero_point': None}</td>
+</tr>
+<tr>
+<td>13</td><td>while/TensorArrayV2Write/TensorListSetItem14</td>
+<td>INT32</td>
+<td>[2]</td>
+<td>None</td>
+<td>132</td>
+<td>{'details': None, 'details_type': 0, 'max': None, 'min': None, 'quantized_dimension': 0, 'scale': None, 'zero_point': None}</td>
+</tr>
+<tr>
+<td>14</td><td>while/TensorArrayV2Write/TensorListSetItem15</td>
+<td>INT32</td>
+<td>[2]</td>
+<td>None</td>
+<td>133</td>
+<td>{'details': None, 'details_type': 0, 'max': None, 'min': None, 'quantized_dimension': 0, 'scale': None, 'zero_point': None}</td>
+</tr>
+<tr>
+<td>15</td><td>while/TensorArrayV2Write/TensorListSetItem16</td>
+<td>INT32</td>
+<td>[3]</td>
+<td>None</td>
+<td>134</td>
+<td>{'details': None, 'details_type': 0, 'max': None, 'min': None, 'quantized_dimension': 0, 'scale': None, 'zero_point': None}</td>
+</tr>
+<tr>
+<td>16</td><td>while/TensorArrayV2Write/TensorListSetItem17</td>
+<td>INT32</td>
+<td>None</td>
+<td>None</td>
+<td>135</td>
+<td>{'details': None, 'details_type': 0, 'max': None, 'min': None, 'quantized_dimension': 0, 'scale': None, 'zero_point': None}</td>
+</tr>
+<tr>
+<td>17</td><td>while/add_21</td>
+<td>INT32</td>
+<td>None</td>
+<td>None</td>
+<td>136</td>
+<td>{'details': None, 'details_type': 0, 'max': None, 'min': None, 'quantized_dimension': 0, 'scale': None, 'zero_point': None}</td>
+</tr>
+<tr>
+<td>18</td><td>while/MatMul_15</td>
+<td>FLOAT32</td>
+<td>[1, 512]</td>
+<td>[-1, 512]</td>
+<td>137</td>
+<td>{'details': None, 'details_type': 0, 'max': None, 'min': None, 'quantized_dimension': 0, 'scale': None, 'zero_point': None}</td>
+</tr>
+<tr>
+<td>19</td><td>while/TensorArrayV2Read/TensorListGetItem1</td>
+<td>FLOAT32</td>
+<td>[1, 128]</td>
+<td>[-1, 128]</td>
+<td>138</td>
+<td>{'details': None, 'details_type': 0, 'max': None, 'min': None, 'quantized_dimension': 0, 'scale': None, 'zero_point': None}</td>
+</tr>
+<tr>
+<td>20</td><td>while/MatMul3</td>
+<td>FLOAT32</td>
+<td>[1, 512]</td>
+<td>[-1, 512]</td>
+<td>139</td>
+<td>{'details': None, 'details_type': 0, 'max': None, 'min': None, 'quantized_dimension': 0, 'scale': None, 'zero_point': None}</td>
+</tr>
+<tr>
+<td>21</td><td>while/add1</td>
+<td>FLOAT32</td>
+<td>[1, 512]</td>
+<td>[-1, 512]</td>
+<td>140</td>
+<td>{'details': None, 'details_type': 0, 'max': None, 'min': None, 'quantized_dimension': 0, 'scale': None, 'zero_point': None}</td>
+</tr>
+<tr>
+<td>22</td><td>while/BiasAdd1</td>
+<td>FLOAT32</td>
+<td>[1, 512]</td>
+<td>[-1, 512]</td>
+<td>141</td>
+<td>{'details': None, 'details_type': 0, 'max': None, 'min': None, 'quantized_dimension': 0, 'scale': None, 'zero_point': None}</td>
+</tr>
+<tr>
+<td>23</td><td>while/split4</td>
+<td>FLOAT32</td>
+<td>[1, 128]</td>
+<td>[-1, 128]</td>
+<td>142</td>
+<td>{'details': None, 'details_type': 0, 'max': None, 'min': None, 'quantized_dimension': 0, 'scale': None, 'zero_point': None}</td>
+</tr>
+<tr>
+<td>24</td><td>while/split5</td>
+<td>FLOAT32</td>
+<td>[1, 128]</td>
+<td>[-1, 128]</td>
+<td>143</td>
+<td>{'details': None, 'details_type': 0, 'max': None, 'min': None, 'quantized_dimension': 0, 'scale': None, 'zero_point': None}</td>
+</tr>
+<tr>
+<td>25</td><td>while/split6</td>
+<td>FLOAT32</td>
+<td>[1, 128]</td>
+<td>[-1, 128]</td>
+<td>144</td>
+<td>{'details': None, 'details_type': 0, 'max': None, 'min': None, 'quantized_dimension': 0, 'scale': None, 'zero_point': None}</td>
+</tr>
+<tr>
+<td>26</td><td>while/split7</td>
+<td>FLOAT32</td>
+<td>[1, 128]</td>
+<td>[-1, 128]</td>
+<td>145</td>
+<td>{'details': None, 'details_type': 0, 'max': None, 'min': None, 'quantized_dimension': 0, 'scale': None, 'zero_point': None}</td>
+</tr>
+<tr>
+<td>27</td><td>while/Sigmoid1</td>
+<td>FLOAT32</td>
+<td>[1, 128]</td>
+<td>[-1, 128]</td>
+<td>146</td>
+<td>{'details': None, 'details_type': 0, 'max': None, 'min': None, 'quantized_dimension': 0, 'scale': None, 'zero_point': None}</td>
+</tr>
+<tr>
+<td>28</td><td>while/Sigmoid_11</td>
+<td>FLOAT32</td>
+<td>[1, 128]</td>
+<td>[-1, 128]</td>
+<td>147</td>
+<td>{'details': None, 'details_type': 0, 'max': None, 'min': None, 'quantized_dimension': 0, 'scale': None, 'zero_point': None}</td>
+</tr>
+<tr>
+<td>29</td><td>while/mul1</td>
+<td>FLOAT32</td>
+<td>[1, 128]</td>
+<td>[-1, 128]</td>
+<td>148</td>
+<td>{'details': None, 'details_type': 0, 'max': None, 'min': None, 'quantized_dimension': 0, 'scale': None, 'zero_point': None}</td>
+</tr>
+<tr>
+<td>30</td><td>while/Sigmoid_21</td>
+<td>FLOAT32</td>
+<td>[1, 128]</td>
+<td>[-1, 128]</td>
+<td>149</td>
+<td>{'details': None, 'details_type': 0, 'max': None, 'min': None, 'quantized_dimension': 0, 'scale': None, 'zero_point': None}</td>
+</tr>
+<tr>
+<td>31</td><td>while/Tanh1</td>
+<td>FLOAT32</td>
+<td>[1, 128]</td>
+<td>[-1, 128]</td>
+<td>150</td>
+<td>{'details': None, 'details_type': 0, 'max': None, 'min': None, 'quantized_dimension': 0, 'scale': None, 'zero_point': None}</td>
+</tr>
+<tr>
+<td>32</td><td>while/mul_11</td>
+<td>FLOAT32</td>
+<td>[1, 128]</td>
+<td>[-1, 128]</td>
+<td>151</td>
+<td>{'details': None, 'details_type': 0, 'max': None, 'min': None, 'quantized_dimension': 0, 'scale': None, 'zero_point': None}</td>
+</tr>
+<tr>
+<td>33</td><td>while/add_11</td>
+<td>FLOAT32</td>
+<td>[1, 128]</td>
+<td>[-1, 128]</td>
+<td>152</td>
+<td>{'details': None, 'details_type': 0, 'max': None, 'min': None, 'quantized_dimension': 0, 'scale': None, 'zero_point': None}</td>
+</tr>
+<tr>
+<td>34</td><td>while/Tanh_11</td>
+<td>FLOAT32</td>
+<td>[1, 128]</td>
+<td>[-1, 128]</td>
+<td>153</td>
+<td>{'details': None, 'details_type': 0, 'max': None, 'min': None, 'quantized_dimension': 0, 'scale': None, 'zero_point': None}</td>
+</tr>
+<tr>
+<td>35</td><td>while/mul_21</td>
+<td>FLOAT32</td>
+<td>[1, 128]</td>
+<td>[-1, 128]</td>
+<td>154</td>
+<td>{'details': None, 'details_type': 0, 'max': None, 'min': None, 'quantized_dimension': 0, 'scale': None, 'zero_point': None}</td>
+</tr>
+<tr>
+<td>36</td><td>while/TensorArrayV2Write/TensorListSetItem18</td>
+<td>INT32</td>
+<td>[1]</td>
+<td>None</td>
+<td>155</td>
+<td>{'details': None, 'details_type': 0, 'max': None, 'min': None, 'quantized_dimension': 0, 'scale': None, 'zero_point': None}</td>
+</tr>
+<tr>
+<td>37</td><td>while/TensorArrayV2Write/TensorListSetItem19</td>
+<td>INT32</td>
+<td>[3]</td>
+<td>None</td>
+<td>156</td>
+<td>{'details': None, 'details_type': 0, 'max': None, 'min': None, 'quantized_dimension': 0, 'scale': None, 'zero_point': None}</td>
+</tr>
+<tr>
+<td>38</td><td>while/TensorArrayV2Write/TensorListSetItem20</td>
+<td>FLOAT32</td>
+<td>[1, 1, 1]</td>
+<td>[-1, -1, -1]</td>
+<td>157</td>
+<td>{'details': None, 'details_type': 0, 'max': None, 'min': None, 'quantized_dimension': 0, 'scale': None, 'zero_point': None}</td>
+</tr>
+<tr>
+<td>39</td><td>while/TensorArrayV2Write/TensorListSetItem21</td>
+<td>INT32</td>
+<td>[1]</td>
+<td>None</td>
+<td>158</td>
+<td>{'details': None, 'details_type': 0, 'max': None, 'min': None, 'quantized_dimension': 0, 'scale': None, 'zero_point': None}</td>
+</tr>
+<tr>
+<td>40</td><td>while/TensorArrayV2Write/TensorListSetItem22</td>
+<td>INT32</td>
+<td>[3]</td>
+<td>None</td>
+<td>159</td>
+<td>{'details': None, 'details_type': 0, 'max': None, 'min': None, 'quantized_dimension': 0, 'scale': None, 'zero_point': None}</td>
+</tr>
+<tr>
+<td>41</td><td>while/TensorArrayV2Write/TensorListSetItem23</td>
+<td>FLOAT32</td>
+<td>[1, 1, 1]</td>
+<td>[-1, -1, -1]</td>
+<td>160</td>
+<td>{'details': None, 'details_type': 0, 'max': None, 'min': None, 'quantized_dimension': 0, 'scale': None, 'zero_point': None}</td>
+</tr>
+<tr>
+<td>42</td><td>while/TensorArrayV2Write/TensorListSetItem24</td>
+<td>FLOAT32</td>
+<td>[1, 1, 128]</td>
+<td>[1, -1, 128]</td>
+<td>161</td>
+<td>{'details': None, 'details_type': 0, 'max': None, 'min': None, 'quantized_dimension': 0, 'scale': None, 'zero_point': None}</td>
+</tr>
+<tr>
+<td>43</td><td>while/TensorArrayV2Write/TensorListSetItem25</td>
+<td>FLOAT32</td>
+<td>[1, 1, 128]</td>
+<td>[-1, -1, 128]</td>
+<td>162</td>
+<td>{'details': None, 'details_type': 0, 'max': None, 'min': None, 'quantized_dimension': 0, 'scale': None, 'zero_point': None}</td>
+</tr>
+<tr>
+<td>44</td><td>while/add_31</td>
+<td>INT32</td>
+<td>None</td>
+<td>None</td>
+<td>163</td>
+<td>{'details': None, 'details_type': 0, 'max': None, 'min': None, 'quantized_dimension': 0, 'scale': None, 'zero_point': None}</td>
+</tr>
+</table>
+<h3>Ops</h3>
+<table><tr>
+<tr>
+<th>index</th><th>inputs</th><th>outputs</th><th>builtin_options</th><th>opcode_index</th></tr>
+<tr>
+<td>0</td><td><span class='tooltip'><span class='tooltipcontent'>1 arg1 INT32 NoneNone<br>16 while/TensorArrayV2Write/TensorListSetItem17 INT32 NoneNone<br></span>[1, 16]</span></td>
+<td><span class='tooltip'><span class='tooltipcontent'>17 while/add_21 INT32 NoneNone<br></span>[17]</span></td>
+<td>{'fused_activation_function': 0, 'pot_scale_int16': True}</td>
+<td>ADD (12)</td>
+</tr>
+<tr>
+<td>1</td><td><span class='tooltip'><span class='tooltipcontent'>3 arg3 FLOAT32 [1, 128][-1, 128]<br>11 while/MatMul_13 INT8 [512, 128]None<br>-1 while/add_31 INT32 NoneNone<br></span>[3, 11, -1]</span></td>
+<td><span class='tooltip'><span class='tooltipcontent'>18 while/MatMul_15 FLOAT32 [1, 512][-1, 512]<br></span>[18]</span></td>
+<td>{'asymmetric_quantize_inputs': True, 'fused_activation_function': 0, 'keep_num_dims': False, 'weights_format': 0}</td>
+<td>FULLY_CONNECTED (9)</td>
+</tr>
+<tr>
+<td>2</td><td><span class='tooltip'><span class='tooltipcontent'>6 arg6 FLOAT32 [1, 1, 128][-1, -1, 128]<br>1 arg1 INT32 NoneNone<br></span>[6, 1]</span></td>
+<td><span class='tooltip'><span class='tooltipcontent'>19 while/TensorArrayV2Read/TensorListGetItem1 FLOAT32 [1, 128][-1, 128]<br></span>[19]</span></td>
+<td>{'axis': 0, 'batch_dims': 0}</td>
+<td>GATHER (13)</td>
+</tr>
+<tr>
+<td>3</td><td><span class='tooltip'><span class='tooltipcontent'>19 while/TensorArrayV2Read/TensorListGetItem1 FLOAT32 [1, 128][-1, 128]<br>10 while/MatMul2 INT8 [512, 128]None<br>-1 while/add_31 INT32 NoneNone<br></span>[19, 10, -1]</span></td>
+<td><span class='tooltip'><span class='tooltipcontent'>20 while/MatMul3 FLOAT32 [1, 512][-1, 512]<br></span>[20]</span></td>
+<td>{'asymmetric_quantize_inputs': True, 'fused_activation_function': 0, 'keep_num_dims': False, 'weights_format': 0}</td>
+<td>FULLY_CONNECTED (9)</td>
+</tr>
+<tr>
+<td>4</td><td><span class='tooltip'><span class='tooltipcontent'>20 while/MatMul3 FLOAT32 [1, 512][-1, 512]<br>18 while/MatMul_15 FLOAT32 [1, 512][-1, 512]<br></span>[20, 18]</span></td>
+<td><span class='tooltip'><span class='tooltipcontent'>21 while/add1 FLOAT32 [1, 512][-1, 512]<br></span>[21]</span></td>
+<td>{'fused_activation_function': 0, 'pot_scale_int16': True}</td>
+<td>ADD (12)</td>
+</tr>
+<tr>
+<td>5</td><td><span class='tooltip'><span class='tooltipcontent'>21 while/add1 FLOAT32 [1, 512][-1, 512]<br>9 unknown_121 FLOAT32 [512]None<br></span>[21, 9]</span></td>
+<td><span class='tooltip'><span class='tooltipcontent'>22 while/BiasAdd1 FLOAT32 [1, 512][-1, 512]<br></span>[22]</span></td>
+<td>{'fused_activation_function': 0, 'pot_scale_int16': True}</td>
+<td>ADD (12)</td>
+</tr>
+<tr>
+<td>6</td><td><span class='tooltip'><span class='tooltipcontent'>16 while/TensorArrayV2Write/TensorListSetItem17 INT32 NoneNone<br>22 while/BiasAdd1 FLOAT32 [1, 512][-1, 512]<br></span>[16, 22]</span></td>
+<td><span class='tooltip'><span class='tooltipcontent'>23 while/split4 FLOAT32 [1, 128][-1, 128]<br>24 while/split5 FLOAT32 [1, 128][-1, 128]<br>25 while/split6 FLOAT32 [1, 128][-1, 128]<br>26 while/split7 FLOAT32 [1, 128][-1, 128]<br></span>[23, 24, 25, 26]</span></td>
+<td>{'num_splits': 4}</td>
+<td>SPLIT (14)</td>
+</tr>
+<tr>
+<td>7</td><td><span class='tooltip'><span class='tooltipcontent'>23 while/split4 FLOAT32 [1, 128][-1, 128]<br></span>[23]</span></td>
+<td><span class='tooltip'><span class='tooltipcontent'>27 while/Sigmoid1 FLOAT32 [1, 128][-1, 128]<br></span>[27]</span></td>
+<td>None</td>
+<td>LOGISTIC (15)</td>
+</tr>
+<tr>
+<td>8</td><td><span class='tooltip'><span class='tooltipcontent'>24 while/split5 FLOAT32 [1, 128][-1, 128]<br></span>[24]</span></td>
+<td><span class='tooltip'><span class='tooltipcontent'>28 while/Sigmoid_11 FLOAT32 [1, 128][-1, 128]<br></span>[28]</span></td>
+<td>None</td>
+<td>LOGISTIC (15)</td>
+</tr>
+<tr>
+<td>9</td><td><span class='tooltip'><span class='tooltipcontent'>28 while/Sigmoid_11 FLOAT32 [1, 128][-1, 128]<br>4 arg4 FLOAT32 [1, 128][-1, 128]<br></span>[28, 4]</span></td>
+<td><span class='tooltip'><span class='tooltipcontent'>29 while/mul1 FLOAT32 [1, 128][-1, 128]<br></span>[29]</span></td>
+<td>{'fused_activation_function': 0}</td>
+<td>MUL (16)</td>
+</tr>
+<tr>
+<td>10</td><td><span class='tooltip'><span class='tooltipcontent'>26 while/split7 FLOAT32 [1, 128][-1, 128]<br></span>[26]</span></td>
+<td><span class='tooltip'><span class='tooltipcontent'>30 while/Sigmoid_21 FLOAT32 [1, 128][-1, 128]<br></span>[30]</span></td>
+<td>None</td>
+<td>LOGISTIC (15)</td>
+</tr>
+<tr>
+<td>11</td><td><span class='tooltip'><span class='tooltipcontent'>25 while/split6 FLOAT32 [1, 128][-1, 128]<br></span>[25]</span></td>
+<td><span class='tooltip'><span class='tooltipcontent'>31 while/Tanh1 FLOAT32 [1, 128][-1, 128]<br></span>[31]</span></td>
+<td>None</td>
+<td>TANH (17)</td>
+</tr>
+<tr>
+<td>12</td><td><span class='tooltip'><span class='tooltipcontent'>27 while/Sigmoid1 FLOAT32 [1, 128][-1, 128]<br>31 while/Tanh1 FLOAT32 [1, 128][-1, 128]<br></span>[27, 31]</span></td>
+<td><span class='tooltip'><span class='tooltipcontent'>32 while/mul_11 FLOAT32 [1, 128][-1, 128]<br></span>[32]</span></td>
+<td>{'fused_activation_function': 0}</td>
+<td>MUL (16)</td>
+</tr>
+<tr>
+<td>13</td><td><span class='tooltip'><span class='tooltipcontent'>29 while/mul1 FLOAT32 [1, 128][-1, 128]<br>32 while/mul_11 FLOAT32 [1, 128][-1, 128]<br></span>[29, 32]</span></td>
+<td><span class='tooltip'><span class='tooltipcontent'>33 while/add_11 FLOAT32 [1, 128][-1, 128]<br></span>[33]</span></td>
+<td>{'fused_activation_function': 0, 'pot_scale_int16': True}</td>
+<td>ADD (12)</td>
+</tr>
+<tr>
+<td>14</td><td><span class='tooltip'><span class='tooltipcontent'>33 while/add_11 FLOAT32 [1, 128][-1, 128]<br></span>[33]</span></td>
+<td><span class='tooltip'><span class='tooltipcontent'>34 while/Tanh_11 FLOAT32 [1, 128][-1, 128]<br></span>[34]</span></td>
+<td>None</td>
+<td>TANH (17)</td>
+</tr>
+<tr>
+<td>15</td><td><span class='tooltip'><span class='tooltipcontent'>30 while/Sigmoid_21 FLOAT32 [1, 128][-1, 128]<br>34 while/Tanh_11 FLOAT32 [1, 128][-1, 128]<br></span>[30, 34]</span></td>
+<td><span class='tooltip'><span class='tooltipcontent'>35 while/mul_21 FLOAT32 [1, 128][-1, 128]<br></span>[35]</span></td>
+<td>{'fused_activation_function': 0}</td>
+<td>MUL (16)</td>
+</tr>
+<tr>
+<td>16</td><td><span class='tooltip'><span class='tooltipcontent'>1 arg1 INT32 NoneNone<br>8 strided_slice/stack_1;StatefulPartitionedCall/sequential/lstm/PartitionedCall/strided_slice/stack_12 INT32 [1]None<br></span>[1, 8]</span></td>
+<td><span class='tooltip'><span class='tooltipcontent'>36 while/TensorArrayV2Write/TensorListSetItem18 INT32 [1]None<br></span>[36]</span></td>
+<td>None</td>
+<td>RESHAPE (1)</td>
+</tr>
+<tr>
+<td>17</td><td><span class='tooltip'><span class='tooltipcontent'>36 while/TensorArrayV2Write/TensorListSetItem18 INT32 [1]None<br>14 while/TensorArrayV2Write/TensorListSetItem15 INT32 [2]None<br></span>[36, 14]</span></td>
+<td><span class='tooltip'><span class='tooltipcontent'>37 while/TensorArrayV2Write/TensorListSetItem19 INT32 [3]None<br></span>[37]</span></td>
+<td>{'axis': 0, 'fused_activation_function': 0}</td>
+<td>CONCATENATION (6)</td>
+</tr>
+<tr>
+<td>18</td><td><span class='tooltip'><span class='tooltipcontent'>2 arg2 FLOAT32 [1, 1, 128][-1, -1, 128]<br>15 while/TensorArrayV2Write/TensorListSetItem16 INT32 [3]None<br>37 while/TensorArrayV2Write/TensorListSetItem19 INT32 [3]None<br></span>[2, 15, 37]</span></td>
+<td><span class='tooltip'><span class='tooltipcontent'>38 while/TensorArrayV2Write/TensorListSetItem20 FLOAT32 [1, 1, 1][-1, -1, -1]<br></span>[38]</span></td>
+<td>None</td>
+<td>SLICE (18)</td>
+</tr>
+<tr>
+<td>19</td><td><span class='tooltip'><span class='tooltipcontent'>17 while/add_21 INT32 NoneNone<br>8 strided_slice/stack_1;StatefulPartitionedCall/sequential/lstm/PartitionedCall/strided_slice/stack_12 INT32 [1]None<br></span>[17, 8]</span></td>
+<td><span class='tooltip'><span class='tooltipcontent'>39 while/TensorArrayV2Write/TensorListSetItem21 INT32 [1]None<br></span>[39]</span></td>
+<td>None</td>
+<td>RESHAPE (1)</td>
+</tr>
+<tr>
+<td>20</td><td><span class='tooltip'><span class='tooltipcontent'>39 while/TensorArrayV2Write/TensorListSetItem21 INT32 [1]None<br>13 while/TensorArrayV2Write/TensorListSetItem14 INT32 [2]None<br></span>[39, 13]</span></td>
+<td><span class='tooltip'><span class='tooltipcontent'>40 while/TensorArrayV2Write/TensorListSetItem22 INT32 [3]None<br></span>[40]</span></td>
+<td>{'axis': 0, 'fused_activation_function': 0}</td>
+<td>CONCATENATION (6)</td>
+</tr>
+<tr>
+<td>21</td><td><span class='tooltip'><span class='tooltipcontent'>2 arg2 FLOAT32 [1, 1, 128][-1, -1, 128]<br>40 while/TensorArrayV2Write/TensorListSetItem22 INT32 [3]None<br>12 while/TensorArrayV2Write/TensorListSetItem13 INT32 [3]None<br></span>[2, 40, 12]</span></td>
+<td><span class='tooltip'><span class='tooltipcontent'>41 while/TensorArrayV2Write/TensorListSetItem23 FLOAT32 [1, 1, 1][-1, -1, -1]<br></span>[41]</span></td>
+<td>None</td>
+<td>SLICE (18)</td>
+</tr>
+<tr>
+<td>22</td><td><span class='tooltip'><span class='tooltipcontent'>35 while/mul_21 FLOAT32 [1, 128][-1, 128]<br>7 TensorArrayV2_1;StatefulPartitionedCall/sequential/lstm/PartitionedCall/TensorArrayV2_15 INT32 NoneNone<br></span>[35, 7]</span></td>
+<td><span class='tooltip'><span class='tooltipcontent'>42 while/TensorArrayV2Write/TensorListSetItem24 FLOAT32 [1, 1, 128][1, -1, 128]<br></span>[42]</span></td>
+<td>{}</td>
+<td>EXPAND_DIMS (19)</td>
+</tr>
+<tr>
+<td>23</td><td><span class='tooltip'><span class='tooltipcontent'>38 while/TensorArrayV2Write/TensorListSetItem20 FLOAT32 [1, 1, 1][-1, -1, -1]<br>42 while/TensorArrayV2Write/TensorListSetItem24 FLOAT32 [1, 1, 128][1, -1, 128]<br>41 while/TensorArrayV2Write/TensorListSetItem23 FLOAT32 [1, 1, 1][-1, -1, -1]<br></span>[38, 42, 41]</span></td>
+<td><span class='tooltip'><span class='tooltipcontent'>43 while/TensorArrayV2Write/TensorListSetItem25 FLOAT32 [1, 1, 128][-1, -1, 128]<br></span>[43]</span></td>
+<td>{'axis': 0, 'fused_activation_function': 0}</td>
+<td>CONCATENATION (6)</td>
+</tr>
+<tr>
+<td>24</td><td><span class='tooltip'><span class='tooltipcontent'>0 arg0 INT32 NoneNone<br>16 while/TensorArrayV2Write/TensorListSetItem17 INT32 NoneNone<br></span>[0, 16]</span></td>
+<td><span class='tooltip'><span class='tooltipcontent'>44 while/add_31 INT32 NoneNone<br></span>[44]</span></td>
+<td>{'fused_activation_function': 0, 'pot_scale_int16': True}</td>
+<td>ADD (12)</td>
+</tr>
+</table>
+<svg id='subgraph4' width='1600' height='900'></svg>
+
+  <script>
+    function buildGraph() {
+      // Build graph data
+      var graph = {"nodes": [{"id": "o0", "name": "ADD (12)", "group": 2, "x": 200, "y": 200}, {"id": "o1", "name": "FULLY_CONNECTED (9)", "group": 2, "x": 200, "y": 400}, {"id": "o2", "name": "GATHER (13)", "group": 2, "x": 200, "y": 600}, {"id": "o3", "name": "FULLY_CONNECTED (9)", "group": 2, "x": 200, "y": 800}, {"id": "o4", "name": "ADD (12)", "group": 2, "x": 200, "y": 1000}, {"id": "o5", "name": "ADD (12)", "group": 2, "x": 200, "y": 1200}, {"id": "o6", "name": "SPLIT (14)", "group": 2, "x": 200, "y": 1400}, {"id": "o7", "name": "LOGISTIC (15)", "group": 2, "x": 200, "y": 1600}, {"id": "o8", "name": "LOGISTIC (15)", "group": 2, "x": 200, "y": 1800}, {"id": "o9", "name": "MUL (16)", "group": 2, "x": 200, "y": 2000}, {"id": "o10", "name": "LOGISTIC (15)", "group": 2, "x": 200, "y": 2200}, {"id": "o11", "name": "TANH (17)", "group": 2, "x": 200, "y": 2400}, {"id": "o12", "name": "MUL (16)", "group": 2, "x": 200, "y": 2600}, {"id": "o13", "name": "ADD (12)", "group": 2, "x": 200, "y": 2800}, {"id": "o14", "name": "TANH (17)", "group": 2, "x": 200, "y": 3000}, {"id": "o15", "name": "MUL (16)", "group": 2, "x": 200, "y": 3200}, {"id": "o16", "name": "RESHAPE (1)", "group": 2, "x": 200, "y": 3400}, {"id": "o17", "name": "CONCATENATION (6)", "group": 2, "x": 200, "y": 3600}, {"id": "o18", "name": "SLICE (18)", "group": 2, "x": 200, "y": 3800}, {"id": "o19", "name": "RESHAPE (1)", "group": 2, "x": 200, "y": 4000}, {"id": "o20", "name": "CONCATENATION (6)", "group": 2, "x": 200, "y": 4200}, {"id": "o21", "name": "SLICE (18)", "group": 2, "x": 200, "y": 4400}, {"id": "o22", "name": "EXPAND_DIMS (19)", "group": 2, "x": 200, "y": 4600}, {"id": "o23", "name": "CONCATENATION (6)", "group": 2, "x": 200, "y": 4800}, {"id": "o24", "name": "ADD (12)", "group": 2, "x": 200, "y": 5000}, {"id": "t0", "name": "[] (0)", "group": 1, "x": 170, "y": 4900.0}, {"id": "t1", "name": "[] (1)", "group": 1, "x": 170, "y": 100.0}, {"id": "t2", "name": "[] (2)", "group": 1, "x": 170, "y": 3700.0}, {"id": "t3", "name": "[] (3)", "group": 1, "x": 170, "y": 300.0}, {"id": "t4", "name": "[] (4)", "group": 1, "x": 340, "y": 1900.0}, {"id": "t5", "name": "[] (5)", "group": 1, "x": 0, "y": 0}, {"id": "t6", "name": "[] (6)", "group": 1, "x": 170, "y": 500.0}, {"id": "t7", "name": "[] (7)", "group": 1, "x": 340, "y": 4500.0}, {"id": "t8", "name": "[] (8)", "group": 1, "x": 340, "y": 3300.0}, {"id": "t9", "name": "[] (9)", "group": 1, "x": 340, "y": 1100.0}, {"id": "t10", "name": "[] (10)", "group": 1, "x": 340, "y": 700.0}, {"id": "t11", "name": "[] (11)", "group": 1, "x": 340, "y": 300.0}, {"id": "t12", "name": "[] (12)", "group": 1, "x": 510, "y": 4300.0}, {"id": "t13", "name": "[] (13)", "group": 1, "x": 340, "y": 4100.0}, {"id": "t14", "name": "[] (14)", "group": 1, "x": 340, "y": 3500.0}, {"id": "t15", "name": "[] (15)", "group": 1, "x": 340, "y": 3700.0}, {"id": "t16", "name": "[] (16)", "group": 1, "x": 340, "y": 100.0}, {"id": "t17", "name": "[] (17)", "group": 1, "x": 170, "y": 3900.0}, {"id": "t18", "name": "[] (18)", "group": 1, "x": 340, "y": 900.0}, {"id": "t19", "name": "[] (19)", "group": 1, "x": 170, "y": 700.0}, {"id": "t20", "name": "[] (20)", "group": 1, "x": 170, "y": 900.0}, {"id": "t21", "name": "[] (21)", "group": 1, "x": 170, "y": 1100.0}, {"id": "t22", "name": "[] (22)", "group": 1, "x": 340, "y": 1300.0}, {"id": "t23", "name": "[] (23)", "group": 1, "x": 170, "y": 1500.0}, {"id": "t24", "name": "[] (24)", "group": 1, "x": 170, "y": 1700.0}, {"id": "t25", "name": "[] (25)", "group": 1, "x": 170, "y": 2300.0}, {"id": "t26", "name": "[] (26)", "group": 1, "x": 170, "y": 2100.0}, {"id": "t27", "name": "[] (27)", "group": 1, "x": 170, "y": 2500.0}, {"id": "t28", "name": "[] (28)", "group": 1, "x": 170, "y": 1900.0}, {"id": "t29", "name": "[] (29)", "group": 1, "x": 170, "y": 2700.0}, {"id": "t30", "name": "[] (30)", "group": 1, "x": 170, "y": 3100.0}, {"id": "t31", "name": "[] (31)", "group": 1, "x": 340, "y": 2500.0}, {"id": "t32", "name": "[] (32)", "group": 1, "x": 340, "y": 2700.0}, {"id": "t33", "name": "[] (33)", "group": 1, "x": 170, "y": 2900.0}, {"id": "t34", "name": "[] (34)", "group": 1, "x": 340, "y": 3100.0}, {"id": "t35", "name": "[] (35)", "group": 1, "x": 170, "y": 4500.0}, {"id": "t36", "name": "[] (36)", "group": 1, "x": 170, "y": 3500.0}, {"id": "t37", "name": "[] (37)", "group": 1, "x": 510, "y": 3700.0}, {"id": "t38", "name": "[] (38)", "group": 1, "x": 170, "y": 4700.0}, {"id": "t39", "name": "[] (39)", "group": 1, "x": 170, "y": 4100.0}, {"id": "t40", "name": "[] (40)", "group": 1, "x": 340, "y": 4300.0}, {"id": "t41", "name": "[] (41)", "group": 1, "x": 510, "y": 4700.0}, {"id": "t42", "name": "[] (42)", "group": 1, "x": 340, "y": 4700.0}, {"id": "t43", "name": "[] (43)", "group": 1, "x": 170, "y": 4900.0}, {"id": "t44", "name": "[] (44)", "group": 1, "x": 170, "y": 5100.0}], "edges": [{"source": "t1", "target": "o0"}, {"source": "t16", "target": "o0"}, {"target": "t17", "source": "o0"}, {"source": "t3", "target": "o1"}, {"source": "t11", "target": "o1"}, {"source": "t-1", "target": "o1"}, {"target": "t18", "source": "o1"}, {"source": "t6", "target": "o2"}, {"source": "t1", "target": "o2"}, {"target": "t19", "source": "o2"}, {"source": "t19", "target": "o3"}, {"source": "t10", "target": "o3"}, {"source": "t-1", "target": "o3"}, {"target": "t20", "source": "o3"}, {"source": "t20", "target": "o4"}, {"source": "t18", "target": "o4"}, {"target": "t21", "source": "o4"}, {"source": "t21", "target": "o5"}, {"source": "t9", "target": "o5"}, {"target": "t22", "source": "o5"}, {"source": "t16", "target": "o6"}, {"source": "t22", "target": "o6"}, {"target": "t23", "source": "o6"}, {"target": "t24", "source": "o6"}, {"target": "t25", "source": "o6"}, {"target": "t26", "source": "o6"}, {"source": "t23", "target": "o7"}, {"target": "t27", "source": "o7"}, {"source": "t24", "target": "o8"}, {"target": "t28", "source": "o8"}, {"source": "t28", "target": "o9"}, {"source": "t4", "target": "o9"}, {"target": "t29", "source": "o9"}, {"source": "t26", "target": "o10"}, {"target": "t30", "source": "o10"}, {"source": "t25", "target": "o11"}, {"target": "t31", "source": "o11"}, {"source": "t27", "target": "o12"}, {"source": "t31", "target": "o12"}, {"target": "t32", "source": "o12"}, {"source": "t29", "target": "o13"}, {"source": "t32", "target": "o13"}, {"target": "t33", "source": "o13"}, {"source": "t33", "target": "o14"}, {"target": "t34", "source": "o14"}, {"source": "t30", "target": "o15"}, {"source": "t34", "target": "o15"}, {"target": "t35", "source": "o15"}, {"source": "t1", "target": "o16"}, {"source": "t8", "target": "o16"}, {"target": "t36", "source": "o16"}, {"source": "t36", "target": "o17"}, {"source": "t14", "target": "o17"}, {"target": "t37", "source": "o17"}, {"source": "t2", "target": "o18"}, {"source": "t15", "target": "o18"}, {"source": "t37", "target": "o18"}, {"target": "t38", "source": "o18"}, {"source": "t17", "target": "o19"}, {"source": "t8", "target": "o19"}, {"target": "t39", "source": "o19"}, {"source": "t39", "target": "o20"}, {"source": "t13", "target": "o20"}, {"target": "t40", "source": "o20"}, {"source": "t2", "target": "o21"}, {"source": "t40", "target": "o21"}, {"source": "t12", "target": "o21"}, {"target": "t41", "source": "o21"}, {"source": "t35", "target": "o22"}, {"source": "t7", "target": "o22"}, {"target": "t42", "source": "o22"}, {"source": "t38", "target": "o23"}, {"source": "t42", "target": "o23"}, {"source": "t41", "target": "o23"}, {"target": "t43", "source": "o23"}, {"source": "t0", "target": "o24"}, {"source": "t16", "target": "o24"}, {"target": "t44", "source": "o24"}]};
+      var svg = d3.select("#subgraph4")
+      var width = svg.attr("width");
+      var height = svg.attr("height");
+      // Make the graph scrollable.
+      svg = svg.call(d3.zoom().on("zoom", function() {
+        svg.attr("transform", d3.event.transform);
+      })).append("g");
+      var color = d3.scaleOrdinal(d3.schemeDark2);
+      var simulation = d3.forceSimulation()
+          .force("link", d3.forceLink().id(function(d) {return d.id;}))
+          .force("charge", d3.forceManyBody())
+          .force("center", d3.forceCenter(0.5 * width, 0.5 * height));
+      var edge = svg.append("g").attr("class", "edges").selectAll("line")
+        .data(graph.edges).enter().append("path").attr("stroke","black").attr("fill","none")
+      // Make the node group
+      var node = svg.selectAll(".nodes")
+        .data(graph.nodes)
+        .enter().append("g")
+        .attr("x", function(d){return d.x})
+        .attr("y", function(d){return d.y})
+        .attr("transform", function(d) {
+          return "translate( " + d.x + ", " + d.y + ")"
+        })
+        .attr("class", "nodes")
+          .call(d3.drag()
+              .on("start", function(d) {
+                if(!d3.event.active) simulation.alphaTarget(1.0).restart();
+                d.fx = d.x;d.fy = d.y;
+              })
+              .on("drag", function(d) {
+                d.fx = d3.event.x; d.fy = d3.event.y;
+              })
+              .on("end", function(d) {
+                if (!d3.event.active) simulation.alphaTarget(0);
+                d.fx = d.fy = null;
+              }));
+      // Within the group, draw a box for the node position and text
+      // on the side.
+      var node_width = 150;
+      var node_height = 30;
+      node.append("rect")
+          .attr("r", "5px")
+          .attr("width", node_width)
+          .attr("height", node_height)
+          .attr("rx", function(d) { return d.group == 1 ? 1 : 10; })
+          .attr("stroke", "#000000")
+          .attr("fill", function(d) { return d.group == 1 ? "#dddddd" : "#000000"; })
+      node.append("text")
+          .text(function(d) { return d.name; })
+          .attr("x", 5)
+          .attr("y", 20)
+          .attr("fill", function(d) { return d.group == 1 ? "#000000" : "#eeeeee"; })
+      // Setup force parameters and update position callback
+      var node = svg.selectAll(".nodes")
+        .data(graph.nodes);
+      // Bind the links
+      var name_to_g = {}
+      node.each(function(data, index, nodes) {
+        console.log(data.id)
+        name_to_g[data.id] = this;
+      });
+      function proc(w, t) {
+        return parseInt(w.getAttribute(t));
+      }
+      edge.attr("d", function(d) {
+        function lerp(t, a, b) {
+          return (1.0-t) * a + t * b;
+        }
+        var x1 = proc(name_to_g[d.source],"x") + node_width /2;
+        var y1 = proc(name_to_g[d.source],"y") + node_height;
+        var x2 = proc(name_to_g[d.target],"x") + node_width /2;
+        var y2 = proc(name_to_g[d.target],"y");
+        var s = "M " + x1 + " " + y1
+            + " C " + x1 + " " + lerp(.5, y1, y2)
+            + " " + x2 + " " + lerp(.5, y1, y2)
+            + " " + x2  + " " + y2
+      return s;
+    });
+  }
+  buildGraph()
+</script>
+</div><h2>Buffers</h2>
+<table><tr>
+<tr>
+<th>index</th><th>data</th></tr>
+<tr>
+<td>0</td><td>--</td>
+</tr>
+<tr>
+<td>1</td><td>--</td>
+</tr>
+<tr>
+<td>2</td><td>12 bytes</td>
+</tr>
+<tr>
+<td>3</td><td>256 bytes</td>
+</tr>
+<tr>
+<td>4</td><td>256 bytes</td>
+</tr>
+<tr>
+<td>5</td><td>256 bytes</td>
+</tr>
+<tr>
+<td>6</td><td>256 bytes</td>
+</tr>
+<tr>
+<td>7</td><td>12 bytes</td>
+</tr>
+<tr>
+<td>8</td><td>12 bytes</td>
+</tr>
+<tr>
+<td>9</td><td>12 bytes</td>
+</tr>
+<tr>
+<td>10</td><td>20480 bytes</td>
+</tr>
+<tr>
+<td>11</td><td>20480 bytes</td>
+</tr>
+<tr>
+<td>12</td><td>20480 bytes</td>
+</tr>
+<tr>
+<td>13</td><td>1280 bytes</td>
+</tr>
+<tr>
+<td>14</td><td>57344 bytes</td>
+</tr>
+<tr>
+<td>15</td><td>512 bytes</td>
+</tr>
+<tr>
+<td>16</td><td>4 bytes</td>
+</tr>
+<tr>
+<td>17</td><td>4 bytes</td>
+</tr>
+<tr>
+<td>18</td><td>4 bytes</td>
+</tr>
+<tr>
+<td>19</td><td>12 bytes</td>
+</tr>
+<tr>
+<td>20</td><td>4 bytes</td>
+</tr>
+<tr>
+<td>21</td><td>2048 bytes</td>
+</tr>
+<tr>
+<td>22</td><td>24 bytes</td>
+</tr>
+<tr>
+<td>23</td><td>2048 bytes</td>
+</tr>
+<tr>
+<td>24</td><td>3072 bytes</td>
+</tr>
+<tr>
+<td>25</td><td>8 bytes</td>
+</tr>
+<tr>
+<td>26</td><td>4 bytes</td>
+</tr>
+<tr>
+<td>27</td><td>4 bytes</td>
+</tr>
+<tr>
+<td>28</td><td>--</td>
+</tr>
+<tr>
+<td>29</td><td>--</td>
+</tr>
+<tr>
+<td>30</td><td>--</td>
+</tr>
+<tr>
+<td>31</td><td>--</td>
+</tr>
+<tr>
+<td>32</td><td>--</td>
+</tr>
+<tr>
+<td>33</td><td>--</td>
+</tr>
+<tr>
+<td>34</td><td>--</td>
+</tr>
+<tr>
+<td>35</td><td>--</td>
+</tr>
+<tr>
+<td>36</td><td>--</td>
+</tr>
+<tr>
+<td>37</td><td>--</td>
+</tr>
+<tr>
+<td>38</td><td>--</td>
+</tr>
+<tr>
+<td>39</td><td>--</td>
+</tr>
+<tr>
+<td>40</td><td>--</td>
+</tr>
+<tr>
+<td>41</td><td>--</td>
+</tr>
+<tr>
+<td>42</td><td>--</td>
+</tr>
+<tr>
+<td>43</td><td>--</td>
+</tr>
+<tr>
+<td>44</td><td>--</td>
+</tr>
+<tr>
+<td>45</td><td>--</td>
+</tr>
+<tr>
+<td>46</td><td>--</td>
+</tr>
+<tr>
+<td>47</td><td>--</td>
+</tr>
+<tr>
+<td>48</td><td>--</td>
+</tr>
+<tr>
+<td>49</td><td>--</td>
+</tr>
+<tr>
+<td>50</td><td>--</td>
+</tr>
+<tr>
+<td>51</td><td>--</td>
+</tr>
+<tr>
+<td>52</td><td>--</td>
+</tr>
+<tr>
+<td>53</td><td>--</td>
+</tr>
+<tr>
+<td>54</td><td>--</td>
+</tr>
+<tr>
+<td>55</td><td>--</td>
+</tr>
+<tr>
+<td>56</td><td>--</td>
+</tr>
+<tr>
+<td>57</td><td>--</td>
+</tr>
+<tr>
+<td>58</td><td>--</td>
+</tr>
+<tr>
+<td>59</td><td>--</td>
+</tr>
+<tr>
+<td>60</td><td>--</td>
+</tr>
+<tr>
+<td>61</td><td>--</td>
+</tr>
+<tr>
+<td>62</td><td>--</td>
+</tr>
+<tr>
+<td>63</td><td>--</td>
+</tr>
+<tr>
+<td>64</td><td>--</td>
+</tr>
+<tr>
+<td>65</td><td>4 bytes</td>
+</tr>
+<tr>
+<td>66</td><td>--</td>
+</tr>
+<tr>
+<td>67</td><td>--</td>
+</tr>
+<tr>
+<td>68</td><td>--</td>
+</tr>
+<tr>
+<td>69</td><td>--</td>
+</tr>
+<tr>
+<td>70</td><td>--</td>
+</tr>
+<tr>
+<td>71</td><td>--</td>
+</tr>
+<tr>
+<td>72</td><td>--</td>
+</tr>
+<tr>
+<td>73</td><td>4 bytes</td>
+</tr>
+<tr>
+<td>74</td><td>4 bytes</td>
+</tr>
+<tr>
+<td>75</td><td>2048 bytes</td>
+</tr>
+<tr>
+<td>76</td><td>196608 bytes</td>
+</tr>
+<tr>
+<td>77</td><td>65536 bytes</td>
+</tr>
+<tr>
+<td>78</td><td>12 bytes</td>
+</tr>
+<tr>
+<td>79</td><td>8 bytes</td>
+</tr>
+<tr>
+<td>80</td><td>8 bytes</td>
+</tr>
+<tr>
+<td>81</td><td>12 bytes</td>
+</tr>
+<tr>
+<td>82</td><td>4 bytes</td>
+</tr>
+<tr>
+<td>83</td><td>--</td>
+</tr>
+<tr>
+<td>84</td><td>--</td>
+</tr>
+<tr>
+<td>85</td><td>--</td>
+</tr>
+<tr>
+<td>86</td><td>--</td>
+</tr>
+<tr>
+<td>87</td><td>--</td>
+</tr>
+<tr>
+<td>88</td><td>--</td>
+</tr>
+<tr>
+<td>89</td><td>--</td>
+</tr>
+<tr>
+<td>90</td><td>--</td>
+</tr>
+<tr>
+<td>91</td><td>--</td>
+</tr>
+<tr>
+<td>92</td><td>--</td>
+</tr>
+<tr>
+<td>93</td><td>--</td>
+</tr>
+<tr>
+<td>94</td><td>--</td>
+</tr>
+<tr>
+<td>95</td><td>--</td>
+</tr>
+<tr>
+<td>96</td><td>--</td>
+</tr>
+<tr>
+<td>97</td><td>--</td>
+</tr>
+<tr>
+<td>98</td><td>--</td>
+</tr>
+<tr>
+<td>99</td><td>--</td>
+</tr>
+<tr>
+<td>100</td><td>--</td>
+</tr>
+<tr>
+<td>101</td><td>--</td>
+</tr>
+<tr>
+<td>102</td><td>--</td>
+</tr>
+<tr>
+<td>103</td><td>--</td>
+</tr>
+<tr>
+<td>104</td><td>--</td>
+</tr>
+<tr>
+<td>105</td><td>--</td>
+</tr>
+<tr>
+<td>106</td><td>--</td>
+</tr>
+<tr>
+<td>107</td><td>--</td>
+</tr>
+<tr>
+<td>108</td><td>--</td>
+</tr>
+<tr>
+<td>109</td><td>--</td>
+</tr>
+<tr>
+<td>110</td><td>--</td>
+</tr>
+<tr>
+<td>111</td><td>--</td>
+</tr>
+<tr>
+<td>112</td><td>--</td>
+</tr>
+<tr>
+<td>113</td><td>--</td>
+</tr>
+<tr>
+<td>114</td><td>--</td>
+</tr>
+<tr>
+<td>115</td><td>--</td>
+</tr>
+<tr>
+<td>116</td><td>--</td>
+</tr>
+<tr>
+<td>117</td><td>--</td>
+</tr>
+<tr>
+<td>118</td><td>--</td>
+</tr>
+<tr>
+<td>119</td><td>--</td>
+</tr>
+<tr>
+<td>120</td><td>--</td>
+</tr>
+<tr>
+<td>121</td><td>--</td>
+</tr>
+<tr>
+<td>122</td><td>--</td>
+</tr>
+<tr>
+<td>123</td><td>--</td>
+</tr>
+<tr>
+<td>124</td><td>--</td>
+</tr>
+<tr>
+<td>125</td><td>--</td>
+</tr>
+<tr>
+<td>126</td><td>4 bytes</td>
+</tr>
+<tr>
+<td>127</td><td>4 bytes</td>
+</tr>
+<tr>
+<td>128</td><td>2048 bytes</td>
+</tr>
+<tr>
+<td>129</td><td>65536 bytes</td>
+</tr>
+<tr>
+<td>130</td><td>65536 bytes</td>
+</tr>
+<tr>
+<td>131</td><td>12 bytes</td>
+</tr>
+<tr>
+<td>132</td><td>8 bytes</td>
+</tr>
+<tr>
+<td>133</td><td>8 bytes</td>
+</tr>
+<tr>
+<td>134</td><td>12 bytes</td>
+</tr>
+<tr>
+<td>135</td><td>4 bytes</td>
+</tr>
+<tr>
+<td>136</td><td>--</td>
+</tr>
+<tr>
+<td>137</td><td>--</td>
+</tr>
+<tr>
+<td>138</td><td>--</td>
+</tr>
+<tr>
+<td>139</td><td>--</td>
+</tr>
+<tr>
+<td>140</td><td>--</td>
+</tr>
+<tr>
+<td>141</td><td>--</td>
+</tr>
+<tr>
+<td>142</td><td>--</td>
+</tr>
+<tr>
+<td>143</td><td>--</td>
+</tr>
+<tr>
+<td>144</td><td>--</td>
+</tr>
+<tr>
+<td>145</td><td>--</td>
+</tr>
+<tr>
+<td>146</td><td>--</td>
+</tr>
+<tr>
+<td>147</td><td>--</td>
+</tr>
+<tr>
+<td>148</td><td>--</td>
+</tr>
+<tr>
+<td>149</td><td>--</td>
+</tr>
+<tr>
+<td>150</td><td>--</td>
+</tr>
+<tr>
+<td>151</td><td>--</td>
+</tr>
+<tr>
+<td>152</td><td>--</td>
+</tr>
+<tr>
+<td>153</td><td>--</td>
+</tr>
+<tr>
+<td>154</td><td>--</td>
+</tr>
+<tr>
+<td>155</td><td>--</td>
+</tr>
+<tr>
+<td>156</td><td>--</td>
+</tr>
+<tr>
+<td>157</td><td>--</td>
+</tr>
+<tr>
+<td>158</td><td>--</td>
+</tr>
+<tr>
+<td>159</td><td>--</td>
+</tr>
+<tr>
+<td>160</td><td>--</td>
+</tr>
+<tr>
+<td>161</td><td>--</td>
+</tr>
+<tr>
+<td>162</td><td>--</td>
+</tr>
+<tr>
+<td>163</td><td>--</td>
+</tr>
+<tr>
+<td>164</td><td>16 bytes</td>
+</tr>
+</table>
+<h2>Operator Codes</h2>
+<table><tr>
+<tr>
+<th>index</th><th>builtin_code</th><th>custom_code</th><th>version</th></tr>
+<tr>
+<td>0</td><td>CONV_2D</td>
+<td></td>
+<td>5</td>
+</tr>
+<tr>
+<td>1</td><td>RESHAPE</td>
+<td></td>
+<td>1</td>
+</tr>
+<tr>
+<td>2</td><td>WHILE</td>
+<td></td>
+<td>1</td>
+</tr>
+<tr>
+<td>3</td><td>TRANSPOSE</td>
+<td></td>
+<td>1</td>
+</tr>
+<tr>
+<td>4</td><td>SHAPE</td>
+<td></td>
+<td>1</td>
+</tr>
+<tr>
+<td>5</td><td>STRIDED_SLICE</td>
+<td></td>
+<td>1</td>
+</tr>
+<tr>
+<td>6</td><td>CONCATENATION</td>
+<td></td>
+<td>1</td>
+</tr>
+<tr>
+<td>7</td><td>FILL</td>
+<td></td>
+<td>1</td>
+</tr>
+<tr>
+<td>8</td><td>PACK</td>
+<td></td>
+<td>1</td>
+</tr>
+<tr>
+<td>9</td><td>FULLY_CONNECTED</td>
+<td></td>
+<td>9</td>
+</tr>
+<tr>
+<td>10</td><td>SOFTMAX</td>
+<td></td>
+<td>1</td>
+</tr>
+<tr>
+<td>11</td><td>LESS</td>
+<td></td>
+<td>1</td>
+</tr>
+<tr>
+<td>12</td><td>ADD</td>
+<td></td>
+<td>1</td>
+</tr>
+<tr>
+<td>13</td><td>GATHER</td>
+<td></td>
+<td>1</td>
+</tr>
+<tr>
+<td>14</td><td>SPLIT</td>
+<td></td>
+<td>1</td>
+</tr>
+<tr>
+<td>15</td><td>LOGISTIC</td>
+<td></td>
+<td>1</td>
+</tr>
+<tr>
+<td>16</td><td>MUL</td>
+<td></td>
+<td>1</td>
+</tr>
+<tr>
+<td>17</td><td>TANH</td>
+<td></td>
+<td>1</td>
+</tr>
+<tr>
+<td>18</td><td>SLICE</td>
+<td></td>
+<td>1</td>
+</tr>
+<tr>
+<td>19</td><td>EXPAND_DIMS</td>
+<td></td>
+<td>1</td>
+</tr>
+</table>
+</body></html>

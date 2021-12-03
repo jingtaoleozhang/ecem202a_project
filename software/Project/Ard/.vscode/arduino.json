@@ -1,0 +1,6 @@
+{
+    "board": "arduino:mbed_nano:nano33ble",
+    "port": "COM5",
+    "programmer": "arduino:cmsis-dap",
+    "sketch": "inference_test\\inference_test.ino"
+}
