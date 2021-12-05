@@ -18,11 +18,14 @@ class Connection:
         self.client = None
         self.connected = False
         self.count = 0
-        self.write_vals = [bytearray([0x01]), bytearray([0x02])]
+        self.write_vals = [bytearray([0x00]), bytearray([0x01]), bytearray([0x02])]
         self.write_idx = 0
         self.slices_received = 0
         self.slices_required = 6
         self.allow_read = False
+
+        self.send_ack = False
+        self.send_inf = False
 
     # Runs once, displays service and characteristic info
     async def check_connection(self):
@@ -60,18 +63,21 @@ class Connection:
                 try:
                     val = await self.client.read_gatt_char(read_chr_uuid)
                     nums = unpack('128f', val)
-                    print(str(self.count) + ': ' + str(nums))
                     self.slices_received += 1
                     self.count += 1
                     self.allow_read = False
+                    self.send_ack = True
+
+                    # print(str(self.count) + '_' + str(self.slices_received) + ': ' + str(nums))
+                    print(str(self.count) + '_' + str(self.slices_received))
                 except Exception as e:
                     print('READ BLE EXCEPTION')
                     print(e)
-            await asyncio.sleep(.1, loop=loop)
+            await asyncio.sleep(.01, loop=loop)
 
     def on_read_change(self, sender, data):
         try:
-            #print('read changed' + str(len(data)))
+            # print('read changed' + str(len(data)))
             self.allow_read = True
         except Exception as e:
             print('ON READ CHANGE EXCEPTION')
@@ -82,18 +88,32 @@ class Connection:
     async def write_ble(self):
         # print("try writing")
         while (True):
-            if self.connected and self.slices_received == self.slices_required:
-                print("writing")
-                try:
-                    await self.client.write_gatt_char(
-                        write_chr_uuid,
-                        self.write_vals[self.write_idx])
-                    self.write_idx = (self.write_idx + 1) % 2
-                    self.slices_received = 0
-                except Exception as e:
-                    print("WRITE BLE EXCEPTION")
-                    print(e)
-            await asyncio.sleep(1, loop=loop)
+            if self.connected:
+                # print("writing")
+
+                if self.slices_received == self.slices_required:  # send ack
+                    try:
+                        print("sent inference")
+                        await self.client.write_gatt_char(
+                            write_chr_uuid,
+                            self.write_vals[1])
+                        # self.write_idx = (self.write_idx + 1) % 2
+                        self.slices_received = 0
+                    except Exception as e:
+                        print("WRITE BLE INF EXCEPTION")
+                        print(e)
+
+                elif self.send_ack == True:
+                    try:
+                        await self.client.write_gatt_char(
+                            write_chr_uuid,
+                            self.write_vals[0])
+                        self.send_ack = False
+                    except Exception as e:
+                        print("WRITE BLE ACK EXCEPTION")
+                        print(e)
+
+            await asyncio.sleep(.01, loop=loop)
 
 
 async def cleanup(self):
