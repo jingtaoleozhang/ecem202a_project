@@ -114,7 +114,7 @@ void onRxWritten(BLEDevice central, BLECharacteristic chr) {
     Serial.print(":");
     Serial.println(val);
     */
-
+    Serial.println(val);
     if (val == 0) {  // got ack
         //Serial.println("got ack");
         was_read = true;
@@ -122,7 +122,7 @@ void onRxWritten(BLEDevice central, BLECharacteristic chr) {
             slice_idx++;
             waiting_for_rcv = false;
         }
-    } else if (val == 1) {  // got inference
+    } else /*if (val != 0)*/ {  // got inference
         Serial.println("got inference");
         waiting_for_inference = false;
         sample_data_idx = (sample_data_idx + 1) % 5;

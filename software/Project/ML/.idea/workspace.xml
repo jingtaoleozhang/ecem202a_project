@@ -2,23 +2,9 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="74e1d3e3-6e2c-4f75-99c1-d8d20cc4b921" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/Deep-Learning-for-Human-Activity-Recognition/models/deep_conv_lstm.py" beforeDir="false" afterPath="$PROJECT_DIR$/Deep-Learning-for-Human-Activity-Recognition/models/deep_conv_lstm.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Deep-Learning-for-Human-Activity-Recognition/run_cnn.py" beforeDir="false" afterPath="$PROJECT_DIR$/Deep-Learning-for-Human-Activity-Recognition/run_cnn.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Deep-Learning-for-Human-Activity-Recognition/run_deep_conv_lstm.py" beforeDir="false" afterPath="$PROJECT_DIR$/Deep-Learning-for-Human-Activity-Recognition/run_deep_conv_lstm.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Deep-Learning-for-Human-Activity-Recognition/run_generate_features.py" beforeDir="false" afterPath="$PROJECT_DIR$/Deep-Learning-for-Human-Activity-Recognition/run_generate_features.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Deep-Learning-for-Human-Activity-Recognition/src/data_prep/load.py" beforeDir="false" afterPath="$PROJECT_DIR$/Deep-Learning-for-Human-Activity-Recognition/src/data_prep/load.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/dlstm/Dockerfile" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/dlstm/Dockerfile_gpu" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/dlstm/Makefile" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/dlstm/docker-compose.yml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/dlstm/poetry.lock" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/dlstm/run_cnn.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/dlstm/run_deep_conv_lstm.py" beforeDir="false" afterPath="$PROJECT_DIR$/dlstm/run_deep_conv_lstm.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/dlstm/run_generate_features.py" beforeDir="false" afterPath="$PROJECT_DIR$/dlstm/run_generate_features.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/dlstm/run_lgbm.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/dlstm/run_mlp.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/dlstm/run_sdae.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/dlstm/src/data_prep/load.py" beforeDir="false" afterPath="$PROJECT_DIR$/dlstm/src/data_prep/load.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../test/.idea/vcs.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../test/.idea/vcs.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../test/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../test/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../test/test.py" beforeDir="false" afterPath="$PROJECT_DIR$/../test/test.py" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -27,13 +13,13 @@
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
   <component name="Git.Settings">
-    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/Deep-Learning-for-Human-Activity-Recognition" />
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/../../.." />
   </component>
   <component name="ProjectId" id="21kx8GvnzvHqLeEsF6meJr1mrnK" />
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="PropertiesComponent">
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/Deep-Learning-for-Human-Activity-Recognition" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
     <property name="nodejs_npm_path_reset_for_default_project" value="true" />
   </component>
@@ -60,6 +46,7 @@
       <option name="presentableId" value="Default" />
       <updated>1638498725026</updated>
       <workItem from="1638498728388" duration="39000" />
+      <workItem from="1638763747676" duration="116000" />
     </task>
     <servers />
   </component>
@@ -71,7 +58,9 @@
       <map>
         <entry key="MAIN">
           <value>
-            <State />
+            <State>
+              <option name="COLUMN_ORDER" />
+            </State>
           </value>
         </entry>
       </map>
