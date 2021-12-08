@@ -2,7 +2,5 @@
 <project version="4">
   <component name="VcsDirectoryMappings">
     <mapping directory="$PROJECT_DIR$/../../.." vcs="Git" />
-    <mapping directory="$PROJECT_DIR$/Deep-Learning-for-Human-Activity-Recognition" vcs="Git" />
-    <mapping directory="$PROJECT_DIR$/dlstm" vcs="Git" />
   </component>
 </project>

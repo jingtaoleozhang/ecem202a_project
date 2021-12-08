@@ -2,9 +2,15 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="74e1d3e3-6e2c-4f75-99c1-d8d20cc4b921" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/../test/.idea/vcs.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../test/.idea/vcs.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Ard/.vscode/arduino.json" beforeDir="false" afterPath="$PROJECT_DIR$/../Ard/.vscode/arduino.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Ard/.vscode/c_cpp_properties.json" beforeDir="false" afterPath="$PROJECT_DIR$/../Ard/.vscode/c_cpp_properties.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/vcs.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Deep-Learning-for-Human-Activity-Recognition/.idea/vcs.xml" beforeDir="false" afterPath="$PROJECT_DIR$/Deep-Learning-for-Human-Activity-Recognition/.idea/vcs.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Deep-Learning-for-Human-Activity-Recognition/DCLSTM_model.tflite" beforeDir="false" afterPath="$PROJECT_DIR$/Deep-Learning-for-Human-Activity-Recognition/DCLSTM_model.tflite" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Deep-Learning-for-Human-Activity-Recognition/models/deep_conv_lstm.py" beforeDir="false" afterPath="$PROJECT_DIR$/Deep-Learning-for-Human-Activity-Recognition/models/deep_conv_lstm.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Deep-Learning-for-Human-Activity-Recognition/test.py" beforeDir="false" afterPath="$PROJECT_DIR$/Deep-Learning-for-Human-Activity-Recognition/test.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../test/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../test/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../test/test.py" beforeDir="false" afterPath="$PROJECT_DIR$/../test/test.py" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -19,9 +25,10 @@
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="PropertiesComponent">
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/Deep-Learning-for-Human-Activity-Recognition" />
     <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
     <property name="nodejs_npm_path_reset_for_default_project" value="true" />
+    <property name="settings.editor.selected.configurable" value="project.propVCSSupport.Mappings" />
   </component>
   <component name="RunDashboard">
     <option name="ruleStates">
@@ -47,6 +54,7 @@
       <updated>1638498725026</updated>
       <workItem from="1638498728388" duration="39000" />
       <workItem from="1638763747676" duration="116000" />
+      <workItem from="1638932959768" duration="55000" />
     </task>
     <servers />
   </component>
@@ -65,5 +73,11 @@
         </entry>
       </map>
     </option>
+  </component>
+  <component name="VcsManagerConfiguration">
+    <ignored-roots>
+      <path value="$PROJECT_DIR$/Deep-Learning-for-Human-Activity-Recognition" />
+      <path value="$PROJECT_DIR$/dlstm" />
+    </ignored-roots>
   </component>
 </project>

@@ -2,11 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="29c2fdc6-3e99-478f-bfdd-a777299d6c49" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/../ML/.idea/vcs.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../ML/.idea/vcs.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../ML/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../ML/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/vcs.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/test.py" beforeDir="false" afterPath="$PROJECT_DIR$/test.py" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -28,7 +24,7 @@
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="PropertiesComponent">
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/../ML/Deep-Learning-for-Human-Activity-Recognition" />
     <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
     <property name="nodejs_npm_path_reset_for_default_project" value="true" />
     <property name="restartRequiresConfirmation" value="false" />
@@ -210,7 +206,7 @@
       <workItem from="1638677623086" duration="5635000" />
       <workItem from="1638697411656" duration="13000" />
       <workItem from="1638763071668" duration="1794000" />
-      <workItem from="1638839481686" duration="3843000" />
+      <workItem from="1638839481686" duration="5077000" />
     </task>
     <servers />
   </component>

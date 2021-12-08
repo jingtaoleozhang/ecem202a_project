@@ -11,7 +11,7 @@
             "includePath": [
                 "C:\\Users\\jingtaoz\\AppData\\Local\\Arduino15\\packages\\arduino\\hardware\\mbed_nano\\2.5.2\\cores\\arduino",
                 "C:\\Users\\jingtaoz\\AppData\\Local\\Arduino15\\packages\\arduino\\hardware\\mbed_nano\\2.5.2\\variants\\ARDUINO_NANO33BLE",
-                "C:\\Users\\jingtaoz\\Documents\\Arduino\\libraries\\ArduinoBLE\\src",
+                "C:\\Users\\jingtaoz\\Documents\\Arduino\\libraries\\Arduino_TensorFlowLite\\src",
                 "C:\\Users\\jingtaoz\\AppData\\Local\\Arduino15\\packages\\arduino\\hardware\\mbed_nano\\2.5.2\\cores\\arduino\\api\\deprecated",
                 "C:\\Users\\jingtaoz\\AppData\\Local\\Arduino15\\packages\\arduino\\hardware\\mbed_nano\\2.5.2\\cores\\arduino\\api\\deprecated-avr-comp",
                 "c:\\users\\jingtaoz\\appdata\\local\\arduino15\\packages\\arduino\\tools\\arm-none-eabi-gcc\\7-2017q4\\arm-none-eabi\\include\\c++\\7.2.1",

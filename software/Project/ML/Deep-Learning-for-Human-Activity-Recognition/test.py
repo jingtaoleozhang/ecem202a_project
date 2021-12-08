@@ -26,10 +26,10 @@
 ## Make tflite from h5
 # import tensorflow as tf
 #
-# model = tf.keras.models.load_model('logs/deep-conv-lstm-20211117-000754/trained_model_fold0.h5')
+# model = tf.keras.models.load_model('logs/small_cnn_16_16-20211207-014456/trained_model_fold0.h5')
 # converter = tf.lite.TFLiteConverter.from_keras_model(model)
 # tflite_model = converter.convert()
-# open("DCLSTM_model.tflite", "wb").write(tflite_model)
+# open("cnn_16_16_model.tflite", "wb").write(tflite_model)
 
 ## make an inference using tflite model
 # import numpy as np
@@ -39,17 +39,12 @@
 # X_tr = X_tr.astype(np.float32)
 # y_tr = np.load('y_debug.npy')
 #
-# interpreter = tf.lite.Interpreter(model_path='DCLSTM_model_quant_edgetpu.tflite')
+# #interpreter = tf.lite.Interpreter(model_path='DCLSTM_model_quant_edgetpu.tflite')
+# interpreter = tf.lite.Interpreter(model_path='cnn_8_8_model.tflite')
 # interpreter.allocate_tensors()
 #
 # in_spec = interpreter.get_input_details()
 # out_spec = interpreter.get_output_details()
-# #in_shape = in_spec[0]['shape']
-#
-# # rand_data = np.array(np.random.random_sample(in_shape), dtype=np.float32)
-# # interpreter.set_tensor(in_spec[0]['index'], rand_data)
-# # interpreter.invoke()
-# # rand_data_out = interpreter.get_tensor(out_spec[0]['index'])
 #
 # for i in range(X_tr.shape[0]):
 #     in_data = [X_tr[i]]
@@ -79,19 +74,19 @@
 #
 # open("DCLSTM_model_quant.tflite", "wb").write(tflite_model)
 
-import numpy as np
-import tensorflow as tf
-X_tr = np.load('X_debug.npy')
-X_tr = X_tr.astype(np.float32)
-y_tr = np.load('y_debug.npy')
-
-file1 = open('imu_sample_c_arr.txt','w')
-#X_tr = [X_tr[0]]
-for i in X_tr:
-    file1.write('{')
-    for j in i:
-        for k in j:
-            file1.write(str(k[0]) + ',')
-    file1.write('},\n')
-
-file1.close()
+# import numpy as np
+# import tensorflow as tf
+# X_tr = np.load('X_debug.npy')
+# X_tr = X_tr.astype(np.float32)
+# y_tr = np.load('y_debug.npy')
+#
+# file1 = open('imu_sample_c_arr.txt','w')
+# #X_tr = [X_tr[0]]
+# for i in X_tr:
+#     file1.write('{')
+#     for j in i:
+#         for k in j:
+#             file1.write(str(k[0]) + ',')
+#     file1.write('},\n')
+#
+# file1.close()

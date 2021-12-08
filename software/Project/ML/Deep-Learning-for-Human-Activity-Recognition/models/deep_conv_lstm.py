@@ -115,3 +115,15 @@ def build_model() -> Model:
 #         loss="categorical_crossentropy", optimizer=optimizers.Adam(lr=lr), metrics=["accuracy"]
 #     )
 #     return model
+
+def calculate_model_size(model):
+  print(model.summary())
+  var_sizes = [
+      np.product(list(map(int, v.shape))) * v.dtype.size
+      for v in model.trainable_variables
+  ]
+  print("Model size:", sum(var_sizes) / 1024, "KB")
+
+if __name__ == "__main__":
+    model = build_model()
+    calculate_model_size(model)
