@@ -76,11 +76,13 @@ void setup() {
 bool firstrun = true;
 int data_idx = 0;
 
-int period = 500;
+int period = 100;
 unsigned long curr_time = 0;
 
 int num_loops = 0;
-int num_micros = 0;
+unsigned long copy_sum = 0;
+unsigned long inference_sum = 0;
+
 // The name of this function is important for Arduino compatibility.
 void loop() {
     if (millis() >= curr_time + period) {
@@ -93,9 +95,13 @@ void loop() {
         // Serial.print(", Output size:");
         // Serial.println((output->bytes / sizeof(float)));
 
+        unsigned long loop_start = micros();
+
         for (int i = 0; i < 128 * 6; i++) {
             input->data.f[i] = sample_imu_data[data_idx][i];
         }
+
+        unsigned long copy_time = micros();
 
         // Run inference, and report any error
         TfLiteStatus invoke_status = interpreter->Invoke();
@@ -104,13 +110,25 @@ void loop() {
             return;
         }
 
-        Serial.print("didx:");
-        Serial.println(data_idx);
-        for (int i = 0; i < 6; i++) {
-            Serial.print(interpreter->output(0)->data.f[i]);
-            Serial.print(", ");
-        }
-        Serial.println();
+        unsigned long inference_time = micros();
+
+        copy_sum += copy_time - loop_start;
+        inference_sum += inference_time - copy_time;
+        num_loops++;
+
+        Serial.println(num_loops);
+        Serial.print("Inf=");
+        Serial.println(inference_time - copy_time);
+        Serial.print("Avg Inf=");
+        Serial.println((float)inference_sum / (float)num_loops / 1000000);
+
+        // Serial.print("didx:");
+        // Serial.println(data_idx);
+        // for (int i = 0; i < 6; i++) {
+        //     Serial.print(interpreter->output(0)->data.f[i]);
+        //     Serial.print(", ");
+        // }
+        // Serial.println();
 
         data_idx = (data_idx + 1) % 2;
     }
