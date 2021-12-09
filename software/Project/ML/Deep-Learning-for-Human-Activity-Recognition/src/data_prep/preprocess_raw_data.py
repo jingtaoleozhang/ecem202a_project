@@ -26,7 +26,7 @@ def preprocess_signal(signal: pd.DataFrame) -> pd.DataFrame:
 
 
 def scale(
-    signal: pd.DataFrame, scaler="normalize", minmax_range: Optional[Tuple[int, int]] = (0, 1)
+        signal: pd.DataFrame, scaler="normalize", minmax_range: Optional[Tuple[int, int]] = (0, 1)
 ) -> pd.DataFrame:
     if scaler == "normalize":
         signal = StandardScaler().fit_transform(signal)
@@ -34,6 +34,9 @@ def scale(
     elif scaler == "minmax":
         signal = MinMaxScaler(feature_range=minmax_range).fit_transform(signal)
         return pd.DataFrame(signal, columns=["x", "y", "z"])
+    elif scaler == "test":
+        signal = StandardScaler().fit_transform(signal)
+        return pd.DataFrame(signal, columns=["x", "y"])
 
 
 def preprocess_raw_data(scaler):
@@ -57,17 +60,31 @@ def preprocess_raw_data(scaler):
             (label_info.ExpID == exp_id)
             & (label_info.UserID == user_id)
             & (label_info.ActID.isin([1, 2, 3, 4, 5, 6]))
-        ]
+            ]
 
         acc_raw = pd.read_table(acc_file, sep=" ", header=None, names=["x", "y", "z"])
         gyro_raw = pd.read_table(gyro_file, sep=" ", header=None, names=["x", "y", "z"])
 
+        # old_acc = acc_raw
+        acc_subset = acc_raw.iloc[0:128]
+        acc_subset_scaled = scale(acc_subset, scaler=scaler)
+        tAcc_sub_xyz = preprocess_signal(acc_subset_scaled)
+        # acc_subset_col = acc_raw.iloc[0:128, 0:2]
+
+        # acc_subset_col_scaled = scale(acc_subset_col, scaler="test")
+        # acc_np = acc_subset.values
+        # print(acc_np[:, 0])
+        # print(acc_np[:, 1])
+        # print(acc_np[:, 2])
+        # acc_mean = np.mean(acc_np, axis=0)
+        # acc_dev = np.std(acc_np, axis=0)
+        # acc_np_scale = (acc_np - acc_mean) / acc_dev
         acc_raw = scale(acc_raw, scaler=scaler)
         gyro_raw = scale(gyro_raw, scaler=scaler)
 
         for _, _, act_id, act_start, act_end in temp_label_info.values:
-            temp_acc_raw = acc_raw.iloc[act_start : act_end + 1]
-            temp_gyro_raw = gyro_raw.iloc[act_start : act_end + 1]
+            temp_acc_raw = acc_raw.iloc[act_start: act_end + 1]
+            temp_gyro_raw = gyro_raw.iloc[act_start: act_end + 1]
             tAccXYZ = preprocess_signal(temp_acc_raw)
             tBodyGyroXYZ = preprocess_signal(temp_gyro_raw)
             features = np.zeros((len(tAccXYZ), 128, 6))
@@ -94,3 +111,7 @@ def preprocess_raw_data(scaler):
     X_test = X_test.reshape(X_test.shape[0], X_test.shape[1], 6, 1)
 
     return X_train, X_test
+
+
+if __name__ == "__main__":
+    x_tr, x_te = preprocess_raw_data("normalize")

@@ -25,7 +25,7 @@ class Preprocess:
         self.fs = fs
 
     def apply_filter(
-        self, signal: pd.DataFrame, filter: str = "median", window: int = 5
+            self, signal: pd.DataFrame, filter: str = "median", window: int = 5
     ) -> pd.DataFrame:
         """A denosing filter is applied to remove noise in signals.
         Args:
@@ -45,7 +45,13 @@ class Preprocess:
             fc = 20  # cutoff frequency
             w = fc / (self.fs / 2)  # Normalize the frequency
             b, a = butter(3, w, "low")  # 3rd order low-pass Butterworth filter
+            orig_sig = signal
+            sig_x = pd.DataFrame(filtfilt(b, a, signal.iloc[:, 0]))
+            sig_y = pd.DataFrame(filtfilt(b, a, signal.iloc[:, 1]))
+            sig_z = pd.DataFrame(filtfilt(b, a, signal.iloc[:, 2]))
             signal = pd.DataFrame(filtfilt(b, a, signal, axis=0), columns=signal.columns)
+            print(b)
+            print(a)
         else:
             try:
                 raise ValueError("Not defined filter. See Args.")
@@ -67,11 +73,11 @@ class Preprocess:
         return signal
 
     def segment_signal(
-        self,
-        signal: pd.DataFrame,
-        window_size: int = 128,
-        overlap_rate: int = 0.5,
-        res_type: str = "dataframe",
+            self,
+            signal: pd.DataFrame,
+            window_size: int = 128,
+            overlap_rate: int = 0.5,
+            res_type: str = "dataframe",
     ) -> List[pd.DataFrame]:
         """Sample sensor signals in fixed-width sliding windows of 2.56 sec and 50% overlap (128 readings/window).
         Args:
@@ -85,7 +91,7 @@ class Preprocess:
         signal_seg = []
 
         for start_idx in range(0, len(signal) - window_size, int(window_size * overlap_rate)):
-            seg = signal.iloc[start_idx : start_idx + window_size].reset_index(drop=True)
+            seg = signal.iloc[start_idx: start_idx + window_size].reset_index(drop=True)
             if res_type == "array":
                 seg = seg.values
             signal_seg.append(seg)
@@ -248,7 +254,7 @@ class Preprocess:
         bandsEnergy = np.array([])
         bins = [0, 4, 8, 12, 16, 20, 24, 29, 34, 39, 44, 49, 54, 59, 64]
         for i in range(len(bins) - 1):
-            df = signal.iloc[bins[i] : bins[i + 1]]
+            df = signal.iloc[bins[i]: bins[i + 1]]
             arr = self.obtain_energy(df)
             bandsEnergy = np.hstack((bandsEnergy, arr))
         return bandsEnergy

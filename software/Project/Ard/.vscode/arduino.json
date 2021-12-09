@@ -2,5 +2,5 @@
     "board": "arduino:mbed_nano:nano33ble",
     "port": "COM5",
     "programmer": "arduino:cmsis-dap",
-    "sketch": "cnn_test\\cnn_test.ino"
+    "sketch": "imu_data_proc_test\\imu_data_proc_test.ino"
 }

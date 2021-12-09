@@ -1,3 +1,5 @@
+//test sending data to coral and geting back inference
+
 #include <ArduinoBLE.h>
 
 //#include <valarray>

@@ -1,3 +1,5 @@
+//test using tensorflow on arduino
+
 #include <TensorFlowLite.h>
 
 #include "imu_data.h"
