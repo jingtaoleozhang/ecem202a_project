@@ -1,0 +1,57 @@
+[
+  {
+    "Sourcefile": null,
+    "Include": "",
+    "Includepath": "C:\\Users\\jingtaoz\\AppData\\Local\\Arduino15\\packages\\arduino\\hardware\\mbed_nano\\2.5.2\\cores\\arduino"
+  },
+  {
+    "Sourcefile": null,
+    "Include": "",
+    "Includepath": "C:\\Users\\jingtaoz\\AppData\\Local\\Arduino15\\packages\\arduino\\hardware\\mbed_nano\\2.5.2\\variants\\ARDUINO_NANO33BLE"
+  },
+  {
+    "Sourcefile": "c:\\Users\\jingtaoz\\Documents\\_School\\UCLA\\ECE202A\\ecem202a_project\\software\\Project\\ArduinoOutput\\sketch\\arduino_inference.ino.cpp",
+    "Include": "Arduino_LSM9DS1.h",
+    "Includepath": "C:\\Users\\jingtaoz\\Documents\\Arduino\\libraries\\Arduino_LSM9DS1\\src"
+  },
+  {
+    "Sourcefile": "c:\\Users\\jingtaoz\\Documents\\_School\\UCLA\\ECE202A\\ecem202a_project\\software\\Project\\ArduinoOutput\\sketch\\arduino_inference.ino.cpp",
+    "Include": "Wire.h",
+    "Includepath": "C:\\Users\\jingtaoz\\AppData\\Local\\Arduino15\\packages\\arduino\\hardware\\mbed_nano\\2.5.2\\libraries\\Wire"
+  },
+  {
+    "Sourcefile": "c:\\Users\\jingtaoz\\Documents\\_School\\UCLA\\ECE202A\\ecem202a_project\\software\\Project\\ArduinoOutput\\sketch\\arduino_inference.ino.cpp",
+    "Include": "TensorFlowLite.h",
+    "Includepath": "C:\\Users\\jingtaoz\\Documents\\Arduino\\libraries\\Arduino_TensorFlowLite\\src"
+  },
+  {
+    "Sourcefile": "c:\\Users\\jingtaoz\\Documents\\_School\\UCLA\\ECE202A\\ecem202a_project\\software\\Project\\ArduinoOutput\\sketch\\arduino_inference.ino.cpp",
+    "Include": "",
+    "Includepath": null
+  },
+  {
+    "Sourcefile": "c:\\Users\\jingtaoz\\Documents\\_School\\UCLA\\ECE202A\\ecem202a_project\\software\\Project\\ArduinoOutput\\sketch\\filtfilt.cpp",
+    "Include": "",
+    "Includepath": null
+  },
+  {
+    "Sourcefile": "c:\\Users\\jingtaoz\\Documents\\_School\\UCLA\\ECE202A\\ecem202a_project\\software\\Project\\ArduinoOutput\\sketch\\model_16_16.cpp",
+    "Include": "",
+    "Includepath": null
+  },
+  {
+    "Sourcefile": "c:\\Users\\jingtaoz\\Documents\\_School\\UCLA\\ECE202A\\ecem202a_project\\software\\Project\\ArduinoOutput\\sketch\\model_8_8.cpp",
+    "Include": "",
+    "Includepath": null
+  },
+  {
+    "Sourcefile": "C:\\Users\\jingtaoz\\Documents\\Arduino\\libraries\\Arduino_LSM9DS1\\src\\LSM9DS1.cpp",
+    "Include": "",
+    "Includepath": null
+  },
+  {
+    "Sourcefile": "C:\\Users\\jingtaoz\\AppData\\Local\\Arduino15\\packages\\arduino\\hardware\\mbed_nano\\2.5.2\\libraries\\Wire\\Wire.cpp",
+    "Include": "",
+    "Includepath": null
+  }
+]

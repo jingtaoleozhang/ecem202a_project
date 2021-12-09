@@ -1,0 +1,12 @@
+{
+  "additionalFiles": "..,..,..,..,..,..,..",
+  "builtInLibrariesFolders": "C:\\Program Files (x86)\\Arduino\\libraries",
+  "builtInToolsFolders": "C:\\Program Files (x86)\\Arduino\\tools-builder,C:\\Program Files (x86)\\Arduino\\hardware\\tools\\avr,C:\\Users\\jingtaoz\\AppData\\Local\\Arduino15\\packages",
+  "compiler.optimization_flags": "",
+  "customBuildProperties": "build.path=c:\\Users\\jingtaoz\\Documents\\_School\\UCLA\\ECE202A\\ecem202a_project\\software\\Project\\ArduinoOutput,build.warn_data_percentage=75,runtime.tools.arm-none-eabi-gcc.path=C:\\Users\\jingtaoz\\AppData\\Local\\Arduino15\\packages\\arduino\\tools\\arm-none-eabi-gcc\\7-2017q4,runtime.tools.arm-none-eabi-gcc-7-2017q4.path=C:\\Users\\jingtaoz\\AppData\\Local\\Arduino15\\packages\\arduino\\tools\\arm-none-eabi-gcc\\7-2017q4,runtime.tools.dfu-util.path=C:\\Users\\jingtaoz\\AppData\\Local\\Arduino15\\packages\\arduino\\tools\\dfu-util\\0.10.0-arduino1,runtime.tools.dfu-util-0.10.0-arduino1.path=C:\\Users\\jingtaoz\\AppData\\Local\\Arduino15\\packages\\arduino\\tools\\dfu-util\\0.10.0-arduino1,runtime.tools.rp2040tools.path=C:\\Users\\jingtaoz\\AppData\\Local\\Arduino15\\packages\\arduino\\tools\\rp2040tools\\1.0.2,runtime.tools.rp2040tools-1.0.2.path=C:\\Users\\jingtaoz\\AppData\\Local\\Arduino15\\packages\\arduino\\tools\\rp2040tools\\1.0.2,runtime.tools.openocd.path=C:\\Users\\jingtaoz\\AppData\\Local\\Arduino15\\packages\\arduino\\tools\\openocd\\0.11.0-arduino2,runtime.tools.openocd-0.11.0-arduino2.path=C:\\Users\\jingtaoz\\AppData\\Local\\Arduino15\\packages\\arduino\\tools\\openocd\\0.11.0-arduino2,runtime.tools.bossac.path=C:\\Users\\jingtaoz\\AppData\\Local\\Arduino15\\packages\\arduino\\tools\\bossac\\1.9.1-arduino2,runtime.tools.bossac-1.9.1-arduino2.path=C:\\Users\\jingtaoz\\AppData\\Local\\Arduino15\\packages\\arduino\\tools\\bossac\\1.9.1-arduino2",
+  "fqbn": "arduino:mbed_nano:nano33ble",
+  "hardwareFolders": "C:\\Program Files (x86)\\Arduino\\hardware,C:\\Users\\jingtaoz\\AppData\\Local\\Arduino15\\packages",
+  "otherLibrariesFolders": "C:\\Users\\jingtaoz\\Documents\\Arduino\\libraries",
+  "runtime.ide.version": "10816",
+  "sketchLocation": "c:\\Users\\jingtaoz\\Documents\\_School\\UCLA\\ECE202A\\ecem202a_project\\software\\Project\\Ard\\arduino_inference\\arduino_inference.ino"
+}
