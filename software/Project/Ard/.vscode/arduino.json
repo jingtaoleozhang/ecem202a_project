@@ -2,5 +2,5 @@
     "board": "arduino:mbed_nano:nano33ble",
     "port": "COM5",
     "programmer": "arduino:cmsis-dap",
-    "sketch": "arduino_inference\\arduino_inference.ino"
+    "sketch": "remote_inference\\remote_inference.ino"
 }

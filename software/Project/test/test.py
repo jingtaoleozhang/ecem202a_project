@@ -22,7 +22,7 @@ X_tr = np.load('X_debug.npy')
 X_tr = X_tr.astype(np.float32)
 y_tr = np.load('y_debug.npy')
 
-interpreter = tf.lite.Interpreter(model_path='DCLSTM_model_quant_edgetpu.tflite')
+interpreter = tf.lite.Interpreter(model_path='DeepConvLSTM_model.tflite')
 interpreter.allocate_tensors()
 
 in_spec = interpreter.get_input_details()

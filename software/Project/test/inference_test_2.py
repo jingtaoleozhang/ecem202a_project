@@ -1,10 +1,16 @@
+
 import asyncio
 import time
 from bleak import BleakScanner, BleakClient
+from bleak import exc
 from bleak.exc import BleakError
 from struct import *
 
-print('ble receiver test')
+import numpy as np
+#import tflite_runtime.interpreter as tflite
+import tensorflow as tf
+
+print('ble receiver and inference test')
 
 target_name = 'Ard_BLE_33_S'
 svc_uuid = '00001234-0000-1000-8000-00805f9b34fb'
@@ -18,7 +24,8 @@ class Connection:
         self.client = None
         self.connected = False
         self.count = 0
-        self.write_vals = [bytearray([0x00]), bytearray([0x01]), bytearray([0x02])]
+        self.write_vals = [bytearray([0x00]), bytearray(
+            [0x01]), bytearray([0x02])]
         self.write_idx = 0
         self.slices_received = 0
         self.slices_required = 6
@@ -27,12 +34,20 @@ class Connection:
         self.send_ack = False
         self.send_inf = False
 
+        # self.inf_idx = 0
+        self.data_buf = []
+
+        self.interpreter = tf.lite.Interpreter(model_path='DeepConvLSTM_model.tflite')
+        self.interpreter.allocate_tensors()
+        self.in_spec = self.interpreter.get_input_details()
+        self.out_spec = self.interpreter.get_output_details()
+
     # Runs once, displays service and characteristic info
+
     async def check_connection(self):
         if self.connected == False:
             self.device = await BleakScanner.find_device_by_filter(
-                lambda d, ad: d.name and d.name.lower() == self.wanted_name.lower()
-            )
+                lambda d, ad: d.name and d.name.lower() == self.wanted_name.lower())
             print(self.device)
 
             if not self.device:
@@ -54,6 +69,8 @@ class Connection:
                 try:
                     val = await self.client.read_gatt_char(read_chr_uuid)
                     nums = unpack('128f', val)
+                    self.data_buf.append(nums)
+                    # self.inf_idx += 1
                     self.slices_received += 1
                     self.count += 1
                     self.allow_read = False
@@ -77,19 +94,32 @@ class Connection:
     async def write_ble(self):
         while (True):
             if self.connected:
-                if self.slices_received == self.slices_required:  # send ack
+                if self.slices_received == self.slices_required:  # send inference
                     try:
                         print("sent inference")
+                        inference_buf = np.asarray(
+                            self.data_buf[0:6], dtype=np.float32)
+                        inference_buf = inference_buf.reshape(128, 6, 1)
+                        self.interpreter.set_tensor(
+                            self.in_spec[0]['index'], [inference_buf])
+                        self.interpreter.invoke()
+                        inference_res = self.interpreter.get_tensor(
+                            self.out_spec[0]['index'])
+                        print(inference_res.round(3))
+                        classification = (
+                            np.argmax(inference_res) + 1).tobytes()
+
                         await self.client.write_gatt_char(
                             write_chr_uuid,
-                            self.write_vals[1])
-                        # self.write_idx = (self.write_idx + 1) % 2
+                            classification)
+
+                        self.data_buf = []
                         self.slices_received = 0
                     except Exception as e:
                         print("WRITE BLE INF EXCEPTION")
                         print(e)
 
-                elif self.send_ack == True:
+                elif self.send_ack == True:  # send ack
                     try:
                         await self.client.write_gatt_char(
                             write_chr_uuid,
@@ -116,6 +146,7 @@ if __name__ == "__main__":
         asyncio.ensure_future(connection.write_ble())
         loop.run_forever()
     except Exception as e:
+        print('MAIN EXCEPTION')
         print(e)
     finally:
         print("disconnecting")

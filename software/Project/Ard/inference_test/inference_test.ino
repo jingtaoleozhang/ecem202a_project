@@ -133,15 +133,6 @@ void onRxWritten(BLEDevice central, BLECharacteristic chr) {
 }
 
 void onTxRead(BLEDevice central, BLECharacteristic chr) {
-    /*
-    Serial.println("tx read");
-    was_read = true;
-
-    if (waiting_for_rcv == true) {
-        slice_idx++;
-        waiting_for_rcv = false;
-    }
-    */
 }
 
 void onBLEConnected(BLEDevice central) {
