@@ -8,7 +8,8 @@
 #include "filtfilt.h"
 //#include "imu_ex_data.h"
 //#include "imu_data.h"
-#include "model_8_8.h"
+//#include "model_8_8.h"
+#include "model_12_12.h"
 //#include "model_16_16.h"
 #include "tensorflow/lite/micro/all_ops_resolver.h"
 #include "tensorflow/lite/micro/micro_error_reporter.h"
@@ -40,7 +41,7 @@ float acc_z[WINDOW_SIZE];
 float gyr_x[WINDOW_SIZE];
 float gyr_y[WINDOW_SIZE];
 float gyr_z[WINDOW_SIZE];
-int meas_buf_idx = 0;
+//int meas_buf_idx = 0;
 // const size_t window_size = 128;
 #define WINDOW_SIZE 128
 #define MEDIAN_FILTER_WINDOW 5
@@ -74,7 +75,8 @@ void setup() {
     error_reporter = &micro_error_reporter;
 
     // model = tflite::GetModel(cnn_16_16_model_tflite);
-    model = tflite::GetModel(_content_cnn_8_8_model_tflite);
+    model = tflite::GetModel(cnn_12_12_model_tflite);
+    // model = tflite::GetModel(_content_cnn_8_8_model_tflite);
     if (model->version() != TFLITE_SCHEMA_VERSION) {
         TF_LITE_REPORT_ERROR(error_reporter,
                              "Model provided is schema version %d not equal "
@@ -205,93 +207,111 @@ void process_arr(float arr[], vectord& vec) {
     filtfilt(butter_b, butter_a, med, vec);
 }
 
+unsigned long sample_start;
+unsigned long sample_end;
+unsigned long proc_end;
+unsigned long copy_end;
+unsigned long inf_end;
+
 void loop() {
     if (millis() >= curr_time + period) {
         curr_time += period;
+        Serial.println("Loop Start");
 
-        if (IMU.accelerationAvailable()) {
+        sample_start = micros();
+
+        int loop_start;
+        for (size_t i = 0; i < WINDOW_SIZE; i++) {
+            loop_start = millis();
             IMU.readAcceleration(a_x, a_y, a_z);
-            acc_x[meas_buf_idx] = a_x;
-            acc_y[meas_buf_idx] = a_y;
-            acc_z[meas_buf_idx] = a_z;
-        }
-        if (IMU.gyroscopeAvailable()) {
             IMU.readGyroscope(g_x, g_y, g_z);
-            gyr_x[meas_buf_idx] = g_x;
-            gyr_y[meas_buf_idx] = g_y;
-            gyr_z[meas_buf_idx] = g_z;
+
+            acc_x[i] = a_x;
+            acc_y[i] = a_y;
+            acc_z[i] = a_z;
+
+            gyr_x[i] = g_x;
+            gyr_y[i] = g_y;
+            gyr_z[i] = g_z;
+            delay(20 - (millis() - loop_start));
         }
-        meas_buf_idx++;
 
-        if (meas_buf_idx == WINDOW_SIZE) {
-            Serial.println("Inference Start");
+        sample_end = micros();
 
-            vectord proc_acc_x(WINDOW_SIZE);
-            vectord proc_acc_y(WINDOW_SIZE);
-            vectord proc_acc_z(WINDOW_SIZE);
+        vectord proc_acc_x(WINDOW_SIZE);
+        vectord proc_acc_y(WINDOW_SIZE);
+        vectord proc_acc_z(WINDOW_SIZE);
 
-            vectord proc_gyr_x(WINDOW_SIZE);
-            vectord proc_gyr_y(WINDOW_SIZE);
-            vectord proc_gyr_z(WINDOW_SIZE);
+        vectord proc_gyr_x(WINDOW_SIZE);
+        vectord proc_gyr_y(WINDOW_SIZE);
+        vectord proc_gyr_z(WINDOW_SIZE);
 
-            process_arr(acc_x, proc_acc_x);
-            process_arr(acc_y, proc_acc_y);
-            process_arr(acc_z, proc_acc_z);
+        process_arr(acc_x, proc_acc_x);
+        process_arr(acc_y, proc_acc_y);
+        process_arr(acc_z, proc_acc_z);
 
-            process_arr(gyr_x, proc_gyr_x);
-            process_arr(gyr_y, proc_gyr_y);
-            process_arr(gyr_z, proc_gyr_z);
+        process_arr(gyr_x, proc_gyr_x);
+        process_arr(gyr_y, proc_gyr_y);
+        process_arr(gyr_z, proc_gyr_z);
 
-            for (size_t i = 0; i < 128; i++) {
-                input->data.f[i] = proc_acc_x[i];
-                input->data.f[i + 1] = proc_acc_y[i];
-                input->data.f[i + 2] = proc_acc_z[i];
-                input->data.f[i + 3] = proc_gyr_x[i];
-                input->data.f[i + 4] = proc_gyr_y[i];
-                input->data.f[i + 5] = proc_gyr_z[i];
-            }
+        proc_end = micros();
 
-            TfLiteStatus invoke_status = interpreter->Invoke();
-            if (invoke_status != kTfLiteOk) {
-                TF_LITE_REPORT_ERROR(error_reporter, "Invoke failed\n");
-                return;
-            }
+        for (size_t i = 0; i < 128; i++) {
+            input->data.f[i] = proc_acc_x[i];
+            input->data.f[i + 1] = proc_acc_y[i];
+            input->data.f[i + 2] = proc_acc_z[i];
+            input->data.f[i + 3] = proc_gyr_x[i];
+            input->data.f[i + 4] = proc_gyr_y[i];
+            input->data.f[i + 5] = proc_gyr_z[i];
+        }
 
-            size_t max_idx = 0;
-            float max_val = interpreter->output(0)->data.f[0];
-            for (size_t i = 1; i < OUTPUT_SIZE; i++) {
-                float e = interpreter->output(0)->data.f[i];
-                if (e > max_val) {
-                    max_val = e;
-                    max_idx = i;
-                }
-            }
+        copy_end = micros();
 
-            switch (max_idx) {
+        TfLiteStatus invoke_status = interpreter->Invoke();
+        if (invoke_status != kTfLiteOk) {
+            TF_LITE_REPORT_ERROR(error_reporter, "Invoke failed\n");
+            return;
+        }
+
+        inf_end = micros();
+
+        for (size_t i = 0; i < OUTPUT_SIZE; i++) {
+            float e = interpreter->output(0)->data.f[i];
+            switch (i) {
                 case 0:
-                    Serial.println("LAYING");
+                    Serial.print("LAYING: ");
                     break;
                 case 1:
-                    Serial.println("WALKING");
+                    Serial.print("WALKING: ");
                     break;
                 case 2:
-                    Serial.println("WALKING_UPSTAIRS");
+                    Serial.print("WALKING_UPSTAIRS: ");
                     break;
                 case 3:
-                    Serial.println("WALKING_DOWNSTAIRS");
+                    Serial.print("WALKING_DOWNSTAIRS: ");
                     break;
                 case 4:
-                    Serial.println("SITTING");
+                    Serial.print("SITTING: ");
                     break;
                 case 5:
-                    Serial.println("STANDING");
+                    Serial.print("STANDING: ");
                     break;
                 default:
-                    Serial.println("invalid index");
+                    Serial.print("invalid index");
                     break;
             }
-            // Serial.print(interpreter->output(0)->data.f[i]);
-            meas_buf_idx = 0;
+            Serial.print(e);
+            Serial.print(", ");
         }
+        Serial.println();
+        Serial.print("sampling=");
+        Serial.print((float)(sample_end - sample_start) / 1000000);
+        Serial.print(", data proc=");
+        Serial.print((float)(proc_end - sample_end) / 1000000);
+        Serial.print(", copy=");
+        Serial.print((float)(copy_end - proc_end) / 1000000);
+        Serial.print(", inf=");
+        Serial.print((float)(inf_end - copy_end) / 1000000);
+        Serial.println();
     }
 }

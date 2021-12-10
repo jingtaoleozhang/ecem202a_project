@@ -66,9 +66,9 @@ def preprocess_raw_data(scaler):
         gyro_raw = pd.read_table(gyro_file, sep=" ", header=None, names=["x", "y", "z"])
 
         # old_acc = acc_raw
-        acc_subset = acc_raw.iloc[0:128]
-        acc_subset_scaled = scale(acc_subset, scaler=scaler)
-        tAcc_sub_xyz = preprocess_signal(acc_subset_scaled)
+        #acc_subset = acc_raw.iloc[0:128]
+        #acc_subset_scaled = scale(acc_subset, scaler=scaler)
+        #tAcc_sub_xyz = preprocess_signal(acc_subset_scaled)
         # acc_subset_col = acc_raw.iloc[0:128, 0:2]
 
         # acc_subset_col_scaled = scale(acc_subset_col, scaler="test")

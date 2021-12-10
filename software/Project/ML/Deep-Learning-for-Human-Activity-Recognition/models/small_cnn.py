@@ -72,8 +72,8 @@ def train_and_predict(
 def build_baseline(
     input_shape: Tuple[int, int, int] = (128, 6, 1), output_dim: int = 6, lr: float = 0.001
 ) -> Model:
-    c2d_filter_size = 16
-    dense_units_size = 16
+    c2d_filter_size = 12
+    dense_units_size = 12
     model = Sequential()
     model.add(Conv2D(c2d_filter_size, kernel_size=(5, 1), input_shape=input_shape))
     model.add(Activation("relu"))

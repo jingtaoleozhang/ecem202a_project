@@ -45,13 +45,13 @@ class Preprocess:
             fc = 20  # cutoff frequency
             w = fc / (self.fs / 2)  # Normalize the frequency
             b, a = butter(3, w, "low")  # 3rd order low-pass Butterworth filter
-            orig_sig = signal
-            sig_x = pd.DataFrame(filtfilt(b, a, signal.iloc[:, 0]))
-            sig_y = pd.DataFrame(filtfilt(b, a, signal.iloc[:, 1]))
-            sig_z = pd.DataFrame(filtfilt(b, a, signal.iloc[:, 2]))
+            #orig_sig = signal
+            #sig_x = pd.DataFrame(filtfilt(b, a, signal.iloc[:, 0]))
+            #sig_y = pd.DataFrame(filtfilt(b, a, signal.iloc[:, 1]))
+            #sig_z = pd.DataFrame(filtfilt(b, a, signal.iloc[:, 2]))
             signal = pd.DataFrame(filtfilt(b, a, signal, axis=0), columns=signal.columns)
-            print(b)
-            print(a)
+            #print(b)
+            #print(a)
         else:
             try:
                 raise ValueError("Not defined filter. See Args.")

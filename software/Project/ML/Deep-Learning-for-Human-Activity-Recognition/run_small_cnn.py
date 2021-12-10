@@ -27,7 +27,7 @@ from models.small_cnn import train_and_predict
 CUR_DIR = os.path.dirname(os.path.abspath(__file__))  # Path to current directory
 
 # Logging settings
-EXEC_TIME = "small_cnn_16_16-" + datetime.now().strftime("%Y%m%d-%H%M%S")
+EXEC_TIME = "small_cnn_12_12-" + datetime.now().strftime("%Y%m%d-%H%M%S")
 LOG_DIR = os.path.join(CUR_DIR, f"logs/{EXEC_TIME}")
 os.makedirs(LOG_DIR, exist_ok=True)  # Create log directory
 
