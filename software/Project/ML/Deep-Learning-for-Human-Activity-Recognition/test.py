@@ -24,12 +24,12 @@
 # print(y_test.shape)
 
 ## Make tflite from h5
-import tensorflow as tf
-
-model = tf.keras.models.load_model('logs/deep-conv-lstm-20211117-204148/trained_model_fold0.h5')
-converter = tf.lite.TFLiteConverter.from_keras_model(model)
-tflite_model = converter.convert()
-open("DeepConvLSTM_model.tflite", "wb").write(tflite_model)
+# import tensorflow as tf
+#
+# model = tf.keras.models.load_model('logs/deep-conv-lstm-20211117-204148/trained_model_fold0.h5')
+# converter = tf.lite.TFLiteConverter.from_keras_model(model)
+# tflite_model = converter.convert()
+# open("DeepConvLSTM_model.tflite", "wb").write(tflite_model)
 
 ## make an inference using tflite model
 # import numpy as np
@@ -90,3 +90,45 @@ open("DeepConvLSTM_model.tflite", "wb").write(tflite_model)
 #     file1.write('},\n')
 #
 # file1.close()
+
+## print model summaries
+# import tensorflow as tf
+# import numpy as np
+#
+#
+# def calculate_model_size(model):
+#     print(model.summary())
+#     var_sizes = [
+#         np.product(list(map(int, v.shape))) * v.dtype.size
+#         for v in model.trainable_variables
+#     ]
+#     print("Model size:", sum(var_sizes) / 1024, "KB")
+#
+#
+# model_paths_list = ['logs/cnn-20211207-010829/trained_model_fold0.h5',
+#                     'logs/small_cnn_12_12-20211209-014709/trained_model_fold0.h5',
+#                     'logs/deep-conv-lstm-20211117-204148/trained_model_fold0.h5']
+# for i in model_paths_list:
+#     model = tf.keras.models.load_model(i)
+#     print(i)
+#     calculate_model_size(model)
+
+## test model
+import tensorflow as tf
+from tensorflow import keras
+import numpy as np
+from src.data_prep.load import load_raw_data
+
+X_train, X_test, y_train, y_test, label2act, act2label = load_raw_data()
+y_train = keras.utils.to_categorical(y_train, 6)
+y_test = keras.utils.to_categorical(y_test, 6)
+
+model_paths_list = ['logs/cnn-20211207-010829/trained_model_fold0.h5',
+                    'logs/small_cnn_12_12-20211209-014709/trained_model_fold0.h5',
+                    'logs/deep-conv-lstm-20211117-204148/trained_model_fold0.h5']
+
+for i in model_paths_list:
+    model = tf.keras.models.load_model(i)
+    _, test_acc = model.evaluate(X_test, y_test, verbose=0)
+    _, train_acc = model.evaluate(X_train, y_train, verbose=0)
+    print(i + 'test:' + str(test_acc) + ', train:' + str(train_acc))
