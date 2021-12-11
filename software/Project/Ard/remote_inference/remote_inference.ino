@@ -17,11 +17,13 @@ const char* RX_CHR_UUID = "00002222-0000-1000-8000-00805f9b34fb";
 #define FLOATS_PER_WRITE 128
 #define NUM_SLICES 6
 
+#define PROCESS_LOCALLY false
+
 BLEService myService(SERVICE_UUID);
 BLECharacteristic txChr(TX_CHR_UUID, BLERead | BLENotify, BYTES_SENT);
 BLEIntCharacteristic rxChr(RX_CHR_UUID, BLEWriteWithoutResponse | BLEWrite);
 
-int period = 100;
+int period = 10;
 unsigned long curr_time = 0;
 
 bool waiting_for_rcv = true;
@@ -59,6 +61,12 @@ unsigned long proc_end;
 unsigned long transfer_end;
 unsigned long inf_end;
 
+unsigned long loop_sum = 0;
+unsigned long sample_sum = 0;
+unsigned long proc_sum = 0;
+unsigned long inf_sum = 0;
+int num_loops = 0;
+
 void setup() {
     // put your setup code here, to run once:
     Serial.println("Remote Inference Test Begin");
@@ -93,7 +101,7 @@ void setup() {
 
     BLE.setEventHandler(BLEConnected, onBLEConnected);
     BLE.setEventHandler(BLEDisconnected, onBLEDisconnected);
-    txChr.setEventHandler(BLERead, onTxRead);
+    // txChr.setEventHandler(BLERead, onTxRead);
     rxChr.setEventHandler(BLEWritten, onRxWritten);
 
     BLE.advertise();
@@ -249,6 +257,17 @@ void process_data() {
     }
 }
 
+void copy_raw() {
+    for (size_t i = 0; i < 128; i++) {
+        data_buf[i] = acc_x[i];
+        data_buf[i + 1] = acc_y[i];
+        data_buf[i + 2] = acc_z[i];
+        data_buf[i + 3] = gyr_x[i];
+        data_buf[i + 4] = gyr_y[i];
+        data_buf[i + 5] = gyr_z[i];
+    }
+}
+
 void loop() {
     BLEDevice central = BLE.central();
     if (central) {
@@ -288,21 +307,29 @@ void loop() {
                             data_ready = false;
                         }
                     }
-                } else if (waiting_for_inference == false) { //try collecting while waiting for inference
+                } else if (waiting_for_inference == false) {  // try collecting while waiting for inference
                     Serial.println("Sampling Start");
                     // This should take 2.56 seconds
-                    sample_start = micros();
+                    // sample_start = micros();
                     gather_data();  // gather raw data from IMU
-                    sample_end = micros();
+                    // sample_end = micros();
                     Serial.println("Sampling End");
-                    process_data();  // median and butterworth filter raw data
-                    proc_end = micros();
+
+                    if (PROCESS_LOCALLY == true) {
+                        process_data();  // median and butterworth filter raw data
+                    } else {
+                        copy_raw();  // use the raw accel and gyro
+                    }
+
+                    // proc_end = micros();
                     data_ready = true;
                 }
             }
         }
     }
 }
+
+unsigned long prev_inf = 0;
 
 void onRxWritten(BLEDevice central, BLECharacteristic chr) {
     int val = rxChr.value();
@@ -313,8 +340,46 @@ void onRxWritten(BLEDevice central, BLECharacteristic chr) {
             slice_idx++;
             waiting_for_rcv = false;
         }
-    } else {  // got inference
-        inf_end = micros();
+    } else {
+        // got inference
+        if (prev_inf == 0) {
+            prev_inf = micros();
+        } else {
+            prev_inf = inf_end;
+            inf_end = micros();
+            inf_sum += inf_end - prev_inf;
+            num_loops++;
+            Serial.println();
+            Serial.print(num_loops);
+            Serial.print("iter time=");
+            Serial.print((float)(inf_end - prev_inf) / 1000000, 5);
+            Serial.print(": avg=");
+            Serial.print(((float)inf_sum) / num_loops / 1000000, 5);
+        }
+
+        // sample_sum += sample_end - sample_start;
+        // proc_sum += proc_end - sample_end;
+        // inf_sum += inf_end - proc_end;
+        // num_loops++;
+        // Serial.println();
+        // Serial.print(num_loops);
+        // Serial.print(": sample sum=");
+        // Serial.print(((float)sample_sum) / num_loops / 1000000, 5);
+        // Serial.print("data proc=");
+        // Serial.print(((float)proc_sum) / num_loops / 1000000, 5);
+        // Serial.print("inf=");
+        // Serial.print(((float)inf_sum) / num_loops / 1000000, 5);
+        // Serial.println();
+
+        // Serial.print("sampling=");
+        // Serial.print((float)(sample_end - sample_start) / 1000000);
+        // Serial.print(", data proc=");
+        // Serial.print((float)(proc_end - sample_end) / 1000000);
+        // // Serial.print(", copy=");
+        // // Serial.print((float)(transfer_end - proc_end) / 1000000);
+        // Serial.print(", inf=");
+        // Serial.print((float)(inf_end - proc_end) / 1000000);
+        // Serial.println();
         Serial.print("Inference: ");
         switch (val - 1) {
             case 0:
@@ -339,19 +404,9 @@ void onRxWritten(BLEDevice central, BLECharacteristic chr) {
                 Serial.println("invalid index");
                 break;
         }
-
-        Serial.print("sampling=");
-        Serial.print((float)(sample_end - sample_start) / 1000000);
-        Serial.print(", data proc=");
-        Serial.print((float)(proc_end - sample_end) / 1000000);
-        // Serial.print(", copy=");
-        // Serial.print((float)(transfer_end - proc_end) / 1000000);
-        Serial.print(", inf=");
-        Serial.print((float)(inf_end - proc_end) / 1000000);
-        Serial.println();
-        Serial.println();
         waiting_for_inference = false;
         slice_idx = 0;
+         Serial.println();
     }
 }
 

@@ -46,28 +46,28 @@ Using powerful networked devices to run inference is very widespread in machine 
 
 # 3. Technical Approach
 
-There will be three setups that will run inference. The first setup only involves the embedded device. The Arduino will capture data from its inertial measurement unit, process it, then use run inference using a small CNN. The second setup will using the embedded device for data gathering and preprocessing and a Coral Dev Board edge server for inference. The communication between the server and device will be through BLE. The server will run inference using a larger model. The third setup will be similar to the second one, however a GPU equipped PC will serve as the edge server.
+There will be three setups that will run inference. The first setup only involves the embedded device. The Arduino will capture data from its inertial measurement unit, process it, then use run inference using a small CNN. The second setup will using the embedded device for data gathering and a Coral Dev Board edge server for inference. The communication between the server and device will be through BLE. The server will run inference using a larger model. The third setup will be similar to the second one, however a GPU equipped PC will serve as the edge server. Preprocessing of data can be done on the device or server.
 
 The application that will be used to compare the setups is human activity recognition using acclerometer and gyroscope data.
 
 ## Data
 The dataset that the nerual networks are trained on is the UCI Smartphone-Based Recognition of Human Activities and Postural Transitions Data Set [[8](#8)]. The input to a model is a 768 length floating point vector of sets of 3 axis accelerometer and 3 axis gyroscope measuremnts sampled at 50 Hz. The time for the entire vector to be generated is 2.56 seconds.
 
-The data is essentially 6 vectors of IMU measurements. Each of these vectors is median filtered, then filtered by a third degree low-pass butterworth filter to remove noise and gravity components. The vectors are then assembled into the final 768 size vector. The data processing is done on the device.
+The data is essentially 6 vectors of IMU measurements. Each of these vectors is median filtered, then filtered by a third degree low-pass butterworth filter to remove noise and gravity components. The vectors are then assembled into the final 768 size vector.
 
 Median filter implementation is by Bogdan Anderu[[11](#11)]. Butterworth filter implementation is based on Darien Pardina's filter implementation [[12](#12)].
 
 ## Models
-The model that will run on the Coral board is the baseline CNN used in [[5](#5)] that has been quantized for compatability with the edge TPU. It's 1364 kB in size and its architecture is shown below. Its accuracy is 
+The model that will run on the Coral board is the baseline CNN used in [[5](#5)] that has been quantized for compatability with the edge TPU. It's 1364 kB in size and its architecture is shown below. 
 ![Model for Coral](media/cnn_baseline.png)
 
-The model that will run on the Arduino is similar to the one that runs on the Coral however the number of filters in its convolutional layers and number units in its densely connected layers have been reduced. it's 364 kB in size and its architecture is shown below. Including the code for gathering and processing the data comes close to the max program size for the device.
+The model that will run on the Arduino is similar to the one that runs on the Coral however the number of filters in its convolutional layers and number units in its densely connected layers have been reduced. it's 364 kB in size and its architecture is shown below. Combined with the code for gathering and processing the data, the amount of memory required is close to the device's maximum.
 ![Model for Arduino](media/cnn_12_12.png)
 
-The model that will run on the PC is the DeepConvLSTM from [[5](#5)]. It's 1785 kB in size and its architecture is shown below. The LSTM layers are supported on standard TensorFlow
+The model that will run on the PC is the DeepConvLSTM from [[5](#5)]. It's 1785 kB in size and its architecture is shown below. The LSTM layers are supported on standard TensorFlow.
 ![Model for PC](media/deepconvlstm.png)
 
-One thing of note is that the accuracies for these models on the dataset are strangely quite similar at aroung 95%; however, the accuracy of human activity recognition nerual network architectures is beyond the scope of this project.
+One thing of note is that the accuracies for these models on the dataset are strangely quite similar at around 95%; however, the accuracy of nerual network architectures for human activity recognition is beyond the scope of this project.
 
 Model implementations are based on Takumi Watanabe's implementations [[6](#6)].
 
@@ -77,10 +77,43 @@ Data is sent to the edge server for inference through bluetooth low energy versi
 
 When the data is ready, the device will continuously send the first slice of 128 floats on the TX characthersitic until it reads an acknowledgement on RX from the edge server. After that it will go to the next slice and again wait for an acknowledgement, this repeats until all 6 slices are sent after which the device will wait for an inference on RX. When it receives the inference it will sample and process a new vector of inputs and repeat the process. It will only repeat the first slice on the first iteration before an acknowledgement is received. 
 
+## Software System
+
+For the setup that involves only the Arduino. The IMU sampled for the required 2.56 seconds, the median and butterworth fitlers are applied, then the vector is sent to inference.
+
+For the setups that involve an edge server, the IMU is sampled, the raw data is sent to the edge server where it is processed and an inference is made. The classification is then sent back to the device. The edge servers use python.
 
 # 4. Evaluation and Results
 
+The time it takes to sample the data is always 2.56 seconds, as the dataset specifies. 
+
+The setup with just the microcontroller has only data processing and inference times to profile. The setups involivng edge servers have communications, processing, and inference times to consider.
+
+The results averaged over 100 iterations are tabulated below. Time are in seconds. In parentheses is the speedup over doing everything on the device.
+
+| Setup           | Processing      | Communication | Inference          | Total              |
+| --------------- | --------------- | ------------- | ------------------ | ------------------ |
+| Arudino         | 0.05090         | N/A           | 1.20305            | 3.80777            |
+| Arduino + Coral | 0.01258 (4.05x) | 2.92701*      | 0.01843   (66.76x) | 5.51802*  (-1.45x) |
+| Arduino + PC    | 0.00312 (16.3x) | 2.92701       | 0.01428  (84.25x)  | 5.50441 (-1.45x)   |
+
+\* Unfortunately, during development I damaged the bluetooth chip on the Coral board by static electricity discharge. I believe this is the case because bluetooth had previously functioned on it then stopped with no changes to code, also bluetooth devices can no longer be found when using linux commands. I will use the communication penatly from the Arduino + PC setup for both remote inference setups.
+
 # 5. Discussion and Conclusions
+
+## Results Analysis
+For the Arduino only setup, data processing took 1.3% of the iteration time, the fixed sampling period took 67.2%, and the inference took 31.6%.
+
+For the setups including the Coral and PC servers, data processing and inference took less than 1% of the iteration time while the fixed sampling time took 46.4% and 46.% of the iteration and communication took 53.0% and 53.2% respectively.
+
+The communication penalty is large considerable and takes up most of the iteration time. The input vector to the model consists of 768 floating point numbers for a total of 3072 bytes. With a communication cost of 2.92701 seconds, this gives an approximate bitrate of the BLE setup of 1.05kB/s.
+
+The time to process the data (median and butterworth filter) is lowered drastically by performing it on the powerful CPUs of the edge servers, however the absolute time saved is negligible considering the commication penalty.
+
+
+## Future Directions.
+compressed sensing, partition models, reduce comm overhead by using integers
+
 
 # 6. References
 

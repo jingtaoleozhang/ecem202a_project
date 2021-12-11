@@ -1,4 +1,3 @@
-
 import asyncio
 import time
 from bleak import BleakScanner, BleakClient
@@ -7,8 +6,11 @@ from bleak.exc import BleakError
 from struct import *
 
 import numpy as np
-#import tflite_runtime.interpreter as tflite
+# import tflite_runtime.interpreter as tflite
 import tensorflow as tf
+from preprocessing import Preprocess
+from scipy.signal import butter, filtfilt
+import pandas as pd
 
 print('ble receiver and inference test')
 
@@ -41,6 +43,15 @@ class Connection:
         self.interpreter.allocate_tensors()
         self.in_spec = self.interpreter.get_input_details()
         self.out_spec = self.interpreter.get_output_details()
+
+        self.num_inf = 0
+        self.proc_sum = 0
+        self.inf_sum = 0
+
+        fc = 20  # cutoff frequency
+        fs = 50
+        w = fc / (fs / 2)  # Normalize the frequency
+        self.b, self.a = butter(3, w, "low")  # 3rd order low-pass Butterworth filter
 
     # Runs once, displays service and characteristic info
 
@@ -96,25 +107,55 @@ class Connection:
             if self.connected:
                 if self.slices_received == self.slices_required:  # send inference
                     try:
-                        print("sent inference")
-                        inference_buf = np.asarray(
-                            self.data_buf[0:6], dtype=np.float32)
-                        inference_buf = inference_buf.reshape(128, 6, 1)
-                        self.interpreter.set_tensor(
-                            self.in_spec[0]['index'], [inference_buf])
-                        self.interpreter.invoke()
-                        inference_res = self.interpreter.get_tensor(
-                            self.out_spec[0]['index'])
-                        print(inference_res.round(3))
-                        classification = (
-                            np.argmax(inference_res) + 1).tobytes()
+                        start_time = time.monotonic()
+                        inference_buf = np.asarray(self.data_buf[0:6], dtype=np.float32)
+                        inference_buf = inference_buf.reshape((128, 6))
 
-                        await self.client.write_gatt_char(
-                            write_chr_uuid,
-                            classification)
+                        inference_buf = pd.DataFrame(inference_buf, dtype=np.float32)
+
+                        # normalize
+                        #inference_buf = StandardScaler().fit_transform(inference_buf)
+
+                        mean = inference_buf.mean()
+                        std = inference_buf.std()
+                        inference_buf = (inference_buf - mean) / std
+
+                        #print(sum(inference_buf - inf_buf_2))
+                        inference_buf = pd.DataFrame(inference_buf, dtype=np.float32)
+
+                        # median
+                        inference_buf = inference_buf.rolling(window=5, center=True, min_periods=1).median()
+
+                        # butterworth
+                        inference_buf = filtfilt(self.b, self.a, inference_buf, axis=0)
+
+                        inference_buf = inference_buf.astype(np.float32)
+                        inference_buf = inference_buf.reshape((128, 6, 1))
+
+                        proc_end = time.monotonic()
+
+                        self.interpreter.set_tensor(self.in_spec[0]['index'], [inference_buf])
+                        self.interpreter.invoke()
+
+                        inf_end = time.monotonic()
+
+                        self.proc_sum += proc_end - start_time
+                        self.inf_sum += inf_end - proc_end
+                        self.num_inf += 1
+                        print(
+                            "iter:" + str(self.num_inf) + ", Proc:" + str(self.proc_sum / self.num_inf) + "Inf:" + str(
+                                self.inf_sum / self.num_inf))
+
+                        inference_res = self.interpreter.get_tensor(self.out_spec[0]['index'])
+                        print(inference_res.round(3))
+                        classification = (np.argmax(inference_res) + 1).tobytes()
+
+                        print("sent inference")
+                        await self.client.write_gatt_char(write_chr_uuid, classification)
 
                         self.data_buf = []
                         self.slices_received = 0
+
                     except Exception as e:
                         print("WRITE BLE INF EXCEPTION")
                         print(e)

@@ -41,7 +41,7 @@ float acc_z[WINDOW_SIZE];
 float gyr_x[WINDOW_SIZE];
 float gyr_y[WINDOW_SIZE];
 float gyr_z[WINDOW_SIZE];
-//int meas_buf_idx = 0;
+// int meas_buf_idx = 0;
 // const size_t window_size = 128;
 #define WINDOW_SIZE 128
 #define MEDIAN_FILTER_WINDOW 5
@@ -213,6 +213,12 @@ unsigned long proc_end;
 unsigned long copy_end;
 unsigned long inf_end;
 
+unsigned long loop_sum = 0;
+unsigned long sample_sum = 0;
+unsigned long proc_sum = 0;
+unsigned long inf_sum = 0;
+int num_loops = 0;
+
 void loop() {
     if (millis() >= curr_time + period) {
         curr_time += period;
@@ -236,7 +242,7 @@ void loop() {
             delay(20 - (millis() - loop_start));
         }
 
-        sample_end = micros();
+        // sample_end = micros();
 
         vectord proc_acc_x(WINDOW_SIZE);
         vectord proc_acc_y(WINDOW_SIZE);
@@ -254,7 +260,7 @@ void loop() {
         process_arr(gyr_y, proc_gyr_y);
         process_arr(gyr_z, proc_gyr_z);
 
-        proc_end = micros();
+        // proc_end = micros();
 
         for (size_t i = 0; i < 128; i++) {
             input->data.f[i] = proc_acc_x[i];
@@ -265,7 +271,7 @@ void loop() {
             input->data.f[i + 5] = proc_gyr_z[i];
         }
 
-        copy_end = micros();
+        // copy_end = micros();
 
         TfLiteStatus invoke_status = interpreter->Invoke();
         if (invoke_status != kTfLiteOk) {
@@ -273,7 +279,12 @@ void loop() {
             return;
         }
 
-        inf_end = micros();
+        // inf_end = micros();
+
+        loop_sum += micros() - sample_start;
+        num_loops++;
+        Serial.print("Runtime=");
+        Serial.println(((float)loop_sum) / num_loops / 1000000, 5);
 
         for (size_t i = 0; i < OUTPUT_SIZE; i++) {
             float e = interpreter->output(0)->data.f[i];
@@ -303,15 +314,30 @@ void loop() {
             Serial.print(e);
             Serial.print(", ");
         }
-        Serial.println();
-        Serial.print("sampling=");
-        Serial.print((float)(sample_end - sample_start) / 1000000);
-        Serial.print(", data proc=");
-        Serial.print((float)(proc_end - sample_end) / 1000000);
-        Serial.print(", copy=");
-        Serial.print((float)(copy_end - proc_end) / 1000000);
-        Serial.print(", inf=");
-        Serial.print((float)(inf_end - copy_end) / 1000000);
-        Serial.println();
+
+        // sample_sum += sample_end - sample_start;
+        // proc_sum += proc_end - sample_end;
+        // inf_sum += inf_end - copy_end;
+        // num_loops++;
+        // Serial.println();
+        // Serial.print(num_loops);
+        // Serial.print(": sample sum=");
+        // Serial.print(((float)sample_sum) / num_loops / 1000000, 5);
+        // Serial.print("data proc=");
+        // Serial.print(((float)proc_sum) / num_loops / 1000000, 5);
+        // Serial.print("inf=");
+        // Serial.print(((float)inf_sum) / num_loops / 1000000, 5);
+        // Serial.println();
+
+        // Serial.println();
+        // Serial.print("sampling=");
+        // Serial.print((float)(sample_end - sample_start) / 1000000, 5);
+        // Serial.print(", data proc=");
+        // Serial.print((float)(proc_end - sample_end) / 1000000, 5);
+        // Serial.print(", copy=");
+        // Serial.print((float)(copy_end - proc_end) / 1000000, 5);
+        // Serial.print(", inf=");
+        // Serial.print((float)(inf_end - copy_end) / 1000000, 5);
+        // Serial.println();
     }
 }
