@@ -2,9 +2,7 @@
 
 # Abstract
 
-*Provide a brief overview of the project objhectives, approach, and results.*
-
-The goal of this project is to evaluate the effectiveness of using a networked tensor processing unit to improve the effectiveness of machine learning results on embedded devices. The system will consist of the sensing device, anArduino Nano 33 BLE Sense, and the edge server, a Coral Dev Board TPU. The performance of a ML model running on only the device using TinyML practices will be compared to running inference remotely on the edge server. The models to be used for evaluation are the DeepConvLSTM running on the edge server and the device will run traditional ML models such as SVM. The metrics used to gauge performance will be accuracy, latency, and power consumption.
+The goal of this project is to investigate the performance of using edge servers to provide deep neural network inference on data gathered by embedded microcontrollers. Three setups for providing neural net inferences to an Arduino are tested. One using just the Arduino, one using the Arduino and a Coral Dev Board, and one using the Arduino and a PC. Data is transferred from the Arduino to an edge server through BLE. The application used to benchmark the systems is human activity recognition using acceleromater and gyroscope data. Data processing and neural net inference times are reduced significantly when offloading however the communication overhead makes these benefits negligible.
 
 # Team
 
@@ -12,7 +10,7 @@ The goal of this project is to evaluate the effectiveness of using a networked t
 
 # Required Submissions
 
-* [Proposal](https://github.com/jingtaoleozhang/ece202a/blob/main/docs/proposal.md)
-* [Midterm Checkpoint Presentation Slides](http://)
-* [Final Presentation Slides](http://)
-* [Final Report](report)
+* [Proposal](proposal.md)
+* [Midterm Checkpoint Presentation Slides](media/MT%20pres.pdf)
+* [Final Presentation Slides](media/Final%20Pres.pdf)
+* [Final Report](report.md)

@@ -15,7 +15,7 @@ ECE202A Fall 2021
 # Abstract
 <!-- Provide a brief overview of the project objectives, approach, and results. -->
 
-The goal of this project is to investigate the performance of using edge servers to provide deep neural network inference on data gathered by embedded microcontrollers. Three setups for providing neural net inferences to an Arduino are tested. One using just the Arduino, one using the Arduino and a Coral Dev Board, and one using the Arduino and a PC. Data processing and neural net inference times are reduced significantly when offloading however the communication overhead makes these benefits negligible.
+The goal of this project is to investigate the performance of using edge servers to provide deep neural network inference on data gathered by embedded microcontrollers. Three setups for providing neural net inferences to an Arduino are tested. One using just the Arduino, one using the Arduino and a Coral Dev Board, and one using the Arduino and a PC. Data is transferred from the Arduino to an edge server through BLE. The application used to benchmark the systems is human activity recognition using accelerometer and gyroscope data. Data processing and neural net inference times are reduced significantly when offloading however the communication overhead makes these benefits negligible.
 
 # 1. Introduction
 <!-- 
@@ -154,7 +154,7 @@ This application had large communication overheads due to the large size of inpu
 ### Model Partitioning
 It is possible to partition models to allow different sections to run on different platforms [[19](#19)]. This provides an opportunity to decrease communication costs. For example, the AlexNet [[13](#13)] image classification architecture has an input dimension of 150,528, however at an intermediate layer, the output size is 64,896. If the model was partitioned here, then the amount of data that would need to be send would decrease substantially. However, the preprocessing of input data would no longer be able to occur at the edge server.
 
-### Aggresssive Quantization
+### Aggressive Quantization
 Quantization is a method for reducing the computational cost of a neural network by reducing the size and therefore precision of the datatypes used for weights. It has been shown that reduction up to 4 bit integers is possible with minimal loss in accuracy [[14](#14)] and even architectures using a single bit [[15](#15)] are an area of research. This again gives potential for reduction in communication costs. Quantization would also allow deeper models to be run on embedded microcontrollers.
 
 ### Bluetooth Refinement
