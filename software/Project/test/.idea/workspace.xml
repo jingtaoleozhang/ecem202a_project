@@ -2,12 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="29c2fdc6-3e99-478f-bfdd-a777299d6c49" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/other.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../../../docs/report.md" beforeDir="false" afterPath="$PROJECT_DIR$/../../../docs/report.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Ard/remote_inference/remote_inference.ino" beforeDir="false" afterPath="$PROJECT_DIR$/../Ard/remote_inference/remote_inference.ino" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/test.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/test.iml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/inference_test_2.py" beforeDir="false" afterPath="$PROJECT_DIR$/inference_test_2.py" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -262,7 +258,7 @@
       <workItem from="1638763071668" duration="1794000" />
       <workItem from="1638839481686" duration="5077000" />
       <workItem from="1639097857028" duration="2869000" />
-      <workItem from="1639167869214" duration="12267000" />
+      <workItem from="1639167869214" duration="14129000" />
     </task>
     <servers />
   </component>

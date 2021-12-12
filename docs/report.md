@@ -1,3 +1,8 @@
+# Remote Inference for Microcontrollers at the Edge
+Jingtao Leo Zhang
+
+ECE202A Fall 2021
+
 # Table of Contents
 * Abstract
 * [Introduction](#1-introduction)
@@ -38,49 +43,55 @@ The overall time between when the data is finished being collected and when an i
 # 2. Related Work
 
 ## Neural Networks on Microcontrollers.
-Giving neural net inference capabilities to microcontrollers is an emerging area of research [[1](#1)]. Applications exist from recognizing wakeup voice commands (like for Google home and Amazon Alexa) or detecting when someone is looking at a camera to activate a larger processor for facial recognition [[9](#9)]. This project will involve neural network computation on a microcontroller.
+Giving neural net inference capabilities to microcontrollers is an emerging area of research [[1](#1)]. Applications exist from recognizing wakeup voice commands (like for Google home and Amazon Alexa) or detecting when someone is looking at a camera to activate a larger processor for facial recognition [[9](#9)]. These networks are typically 10s of kilobytes in size. This project will involve neural network computation on a microcontroller.
 
 
-## Inference at the Edge
-Using powerful networked devices to run inference is very widespread in machine learning applications [[10](#10)]. Using edge servers for inference rather than going through the internet is an area of interest due to latency and security concerns [[3](#3), [4](#4)].
+## Remote Inference.
+Using powerful networked devices to run inference is very widespread in machine learning applications [[10](#10)]. Using edge servers for inference rather than going through the internet is an area of interest due to latency and security concerns and there has been a lot of work in that area [[3](#3)], however the publications use smartphones for data collection and GPU eqipped PCs for the edge server. In other cases the edge server is primarly for data preprocessing and the actual inference is run on a core cloud [[4](#4)].
 
 
 # 3. Technical Approach
 
-There will be three setups that will run inference. The first setup only involves the embedded device. The Arduino will capture data from its inertial measurement unit, process it, then use run inference using a small CNN. The second setup will using the embedded device for data gathering and a Coral Dev Board edge server for inference. The second setup is pictured below.
+## Hardware
+There will be three setups that will run inference. 
+
+The first setup only uses the Arduino Nano 33 BLE Sense which has an Arm Cortex-M4 processor. The Arduino will capture data from its inertial measurement unit, process it, then use run inference using a small CNN. 
+
+The second setup will use the Arduino for data gathering and a Coral Dev Board edge server for data processing and inference. The Coral is equipped with an Arm Cortex A53-processor and edge TPU accelerator. The communication between the Coral and Arduino will be through BLE. The server will run inference using a larger model. The second setup is pictured below.
 
 <img src="media/coral%20and%20ard.png" height="300" />
 
-The communication between the server and device will be through BLE. The server will run inference using a larger model. The third setup will be similar to the second one, however a GPU equipped PC will serve as the edge server. Preprocessing of data can be done on the device or server.
-
+The third setup will be similar to the second one, however the Coral will be replaced by a PC with an Nvidia GTX 1060 GPU and Intel i7-8750H CPU. 
+ 
+## Software
 The application that will be used to compare the setups is human activity recognition using accelerometer and gyroscope data.
 
-## Data
+### Data
 The dataset that the neural networks are trained on is the UCI Smartphone-Based Recognition of Human Activities and Postural Transitions Data Set [[8](#8)]. The input to a model is a 768 length floating point vector of sets of 3 axis accelerometer and 3 axis gyroscope measurements sampled at 50 Hz. The time for the entire vector to be generated is 2.56 seconds.
 
-The data is essentially 6 vectors of IMU measurements. Each of these vectors is median filtered, then filtered by a third degree low-pass butterworth filter to remove noise and gravity components. The vectors are then assembled into the final 768 size vector.
+The data is essentially 6 vectors of IMU measurements. Each of these vectors is median filtered, then filtered by a third degree low-pass butterworth filter with cutoff at to 20Hz to remove noise and gravity components from the accelerometer. The vectors are then assembled into the final 768 size vector.
 
 Median filter implementation is by Bogdan Anderu[[11](#11)]. Butterworth filter implementation is based on Darien Pardina's filter implementation [[12](#12)].
 
-## Models
-The model that will run on the Coral board is the baseline CNN used in [[5](#5)] that has been quantized for compatibility with the edge TPU. It's 1364 kB in size and its architecture is shown below. The model runs using TFlite for edge TPU.
+### Models
+The model that will run on the Coral board is the baseline CNN used in [[5](#5)] that has been quantized for compatibility with the edge TPU. Its architecture is shown below. The model runs using TFlite for edge TPU.
 ![Model for Coral](media/cnn_baseline.png)
 
-The model that will run on the Arduino is similar to the one that runs on the Coral however the number of filters in its convolutional layers and number units in its densely connected layers have been reduced. it's 364 kB in size and its architecture is shown below. Combined with the code for gathering and processing the data, the amount of memory required is close to the device's maximum. The model runs using TFlite for microcontrollers.
+The model that will run on the Arduino is similar to the one that runs on the Coral however the number of filters in its convolutional layers and number units in its densely connected layers have been reduced. Its architecture is shown below. The model runs using TFlite for microcontrollers.
 ![Model for Arduino](media/cnn_12_12.png)
 
-The model that will run on the PC is the DeepConvLSTM from [[5](#5)]. It's 1785 kB in size and its architecture is shown below. The model runs on standard TensorFlow with GPU.
+The model that will run on the PC is the DeepConvLSTM from [[5](#5)] and its architecture is shown below. The model runs on standard TensorFlow with a GPU.
 ![Model for PC](media/deepconvlstm.png)
 
-Model implementations are based on Takumi Watanabe's implementations [[6](#6)].
+Model implementations are based on Takumi Watanabe's work [[6](#6)].
 
-## Communication
+### Communication
 
 Data is sent to the edge server for inference through Bluetooth low energy version 4.2. The maximum packet size is 512 bytes meaning the input vector of 768 floats must be sent in 6 slices. This is done by the following protocol. The communication happens using two BLE characteristics, TX and RX (from the perspective of the device). 
 
 When the data is ready, the device will continuously send the first slice of 128 floats on the TX characteristic until it reads an acknowledgement on RX from the edge server. After that it will go to the next slice and again wait for an acknowledgement, this repeats until all 6 slices are sent after which the device will wait for an inference on RX. When it receives the inference it will sample and process a new vector of inputs and repeat the process. It will only repeat the first slice on the first iteration before an acknowledgement is received. 
 
-## Software System
+### Runtime Process
 
 For the setup that involves only the Arduino. The IMU sampled for the required 2.56 seconds, the median and butterworth filters are applied, then the vector is sent to inference.
 
@@ -88,19 +99,22 @@ For the setups that involve an edge server, the IMU is sampled, the raw data is 
 
 # 4. Evaluation and Results
 
+## Metrics
 The time it takes to sample the data is always 2.56 seconds, as the dataset specifies. 
 
 The setup with just the microcontroller has only data processing and inference times to profile. The setups involving edge servers have communications, processing, and inference times to consider.
 
 The results averaged over 100 iterations are tabulated below. Times are in seconds. In parentheses is the speedup over the Arduino only setup.
 
-| Setup           | Processing      | Communication | Inference          | Total              |
-| --------------- | --------------- | ------------- | ------------------ | ------------------ |
-| Arduino         | 0.05090         | N/A           | 1.20305            | 3.80777            |
-| Arduino + Coral | 0.01258 (4.05x) | 2.92701*      | 0.01843   (66.76x) | 5.51802*  (-1.45x) |
-| Arduino + PC    | 0.00312 (16.3x) | 2.92701       | 0.01428  (84.25x)  | 5.50441 (-1.45x)   |
+| Setup           | Model Size | Accuracy* | Processing      | Communication | Inference          | Total              |
+| --------------- | ---------- | --------- | --------------- | ------------- | ------------------ | ------------------ |
+| Arduino         | 364 kB     | 74.7%     | 0.05090         | N/A           | 1.20305            | 3.80777            |
+| Arduino + Coral | 1364 kB    | 92.1%     | 0.01258 (4.05x) | 2.92701**     | 0.01843   (66.76x) | 5.51802** (-1.45x) |
+| Arduino + PC    | 1785 kB    | 98.7%     | 0.00312 (16.3x) | 2.92701       | 0.01428  (84.25x)  | 5.50441 (-1.45x)   |
 
-\* Unfortunately, during development I damaged the Bluetooth chip on the Coral board by static electricity discharge. I believe this is the case because Bluetooth had previously functioned on it then stopped with no changes to code, also bluetooth devices can no longer be found when from Linux commands. I will assume the communication penalty from the Arduino + PC setup for both remote inference setups.
+\* For some reason, the actual test accuracy on the dataset is about 95% for all three of these models. This may be due to how the dataset was split. However, during real world tests of the whole system there is a clear discrepancy between the smaller and larger models. I decided to use the final epoch training accuracy as an indicator of the effectiveness of a model architecture because they seem in line with what one woudl expect from the size of each model. The actual accuracy of neural net architectures for human activity recognition is beyond the scope of this project.
+
+\*\* Unfortunately, during development I damaged the Bluetooth chip on the Coral board by static electricity discharge. I believe this is the case because Bluetooth had previously functioned on it then stopped with no changes to code, also bluetooth devices can no longer be found when from Linux commands. I will assume the communication penalty from the Arduino + PC setup for both remote inference setups.
 
 # 5. Discussion and Conclusions
 
@@ -117,14 +131,20 @@ One oddity is that the accuracies for these models on the dataset are quite simi
 
 ## Future Directions.
 
+### Parallelism
 The Arduino uses an Arm Cortex M4 based chip which is single core and single thread. The existence of a remote server gives parallel computation capabilities. The next iteration's data collection runs concurrently with the inference processing. If the communication overhead was lower and inference times were longer the throughput of the system could see benefit from edge server inference.
 
+### Compressed Sensing
 This application had large communication overheads due to the large size of input vector. This vector is a sampled signal which gives the possibility of reduction in data size by using compressed sensing [[7](#7)]. This reduction in data size comes at the cost of requiring information about the signal sparsity beforehand and increased computation to recover the original signal. The increased computation cost would be offset by the increased processing power of the edge server.
 
+### Model Partitioning
 It is possible to partition models to allow different sections to run on different platforms. This provides an opportunity to decrease communication costs. For example, the AlexNet [[13](#13)] image classification architecture has an input dimension of 150,528, however at an intermediate layer, the output size is 64,896. If the model was partitioned here, then the amount of data that would need to be send would decrease substantially. However, the preprocessing of input data would no longer be able to occur at the edge server.
 
+### Aggresssive Quantization
 Quantization is a method for reducing the computational cost of a neural network by reducing the size and therefore precision of the datatypes used for weights. It has been shown that reduction up to 4 bit integers is possible with minimal loss in accuracy [[14](#14)] and even architectures using a single bit [[15](#15)] are an area of research. This again gives potential for reduction in communication costs. Quantization would also allow deeper models to be run on embedded microcontrollers.
 
+### Bluetooth Refinement
+The theoretical throughput of Bluetooth Low Energy 4.2 is 784kB/s [[16](#16)] and practical throughputs up to 120kB/s [[17](#17)]. The BLE communication implemented in this project was done using the ArduinoBLE library and the protocol is likely suboptimal. A more advanced BLE communication implementation could decrease the commnication penalty substantially. For example, at 120kB/s, the penalty would be .0256s which would make remote processing and inference very useful. A possible optimization is using 6 transmit characteristics and sending all 6 slices without waiting for acknowledgements instead of one by one using a single charactheristic.
 
 # 6. References
 
@@ -157,3 +177,7 @@ Quantization is a method for reducing the computational cost of a neural network
 <a id="14">[14]</a>: Zhao, Junhe, et al. "Towards Compact 1-bit CNNs via Bayesian Learning." International Journal of Computer Vision (2021): 1-25.
 
 <a id="15">[15]</a>: Choukroun, Yoni, et al. "Low-bit Quantization of Neural Networks for Efficient Inference." ICCV Workshops. 2019.
+
+<a id="16">[16]</a>: Gupta, Sachin, BLE v4.2: Creating Faster, More Secure, Power-Efficient Designs—Part 1, (2016), Webpage, https://www.electronicdesign.com/technologies/communications/article/21801788/ble-v42-creating-faster-more-secure-powerefficient-designspart-1
+
+<a id="17">[17]</a>: Bulić, Patricio et al. “Data Transmission Efficiency in Bluetooth Low Energy Versions.” Sensors (Basel, Switzerland) vol. 19,17 3746. 29 Aug. 2019, doi:10.3390/s19173746
