@@ -2,7 +2,19 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="29c2fdc6-3e99-478f-bfdd-a777299d6c49" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/../../../README.md" beforeDir="false" afterPath="$PROJECT_DIR$/../../../README.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../data/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/../../../data/README.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../docs/index.md" beforeDir="false" afterPath="$PROJECT_DIR$/../../../docs/index.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../docs/report.md" beforeDir="false" afterPath="$PROJECT_DIR$/../../../docs/report.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../ML/Deep-Learning-for-Human-Activity-Recognition/move_to_board/DCLSTM_model_quant_edgetpu.tflite" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../ML/Deep-Learning-for-Human-Activity-Recognition/move_to_board/X_debug.npy" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../ML/Deep-Learning-for-Human-Activity-Recognition/move_to_board/test.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../ML/Deep-Learning-for-Human-Activity-Recognition/move_to_board/y_debug.npy" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../ML/vis/DCLSTM_model_quant.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../ML/vis/DCLSTM_model_quant.tflite" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../ML/vis/vis.py" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../README.md" beforeDir="false" afterPath="$PROJECT_DIR$/../../README.md" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -258,6 +270,7 @@
       <workItem from="1638839481686" duration="5077000" />
       <workItem from="1639097857028" duration="2869000" />
       <workItem from="1639167869214" duration="14733000" />
+      <workItem from="1639350198196" duration="604000" />
     </task>
     <servers />
   </component>
