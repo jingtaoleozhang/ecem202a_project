@@ -13,4 +13,7 @@ The goal of this project is to investigate the performance of using edge servers
 * [Proposal](proposal.md)
 * [Midterm Checkpoint Presentation Slides](media/MT%20pres.pdf)
 * [Final Presentation Slides](media/Final%20Pres.pdf)
-* [Final Report](report.md)
+* [Final Report](report)
+
+# Video 
+[![Final presentation video](http://img.youtube.com/vi/Xxybrvt8eQU/0.jpg)](http://www.youtube.com/watch?v=Xxybrvt8eQU "Remote Inference for Microcontrollers at the Edge")
