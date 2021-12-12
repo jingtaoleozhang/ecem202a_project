@@ -99,7 +99,11 @@ This procedure is illustrated below.
 
 For the setup that involves only the Arduino. The IMU sampled for the required 2.56 seconds, the median and butterworth filters are applied, then the vector is sent to inference.
 
+![ard only setup](media/runtime_ard_only%20(1).drawio.png)
+
 For the setups that involve an edge server, the IMU is sampled, the raw data is sent to the edge server where it is processed and an inference is made. The classification is then sent back to the device. The edge servers use python.
+
+![ard and edge](media/runtime_remote%20(1).drawio.png)
 
 # 4. Evaluation and Results
 
