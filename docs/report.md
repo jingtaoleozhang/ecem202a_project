@@ -43,11 +43,11 @@ The overall time between when the data is finished being collected and when an i
 # 2. Related Work
 
 ## Neural Networks on Microcontrollers.
-Giving neural net inference capabilities to microcontrollers is an emerging area of research [[1](#1)]. Applications exist from recognizing wakeup voice commands (like for Google home and Amazon Alexa) or detecting when someone is looking at a camera to activate a larger processor for facial recognition [[9](#9)]. These networks are typically 10s of kilobytes in size. This project will involve neural network computation on a microcontroller.
+Giving neural net inference capabilities to microcontrollers is an emerging area of research [[1](#1)]. Applications exist from recognizing wake-up voice commands (like for Google home and Amazon Alexa) or detecting when someone is looking at a camera to activate a larger processor for facial recognition [[9](#9)]. These networks are typically 10s of kilobytes in size. This project will involve neural network computation on a microcontroller.
 
 
 ## Remote Inference.
-Using powerful networked devices to run inference is very widespread in machine learning applications [[10](#10)]. Using edge servers for inference rather than going through the internet is an area of interest due to latency and security concerns and there has been a lot of work in that area [[3](#3)], however the publications use smartphones for data collection and GPU eqipped PCs for the edge server. In other cases the edge server is primarly for data preprocessing and the actual inference is run on a core cloud [[4](#4)].
+Using powerful networked devices to run inference is very widespread in machine learning applications [[10](#10)]. Using edge servers for inference rather than going through the internet is an area of interest due to latency and security concerns and there has been a lot of work in that area [[3](#3)], however the publications use smartphones for data collection and GPU equipped PCs for the edge server. In other cases the edge server is primarily for data preprocessing and the actual inference is run on a core cloud [[4](#4)].
 
 
 # 3. Technical Approach
@@ -61,7 +61,7 @@ The second setup will use the Arduino for data gathering and a Coral Dev Board e
 
 <img src="media/coral%20and%20ard.png" height="300" />
 
-The third setup will be similar to the second one, however the Coral will be replaced by a PC with an Nvidia GTX 1060 GPU and Intel i7-8750H CPU. 
+The third setup will be similar to the second one, however the Coral will be replaced by a PC with an NVIDIA GTX 1060 GPU and Intel i7-8750H CPU. 
  
 ## Software
 The application that will be used to compare the setups is human activity recognition using accelerometer and gyroscope data.
@@ -91,6 +91,10 @@ Data is sent to the edge server for inference through Bluetooth low energy versi
 
 When the data is ready, the device will continuously send the first slice of 128 floats on the TX characteristic until it reads an acknowledgement on RX from the edge server. After that it will go to the next slice and again wait for an acknowledgement, this repeats until all 6 slices are sent after which the device will wait for an inference on RX. When it receives the inference it will sample and process a new vector of inputs and repeat the process. It will only repeat the first slice on the first iteration before an acknowledgement is received. 
 
+This procedure is illustrated below.
+
+![BLE protocol](media/data_prep.drawio.png)
+
 ### Runtime Process
 
 For the setup that involves only the Arduino. The IMU sampled for the required 2.56 seconds, the median and butterworth filters are applied, then the vector is sent to inference.
@@ -112,22 +116,28 @@ The results averaged over 100 iterations are tabulated below. Times are in secon
 | Arduino + Coral | 1364 kB    | 92.1%     | 0.01258 (4.05x) | 2.92701**     | 0.01843   (66.76x) | 5.51802** (-1.45x) |
 | Arduino + PC    | 1785 kB    | 98.7%     | 0.00312 (16.3x) | 2.92701       | 0.01428  (84.25x)  | 5.50441 (-1.45x)   |
 
-\* For some reason, the actual test accuracy on the dataset is about 95% for all three of these models. This may be due to how the dataset was split. However, during real world tests of the whole system there is a clear discrepancy between the smaller and larger models. I decided to use the final epoch training accuracy as an indicator of the effectiveness of a model architecture because they seem in line with what one woudl expect from the size of each model. The actual accuracy of neural net architectures for human activity recognition is beyond the scope of this project.
+\* For some reason, the actual test accuracy on the dataset is about 95% for all three of these models. This may be due to how the dataset was split. However, during real world tests of the whole system there is a clear discrepancy between the smaller and larger models. I decided to use the final epoch training accuracy as an indicator of the effectiveness of a model architecture because they seem in line with what one would expect from the size of each model. The actual accuracy of neural net architectures for human activity recognition is beyond the scope of this project.
 
-\*\* Unfortunately, during development I damaged the Bluetooth chip on the Coral board by static electricity discharge. I believe this is the case because Bluetooth had previously functioned on it then stopped with no changes to code, also bluetooth devices can no longer be found when from Linux commands. I will assume the communication penalty from the Arduino + PC setup for both remote inference setups.
+\*\* Unfortunately, during development I damaged the Bluetooth chip on the Coral board by static electricity discharge. I believe this is the case because Bluetooth had previously functioned on it then stopped with no changes to code, also Bluetooth devices can no longer be found when from Linux commands. I will assume the communication penalty from the Arduino + PC setup for both remote inference setups.
 
 # 5. Discussion and Conclusions
 
 ## Results Analysis
-For the Arduino only setup, data processing took 1.3% of the iteration time, the fixed sampling period took 67.2%, and the inference took 31.6%.
 
-For the setups including the Coral and PC servers, data processing and inference took less than 1% of the iteration time while the fixed sampling time took 46.4% and 46.% of the iteration and communication took 53.0% and 53.2% respectively.
+The proportions of the total time that sampling, processing, communication, and inference take are tabulated below.
 
-The communication penalty is large considerable and takes up most of the iteration time. The input vector to the model consists of 768 floating point numbers for a total of 3072 bytes. With a communication cost of 2.92701 seconds, this gives an approximate bitrate of the BLE setup of 1.05kB/s.
+| Setup           | Sampling | Processing | Communication | Inference |
+| --------------- | -------- | ---------- | ------------- | --------- |
+| Arduino         | 67.2%    | 1.3%       | N/A           | 31.6%     |
+| Arduino + Coral | 46.4%    | 0.228%     | 53%           | 0.334%    |
+| Arduino + PC    | 45%      | 0.057%     | 53.2%         | 0.259%    |
 
-The time to process the data (median and butterworth filter) is lowered drastically by performing it on the powerful CPUs of the edge servers, however the absolute time saved is negligible considering the communication penalty.
+The communication penalty is very significant and takes up most of the iteration time. The time to process the data (median and butterworth filter) is lowered drastically by performing it on the more powerful CPUs of the edge servers, however the absolute time saved is negligible considering the communication penalty. The time between the end of data collection and an available classification is about 3 seconds for the setups using remote inference versus 1.2 seconds computing it locally.  Human activity recognition has many applications [[18](#18)] and this delay may be acceptable for things like health monitoring or assisted living, however this definitely would not be acceptable for tele-immersion or VR.
 
-One oddity is that the accuracies for these models on the dataset are quite similar at around 95%; however, the accuracy of neural network architectures for human activity recognition is beyond the scope of this project. The Coral board and PC were capable of running significantly larger models than the ones selected for this application. In a different benchmark application the accuracy benefit could be very significant.
+The accuracy is, of course, better when using the larger models. If accuracy was a hard requirement then the communication penalty would have to be subsumed.
+
+The input vector to the model consists of 768 floating point numbers for a total of 3072 bytes. With a communication cost of 2.92701 seconds, this gives a throughput of 1.05kB/s for this project's BLE communication implementation.
+
 
 ## Future Directions.
 
@@ -138,13 +148,13 @@ The Arduino uses an Arm Cortex M4 based chip which is single core and single thr
 This application had large communication overheads due to the large size of input vector. This vector is a sampled signal which gives the possibility of reduction in data size by using compressed sensing [[7](#7)]. This reduction in data size comes at the cost of requiring information about the signal sparsity beforehand and increased computation to recover the original signal. The increased computation cost would be offset by the increased processing power of the edge server.
 
 ### Model Partitioning
-It is possible to partition models to allow different sections to run on different platforms. This provides an opportunity to decrease communication costs. For example, the AlexNet [[13](#13)] image classification architecture has an input dimension of 150,528, however at an intermediate layer, the output size is 64,896. If the model was partitioned here, then the amount of data that would need to be send would decrease substantially. However, the preprocessing of input data would no longer be able to occur at the edge server.
+It is possible to partition models to allow different sections to run on different platforms [[19](#19)]. This provides an opportunity to decrease communication costs. For example, the AlexNet [[13](#13)] image classification architecture has an input dimension of 150,528, however at an intermediate layer, the output size is 64,896. If the model was partitioned here, then the amount of data that would need to be send would decrease substantially. However, the preprocessing of input data would no longer be able to occur at the edge server.
 
 ### Aggresssive Quantization
 Quantization is a method for reducing the computational cost of a neural network by reducing the size and therefore precision of the datatypes used for weights. It has been shown that reduction up to 4 bit integers is possible with minimal loss in accuracy [[14](#14)] and even architectures using a single bit [[15](#15)] are an area of research. This again gives potential for reduction in communication costs. Quantization would also allow deeper models to be run on embedded microcontrollers.
 
 ### Bluetooth Refinement
-The theoretical throughput of Bluetooth Low Energy 4.2 is 784kB/s [[16](#16)] and practical throughputs up to 120kB/s [[17](#17)]. The BLE communication implemented in this project was done using the ArduinoBLE library and the protocol is likely suboptimal. A more advanced BLE communication implementation could decrease the commnication penalty substantially. For example, at 120kB/s, the penalty would be .0256s which would make remote processing and inference very useful. A possible optimization is using 6 transmit characteristics and sending all 6 slices without waiting for acknowledgements instead of one by one using a single charactheristic.
+The theoretical throughput of Bluetooth Low Energy 4.2 is 784kB/s [[16](#16)] and practical throughputs have been demonstrated up to 120kB/s [[17](#17)]. The BLE communication implemented in this project was done using the ArduinoBLE library and the protocol is likely suboptimal. A more advanced BLE communication implementation could decrease the communication penalty substantially. For example, at 120kB/s, the penalty would be 0.0256s which would make remote processing and inference very useful. A possible optimization is using 6 transmit characteristics and sending all 6 slices without waiting for acknowledgements instead of one by one using a single characteristic.
 
 # 6. References
 
@@ -181,3 +191,7 @@ The theoretical throughput of Bluetooth Low Energy 4.2 is 784kB/s [[16](#16)] an
 <a id="16">[16]</a>: Gupta, Sachin, BLE v4.2: Creating Faster, More Secure, Power-Efficient Designs—Part 1, (2016), Webpage, https://www.electronicdesign.com/technologies/communications/article/21801788/ble-v42-creating-faster-more-secure-powerefficient-designspart-1
 
 <a id="17">[17]</a>: Bulić, Patricio et al. “Data Transmission Efficiency in Bluetooth Low Energy Versions.” Sensors (Basel, Switzerland) vol. 19,17 3746. 29 Aug. 2019, doi:10.3390/s19173746
+
+<a id="18">[18]</a>: Ranasinghe, Suneth, et al. “A Review on Applications of Activity Recognition Systems with Regard to Performance and Evaluation.” International Journal of Distributed Sensor Networks, Aug. 2016, doi:10.1177/1550147716665520.
+
+<a id="19">[19]</a>: Martins Campos de Oliveira F, Borin E. Partitioning Convolutional Neural Networks to Maximize the Inference Rate on Constrained IoT Devices. Future Internet. 2019; 11(10):209. https://doi.org/10.3390/fi11100209
